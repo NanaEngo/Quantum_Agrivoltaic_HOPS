@@ -1,0 +1,65 @@
+% Define modern color palette
+\definecolor{glassblue}{HTML}{E3F2FD}
+\definecolor{deepblue}{HTML}{1A237E}
+\definecolor{emerald}{HTML}{2E7D32}
+\definecolor{amber}{HTML}{FF8F00}
+\definecolor{crimson}{HTML}{C62828}
+\definecolor{slate}{HTML}{455A64}
+
+% Styles for the premium diagram
+\tikzset{
+    baseblock/.style={
+        rectangle, draw, rounded corners=6pt, 
+        minimum width=11em, minimum height=4.5em,
+        text centered, font=\footnotesize\sffamily\bfseries,
+        line width=1pt
+    },
+    block/.style={baseblock, fill=blue!5, draw=deepblue, text=deepblue},
+    io/.style={baseblock, fill=green!5, draw=emerald, text=emerald},
+    result/.style={baseblock, fill=orange!5, draw=amber, text=amber, minimum width=13em},
+    line/.style={draw, -stealth, line width=1.2pt, color=slate},
+    dashedline/.style={draw, dashed, line width=1pt}
+}
+
+\begin{tikzpicture}[
+    node distance=1.2cm and 1.8cm,
+    auto,
+    every node/.style={align=center}
+]
+    % Node placement on a regular grid
+    \node [io] (inputs) {Input data \\ \normalfont\scriptsize (Spectra, Agronomic data)};
+    \node [block, right=of inputs] (abinitio) {1. \textit{ab initio} calculations \\ \normalfont\scriptsize (ORCA, CP2K)};
+    \node [block, right=of abinitio] (param) {2. Parameterization \\ \normalfont\scriptsize Hamiltonian \& Bath};
+
+    \node [block, below=of inputs] (exp) {6. Experimental validation \\ \normalfont\scriptsize (Spectroscopy, PAM)};
+    \node [block, below=of abinitio] (obs) {4. Computation of observables \\ \normalfont\scriptsize (PCE, ETR, Spectra)};
+    \node [block, below=of param] (simu) {3. Quantum dynamics simulation \\ \normalfont\scriptsize (Process Tensor-HOPS)};
+
+    \node [block, below=of obs] (ml) {5. AI-based screening \& Optimization \\ \normalfont\scriptsize (Trajectory learning)};
+    \node [result, below=of ml] (design) {Outcome: Eco-Design of \\ New multi-layer materials};
+
+    % Main workflow arrows
+    \path [line] (inputs) -- (abinitio);
+    \path [line] (abinitio) -- (param);
+    \path [line] (param) -- (simu);
+    \path [line] (simu) -- (obs);
+    \path [line] (obs) -- (ml);
+    \path [line] (ml) -- (design);
+
+    % Experimental validation loop
+    \path [line] (inputs.south) -- ++(0,-0.6cm) -| (exp.north);
+    \path [line] (obs.west) -- (exp.east); % Direct link for clarity
+
+    % Feedback and optimization loops with colors matching the palette
+    \path [dashedline, color=emerald] (exp.north)
+        edge[bend left=30] node[right, font=\scriptsize\itshape] {Refinement} (abinitio.south west);
+    
+    \path [dashedline, color=crimson] (ml.east)
+        -- ++(0.8cm,0) |- (param.west)
+        node[pos=0.35, left, font=\scriptsize\itshape] {Active learning};
+
+    \path [dashedline, color=deepblue] (abinitio.west)
+        -- ++(-0.8cm,0) |- (ml.west)
+        node[pos=0.35, left, font=\scriptsize\itshape] {ML descriptors};
+
+\end{tikzpicture}
