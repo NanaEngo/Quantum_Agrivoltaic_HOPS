@@ -1,0 +1,144 @@
+% Main Manuscript File - EES Submission
+% Quantum Spectral Engineering for Enhanced Agrivoltaic Efficiency
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage[margin=2.5cm]{geometry}
+
+% Hyperref setup
+\hypersetup{
+    pdftitle={Quantum Spectral Engineering for Enhanced Agrivoltaic Efficiency},
+    pdfauthor={Goumai et al.},
+    pdfsubject={Quantum Photosynthesis, Agrivoltaics, Non-Markovian Dynamics},
+    pdfkeywords={agrivoltaics, quantum photosynthesis, spectral engineering, non-Markovian dynamics, renewable energy},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+% Custom commands
+\newcommand{\sI}[2]{#1\,#2}  % SI units formatting
+
+%=============================================================================
+% TITLE AND AUTHORS
+%=============================================================================
+
+\title{\textbf{Quantum Spectral Engineering for Enhanced Agrivoltaic Efficiency: Non-Markovian Dynamics in Photosynthetic Energy Transfer}}
+
+\author{
+
+    Steve Cabrel Teguia Kouam$^{2,*}$,\\
+    Theodore Goumai Vodekoi$^{1}$, 
+    Jean-Pierre Tchapet Njafa$^{1}$, 
+	Jean-Pierre Nguenang$^{2}$,
+    Serge Guy Nana Engo$^{1}$\\
+    \\
+    $^{1}$Department of Physics, Faculty of Science, University of Yaoundé I, Cameroon\\
+    $^{2}$Department of Physics, Faculty of Science, University of Douala, Cameroon\\
+    \\
+    $^{*}$Corresponding author: \texttt{serge.nana-engo@facsciences-uy1.cm}
+}
+
+\date{\today}
+
+%=============================================================================
+% DOCUMENT BEGIN
+%=============================================================================
+
+\begin{document}
+
+\maketitle
+
+%=============================================================================
+% ABSTRACT
+%=============================================================================
+
+\begin{abstract}
+The integration of agricultural production with solar energy generation through agrivoltaic systems faces a fundamental challenge: classical design paradigms optimize for total photon flux while neglecting the quantum mechanical nature of photosynthetic energy transfer. We introduce quantum spectral bath engineering—strategic spectral filtering of sunlight through overlying semi-transparent organic photovoltaic (OPV) panels to exploit non-Markovian quantum coherence effects in photosynthesis. Using adaptive Hierarchy of Pure States (adHOPS) simulations of the Fenna-Matthews-Olsen complex, we demonstrate quantifiable quantum advantages: strategic filtering enhances electron transport rate by 25\% under physiological conditions through vibronic resonance-assisted transport, with coherence lifetimes extended by 20-50\% and exciton delocalization increased from 3-5 to 8-10 chromophores. Comprehensive validation achieves 100\% success across 12 independent numerical tests, confirming robustness under temperature variations ($\pm$10 K), static disorder ($\sigma = 50$ cm$^{-1}$), and realistic environmental perturbations. Pareto frontier analysis maps optimal trade-offs between OPV power conversion efficiency (15-21\%) and biological energy transfer enhancement (8-25\%), with balanced configurations achieving 16-18\% PCE and 15-20\% ETR improvement. Economic analysis indicates \$470-3,000 additional annual revenue per hectare depending on crop value. We establish quantitative OPV design principles (dual-band transmission at 750 nm and 820 nm, FWHM 70 nm, 65-75\% peak transmission) and provide specific testable predictions for ultrafast spectroscopy and field trials. This work bridges quantum biology and renewable energy engineering, demonstrating that evolution-tested quantum coherence effects represent exploitable design principles for sustainable energy technology.
+\end{abstract}
+
+%=============================================================================
+% KEYWORDS
+%=============================================================================
+
+\noindent\textbf{Keywords:} Agrivoltaics, Quantum photosynthesis, Spectral engineering, Non-Markovian dynamics, Renewable energy, Organic photovoltaics, Coherence-assisted transport, Sustainable agriculture
+
+%=============================================================================
+% MAIN CONTENT (MODULAR SECTIONS)
+%=============================================================================
+
+\input{files2/introduction}
+
+\input{files2/theory_methods}
+
+\input{files2/results}
+
+\input{files2/discussion}
+
+\input{files2/conclusion}
+
+%=============================================================================
+% ACKNOWLEDGMENTS
+%=============================================================================
+
+\section*{Acknowledgments}
+
+This work was supported by the University of Yaoundé I and the University of Douala. We thank the MesoHOPS development team for providing open-source software enabling these simulations. Computational resources were provided by the African Institute for Mathematical Sciences. We acknowledge helpful discussions with colleagues in the quantum biology and renewable energy communities. T.G.V. acknowledges support from the Ministry of Higher Education, Cameroon.
+
+%=============================================================================
+% DATA AVAILABILITY
+%=============================================================================
+
+\section*{Data Availability Statement}
+
+All data supporting the findings of this study are available within the article and its Supporting Information. Raw simulation output files, analysis scripts, and parameter sets are available from the corresponding author upon reasonable request. The MesoHOPS simulation package used in this work is freely available at \url{https://github.com/MesoscienceLab/mesohops}.
+
+%=============================================================================
+% CONFLICTS OF INTEREST
+%=============================================================================
+
+\section*{Conflicts of Interest}
+
+The authors declare no conflicts of interest.
+
+%=============================================================================
+% AUTHOR CONTRIBUTIONS
+%=============================================================================
+
+\section*{Author Contributions}
+
+T.G.V. performed simulations, analyzed data, and wrote the manuscript. S.C.T.K. contributed to simulation methodology and validation. J.-P.T.N. provided theoretical input and reviewed the manuscript. S.G.N.E. supervised the project, designed the research, and edited the manuscript. All authors discussed the results and contributed to the final manuscript.
+
+%=============================================================================
+% REFERENCES
+%=============================================================================
+
+\bibliographystyle{rsc}  % Royal Society of Chemistry style for EES
+\bibliography{references}  % BibTeX file with all references
+
+%=============================================================================
+% SUPPORTING INFORMATION
+%=============================================================================
+
+\section*{Supporting Information}
+
+Supporting Information is available containing:
+\begin{itemize}
+\item Section S1: Environmental factor models (solar variations, dust, weather)
+\item Section S2: Biodegradability assessment (Fukui functions, global reactivity)
+\item Section S3: Extended validation data (12 independent tests)
+\item Section S4: Complete FMO parameter sets
+\item Section S5: Computational performance metrics
+\item Figures S1-S6: Supplementary figures
+\end{itemize}
+
+%=============================================================================
+\end{document}
+%=============================================================================
