@@ -47,6 +47,7 @@ Thumbs.db
 managed_context/
 test_suite_analysis/
 AGENTS.md
+QWEN.md
 
 # Temporary files
 *.tmp
