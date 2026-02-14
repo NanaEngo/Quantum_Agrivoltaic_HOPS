@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.20)  14 FEB 2026 02:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.20)  14 FEB 2026 07:47
 entering extended mode
  %&-line parsing enabled.
-**Goumai_EES_Main.tex
-(./Goumai_EES_Main.tex
+**Q_Agrivoltaics_EES_Main.tex
+(./Q_Agrivoltaics_EES_Main.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-10>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -332,46 +332,66 @@ LaTeX Info: Redefining \labelcref on input line 2370.
 LaTeX Info: Redefining \labelcpageref on input line 2370.
 )
 ==> First Aid for cleveref.sty applied!
+(/usr/local/texlive/2025/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen172
+\lightrulewidth=\dimen173
+\cmidrulewidth=\dimen174
+\belowrulesep=\dimen175
+\belowbottomsep=\dimen176
+\aboverulesep=\dimen177
+\abovetopsep=\dimen178
+\cmidrulesep=\dimen179
+\cmidrulekern=\dimen180
+\defaultaddspace=\dimen181
+\@cmidla=\count311
+\@cmidlb=\count312
+\@aboverulesep=\dimen182
+\@belowrulesep=\dimen183
+\@thisruleclass=\count313
+\@lastruleclass=\count314
+\@thisrulewidth=\dimen184
+)
 (/usr/local/texlive/2025/texmf-dist/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2025-07-09 v3.4.14 A comprehensive (SI) units package
-\l__siunitx_number_uncert_offset_int=\count311
-\l__siunitx_number_exponent_fixed_int=\count312
-\l__siunitx_number_min_decimal_int=\count313
-\l__siunitx_number_min_integer_int=\count314
-\l__siunitx_number_round_precision_int=\count315
-\l__siunitx_number_lower_threshold_int=\count316
-\l__siunitx_number_upper_threshold_int=\count317
-\l__siunitx_number_group_first_int=\count318
-\l__siunitx_number_group_size_int=\count319
-\l__siunitx_number_group_minimum_int=\count320
-\l__siunitx_angle_tmp_dim=\dimen172
+\l__siunitx_number_uncert_offset_int=\count315
+\l__siunitx_number_exponent_fixed_int=\count316
+\l__siunitx_number_min_decimal_int=\count317
+\l__siunitx_number_min_integer_int=\count318
+\l__siunitx_number_round_precision_int=\count319
+\l__siunitx_number_lower_threshold_int=\count320
+\l__siunitx_number_upper_threshold_int=\count321
+\l__siunitx_number_group_first_int=\count322
+\l__siunitx_number_group_size_int=\count323
+\l__siunitx_number_group_minimum_int=\count324
+\l__siunitx_angle_tmp_dim=\dimen185
 \l__siunitx_angle_marker_box=\box55
 \l__siunitx_angle_unit_box=\box56
-\l__siunitx_compound_count_int=\count321
+\l__siunitx_compound_count_int=\count325
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/translations/translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
  (CN)
 )
 \l__siunitx_table_tmp_box=\box57
-\l__siunitx_table_tmp_dim=\dimen173
-\l__siunitx_table_column_width_dim=\dimen174
+\l__siunitx_table_tmp_dim=\dimen186
+\l__siunitx_table_column_width_dim=\dimen187
 \l__siunitx_table_integer_box=\box58
 \l__siunitx_table_decimal_box=\box59
 \l__siunitx_table_uncert_box=\box60
 \l__siunitx_table_before_box=\box61
 \l__siunitx_table_after_box=\box62
-\l__siunitx_table_before_dim=\dimen175
-\l__siunitx_table_carry_dim=\dimen176
-\l__siunitx_unit_tmp_int=\count322
-\l__siunitx_unit_position_int=\count323
-\l__siunitx_unit_total_int=\count324
+\l__siunitx_table_before_dim=\dimen188
+\l__siunitx_table_carry_dim=\dimen189
+\l__siunitx_unit_tmp_int=\count326
+\l__siunitx_unit_position_int=\count327
+\l__siunitx_unit_total_int=\count328
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
-\col@sep=\dimen177
+\col@sep=\dimen190
 \ar@mcellbox=\box63
-\extrarowheight=\dimen178
+\extrarowheight=\dimen191
 \NC@list=\toks26
 \extratabsurround=\skip57
 \backup@length=\skip58
@@ -386,46 +406,46 @@ Package: expl3 2026-01-10 L3 programming layer (loader)
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count325
+\l__color_backend_stack_int=\count329
 ))
 Package: xparse 2025-10-09 L3 Experimental document command parser
 ))
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 60.
- (./Goumai_EES_Main.aux)
-\openout1 = `Goumai_EES_Main.aux'.
+h' as default language. on input line 64.
+ (./Q_Agrivoltaics_EES_Main.aux)
+\openout1 = `Q_Agrivoltaics_EES_Main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
 
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count326
-\scratchdimen=\dimen179
+\scratchcounter=\count330
+\scratchdimen=\dimen192
 \scratchbox=\box65
-\nofMPsegments=\count327
-\nofMParguments=\count328
+\nofMPsegments=\count331
+\nofMParguments=\count332
 \everyMPshowfont=\toks27
-\MPscratchCnt=\count329
-\MPscratchDim=\dimen180
-\MPnumerator=\count330
-\makeMPintoPDFobject=\count331
+\MPscratchCnt=\count333
+\MPscratchDim=\dimen193
+\MPnumerator=\count334
+\makeMPintoPDFobject=\count335
 \everyMPtoPDFconversion=\toks28
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -439,11 +459,11 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 60.
+Package hyperref Info: Link coloring ON on input line 64.
 
-(./Goumai_EES_Main.out) (./Goumai_EES_Main.out)
+(./Q_Agrivoltaics_EES_Main.out) (./Q_Agrivoltaics_EES_Main.out)
 \@outlinefile=\write3
-\openout3 = `Goumai_EES_Main.out'.
+\openout3 = `Q_Agrivoltaics_EES_Main.out'.
 
 
 *geometry* driver: auto-detecting
@@ -498,238 +518,37 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 60.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 63.
+or `english'. on input line 64.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 67.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 63.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 67.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (12.65128pt too wide) in paragraph at lines 63--63
+Overfull \hbox (12.65128pt too wide) in paragraph at lines 67--67
  [][] 
  []
 
-(./files2/introduction.tex
-
-Package natbib Warning: Citation `Valle2017' on page 1 undefined on input line 
-6.
-
-
-Package natbib Warning: Citation `Dupraz2011' on page 1 undefined on input line
- 6.
-
-
-Package natbib Warning: Citation `Marrou2013' on page 1 undefined on input line
- 6.
-
-
-Package natbib Warning: Citation `Weselek2019' on page 1 undefined on input lin
-e 6.
-
-
-Package natbib Warning: Citation `Amaducci2018' on page 1 undefined on input li
-ne 6.
-
-
-Package natbib Warning: Citation `Barron2018' on page 1 undefined on input line
- 6.
-
-
-Package natbib Warning: Citation `Elamri2018' on page 1 undefined on input line
- 6.
-
-
-Package natbib Warning: Citation `MaLu2025' on page 1 undefined on input line 6
-.
-
-
-Package natbib Warning: Citation `Shugar2021' on page 1 undefined on input line
- 6.
-
-[1
+(./files2/introduction.tex [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-
-Package natbib Warning: Citation `Engel2007' on page 2 undefined on input line 
-8.
-
-
-Package natbib Warning: Citation `Panitchayangkoon2010' on page 2 undefined on 
-input line 8.
-
-
-Package natbib Warning: Citation `Collini2010' on page 2 undefined on input lin
-e 8.
-
-
-Package natbib Warning: Citation `mohs2008' on page 2 undefined on input line 8
-.
-
-
-Package natbib Warning: Citation `tao2020' on page 2 undefined on input line 8.
-
-
-
-Package natbib Warning: Citation `Blankenship2011' on page 2 undefined on input
- line 8.
-
-
-Package natbib Warning: Citation `Scholes2011' on page 2 undefined on input lin
-e 8.
-
-
-Package natbib Warning: Citation `Plenio2008' on page 2 undefined on input line
- 8.
-
-
-Package natbib Warning: Citation `Sarovar2010' on page 2 undefined on input lin
-e 8.
-
-
-Package natbib Warning: Citation `Huelga2013' on page 2 undefined on input line
- 8.
-
-
-Package natbib Warning: Citation `Rebentrost2009' on page 2 undefined on input 
-line 8.
-
-
-Package natbib Warning: Citation `Ishizaki2009' on page 2 undefined on input li
-ne 8.
-
-
-Package natbib Warning: Citation `Kelly2016' on page 2 undefined on input line 
-8.
-
-
-Package natbib Warning: Citation `Curutchet2016' on page 2 undefined on input l
-ine 8.
-
-
-Package natbib Warning: Citation `Gelzinis2017' on page 2 undefined on input li
-ne 8.
-
-
-Package natbib Warning: Citation `Fenna1975' on page 2 undefined on input line 
-12.
-
-
-Package natbib Warning: Citation `Renger2004' on page 2 undefined on input line
- 12.
-
-
-Package natbib Warning: Citation `Engel2007' on page 2 undefined on input line 
-12.
-
-
-Package natbib Warning: Citation `Collini2010' on page 2 undefined on input lin
-e 12.
-
-
-Package natbib Warning: Citation `Mohseni2014' on page 2 undefined on input lin
-e 12.
-
-
-Package natbib Warning: Citation `Hildner2013' on page 2 undefined on input lin
-e 12.
-
-
-Package natbib Warning: Citation `Lunt2011' on page 2 undefined on input line 1
-4.
-
-
-Package natbib Warning: Citation `Tong2016' on page 2 undefined on input line 1
-4.
-
-
-Package natbib Warning: Citation `Zhou2019' on page 2 undefined on input line 1
-4.
-
-
-Package natbib Warning: Citation `Li2020' on page 2 undefined on input line 14.
-
-
-
-Package natbib Warning: Citation `Cui2021' on page 2 undefined on input line 14
-.
-
-[2]
-
-Package natbib Warning: Citation `Citty2024' on page 3 undefined on input line 
-26.
-
-
-Package natbib Warning: Citation `Varvelo2021' on page 3 undefined on input lin
-e 26.
-
-
-Package natbib Warning: Citation `Citty2024' on page 3 undefined on input line 
-28.
-
-[3]) (./files2/theory_methods.tex [4]
-
-Package natbib Warning: Citation `Citty2024' on page 5 undefined on input line 
-42.
-
-
-Package natbib Warning: Citation `Varvelo2021' on page 5 undefined on input lin
-e 42.
-
-
-Package natbib Warning: Citation `Varvelo2021' on page 5 undefined on input lin
-e 42.
-
-
-Package natbib Warning: Citation `Suess2014' on page 5 undefined on input line 
-42.
-
-
-Overfull \hbox (23.17715pt too wide) in paragraph at lines 47--48
-[]\T1/cmr/bx/n/10.95 Computational ef-fi-ciency\T1/cmr/m/n/10.95 : 10$\OMS/cmsy
-/m/n/10.95 ^^B$ \T1/cmr/m/n/10.95 speedup via Pro-cess Ten-sor for-mal-ism with
- Low-Temperature
+al/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [2]) (./f
+iles2/theory_methods.tex [3]
+Overfull \hbox (44.9607pt too wide) in paragraph at lines 49--50
+\OT1/cmr/m/n/10.95 50$$[][]$\T1/cmr/m/n/10.95 ) for protein-solvent modes and u
+n-der-damped vi-bronic modes at $\OML/cmm/m/it/10.95 ![] \OT1/cmr/m/n/10.95 = 1
+50\OML/cmm/m/it/10.95 ;  \OT1/cmr/m/n/10.95 200\OML/cmm/m/it/10.95 ;  \OT1/cmr/
+m/n/10.95 575 [] 1185$$[][]$
  []
 
-
-Package natbib Warning: Citation `Renger2004' on page 5 undefined on input line
- 56.
-
-
-Package natbib Warning: Citation `Engel2007' on page 5 undefined on input line 
-59.
-
-[5{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}]
-Overfull \hbox (71.60582pt too wide) in paragraph at lines 67--68
-[]\T1/cmr/bx/n/10.95 Vibronic modes\T1/cmr/m/n/10.95 : $\OML/cmm/m/it/10.95 ![]
- \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 150\OML/cmm/m/it/
-10.95 ; \OT1/cmr/m/n/10.95 200\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 575\OML/
-cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 1185\OMS/cmsy/m/n/10.95 g$ \T1/cmr/m/n/10.9
-5 cm$[]$ with Huang-Rhys fac-tors $\OML/cmm/m/it/10.95 S[] \OT1/cmr/m/n/10.95 =
- \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.
-95 05\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/
-n/10.95 02\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/c
-mr/m/n/10.95 01\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\
-OT1/cmr/m/n/10.95 005\OMS/cmsy/m/n/10.95 g$
- []
-
-
-Package natbib Warning: Citation `Adolphs2006' on page 6 undefined on input lin
-e 70.
-
-
-Package natbib Warning: Citation `Moix2011' on page 6 undefined on input line 7
-0.
-
-[6] [7]) (./files2/results.tex
-<Graphics/Quantum_Advantage_in_Energy_Transfer.pdf, id=233, 1001.0493pt x 351.5
+[4]) (./files2/results.tex [5]
+<Graphics/Quantum_Advantage_in_Energy_Transfer.pdf, id=276, 1001.0493pt x 351.5
 81pt>
 File: Graphics/Quantum_Advantage_in_Energy_Transfer.pdf Graphic file (type pdf)
 
@@ -737,229 +556,61 @@ File: Graphics/Quantum_Advantage_in_Energy_Transfer.pdf Graphic file (type pdf)
 Package pdftex.def Info: Graphics/Quantum_Advantage_in_Energy_Transfer.pdf  use
 d on input line 12.
 (pdftex.def)             Requested size: 386.96027pt x 135.90361pt.
- [8 <./Graphics/Quantum_Advantage_in_Energy_Transfer.pdf>]
 
-LaTeX Warning: Reference `fig:coherence' on page 9 undefined on input line 29.
+Overfull \hbox (0.27727pt too wide) in paragraph at lines 27--28
+[]\T1/cmr/m/n/10.95 The ex-ci-ton de-lo-cal-iza-tion length, quan-ti-fied by th
+e in-verse par-tic-i-pa-tion ra-tio $\OML/cmm/m/it/10.95 ^^X[]$ \T1/cmr/m/n/10.
+95 (eq. ([][]14[][])),
+ []
 
-<Graphics/Figure_3.png, id=289, 1078.9911pt x 704.6325pt>
+[6 <./Graphics/Quantum_Advantage_in_Energy_Transfer.pdf>]
+<Graphics/Figure_3.png, id=334, 1078.9911pt x 704.6325pt>
 File: Graphics/Figure_3.png Graphic file (type png)
 <use Graphics/Figure_3.png>
-Package pdftex.def Info: Graphics/Figure_3.png  used on input line 39.
+Package pdftex.def Info: Graphics/Figure_3.png  used on input line 33.
 (pdftex.def)             Requested size: 386.96027pt x 252.69984pt.
-
-LaTeX Warning: Reference `fig:coherence' on page 9 undefined on input line 44.
-
-[9]
-
-LaTeX Warning: Reference `tab:quantum_metrics' on page 10 undefined on input li
-ne 46.
-
-! Undefined control sequence.
-l.54 \toprule
-             
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.56 \midrule
-             
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.63 \bottomrule
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[10 <./Graphics/Figure_3.png>]
-<Graphics/Pareto_Front__PCE_vs_ETR_Trade_off.pdf, id=304, 624.091pt x 399.72086
+<Graphics/Pareto_Front__PCE_vs_ETR_Trade_off.pdf, id=338, 624.091pt x 399.72086
 pt>
 File: Graphics/Pareto_Front__PCE_vs_ETR_Trade_off.pdf Graphic file (type pdf)
 <use Graphics/Pareto_Front__PCE_vs_ETR_Trade_off.pdf>
 Package pdftex.def Info: Graphics/Pareto_Front__PCE_vs_ETR_Trade_off.pdf  used 
-on input line 102.
+on input line 70.
 (pdftex.def)             Requested size: 341.43307pt x 218.6883pt.
-
-
-LaTeX Warning: Reference `fig:temperature' on page 11 undefined on input line 1
-13.
-
-[11]
-
-LaTeX Warning: Reference `fig:disorder' on page 12 undefined on input line 123.
-
-
-[12 <./Graphics/Pareto_Front__PCE_vs_ETR_Trade_off.pdf>]
-<Graphics/ETR_Under_Environmental_Effects.pdf, id=363, 1145.55664pt x 857.47102
+ [7 <./Graphics/Figure_3.png>] [8 <./Graphics/Pareto_Front__PCE_vs_ETR_Trade_of
+f.pdf>]
+<Graphics/ETR_Under_Environmental_Effects.pdf, id=402, 1145.55664pt x 857.47102
 pt>
 File: Graphics/ETR_Under_Environmental_Effects.pdf Graphic file (type pdf)
 <use Graphics/ETR_Under_Environmental_Effects.pdf>
 Package pdftex.def Info: Graphics/ETR_Under_Environmental_Effects.pdf  used on 
-input line 133.
+input line 87.
 (pdftex.def)             Requested size: 455.24411pt x 340.75806pt.
 
-
-LaTeX Warning: Reference `tab:validation' on page 13 undefined on input line 14
-0.
-
-[13 <./Graphics/ETR_Under_Environmental_Effects.pdf>]) [14]
-(./files2/discussion.tex
-
-LaTeX Warning: Reference `tab:opv_specs' on page 15 undefined on input line 22.
-
-
-! Undefined control sequence.
-l.30 \toprule
-             
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.32 \midrule
-             
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.46 \bottomrule
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Package natbib Warning: Citation `Li2020' on page 15 undefined on input line 50
-.
-
-
-Package natbib Warning: Citation `Cui2021' on page 15 undefined on input line 5
-0.
-
-[15]
-
-Package natbib Warning: Citation `Li2020' on page 16 undefined on input line 52
-.
-
-
-Package natbib Warning: Citation `Cui2021' on page 16 undefined on input line 5
-2.
-
-[16]
-
-LaTeX Warning: Reference `tab:economic_analysis' on page 17 undefined on input 
-line 104.
-
-! Undefined control sequence.
-l.112 \toprule
-              
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.115 \midrule
-              
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.122 \midrule
-              
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.124 \bottomrule
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Overfull \hbox (1.27748pt too wide) in paragraph at lines 128--129
-[]\T1/cmr/m/n/10.95 For high-value spe-cialty crops ($15,000-25,000/ha base-lin
-e), quan-tum ad-van-tages yield $1,500-
+Overfull \hbox (5.97495pt too wide) in paragraph at lines 100--101
+\T1/cmr/m/n/10.95 Simulations across di-verse cli-matic zones---temperate (Ger-
+many, $\OT1/cmr/m/n/10.95 50$$[]$\T1/cmr/m/n/10.95 N), sub-trop-i-cal (In-dia, 
+$\OT1/cmr/m/n/10.95 20$$[]$\T1/cmr/m/n/10.95 N),
  []
 
-[17] [18]
-Overfull \hbox (2.39383pt too wide) in paragraph at lines 191--192
-\T1/cmr/m/n/10.95 Our quan-tum dy-nam-ics sim-u-la-tions make spe-cific, testab
-le pre-dic-tions that dif-fer-en-ti-ate quantum-
- []
-
-[19] [20]) (./files2/conclusion.tex [21]) [22] (./Goumai_EES_Main.bbl
-
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
-
-)
-
-Package natbib Warning: There were undefined citations.
-
-[23] (./Goumai_EES_Main.aux)
+[9 <./Graphics/ETR_Under_Environmental_Effects.pdf>]) (./files2/discussion.tex
+[10] [11] [12]) (./files2/conclusion.tex) [13] (./Q_Agrivoltaics_EES_Main.bbl
+[14] [15]) [16] (./Q_Agrivoltaics_EES_Main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-10>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package rerunfilecheck Info: File `Goumai_EES_Main.out' has not changed.
-(rerunfilecheck)             Checksum: 5D73D896CACACC3E352D107E9C67E8D8;9200.
+Package rerunfilecheck Info: File `Q_Agrivoltaics_EES_Main.out' has not changed
+.
+(rerunfilecheck)             Checksum: C8960C38261E82037C27D5BD267028F6;6409.
  ) 
 Here is how much of TeX's memory you used:
- 17687 strings out of 469437
- 340503 string characters out of 5466872
- 729607 words of memory out of 5000000
- 46059 multiletter control sequences out of 15000+600000
- 653311 words of font info for 110 fonts, out of 8000000 for 9000
+ 17886 strings out of 469437
+ 344249 string characters out of 5466872
+ 736183 words of memory out of 5000000
+ 46228 multiletter control sequences out of 15000+600000
+ 652625 words of font info for 108 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 75i,11n,79p,1961b,1103s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1457b,1247s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
@@ -985,10 +636,10 @@ ist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2025/texmf-dis
 t/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2025/texmf-dist/
 fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fo
 nts/type1/public/cm-super/sftt1200.pfb>
-Output written on Goumai_EES_Main.pdf (23 pages, 666376 bytes).
+Output written on Q_Agrivoltaics_EES_Main.pdf (16 pages, 648429 bytes).
 PDF statistics:
- 610 PDF objects out of 1000 (max. 8388607)
- 390 compressed objects within 4 object streams
- 93 named destinations out of 1000 (max. 500000)
- 333 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 646 PDF objects out of 1000 (max. 8388607)
+ 434 compressed objects within 5 object streams
+ 122 named destinations out of 1000 (max. 500000)
+ 269 words of extra memory for PDF output out of 10000 (max. 10000000)
 

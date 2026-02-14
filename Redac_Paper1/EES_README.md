@@ -302,9 +302,9 @@ pdflatex Cover_Letter_EES.tex
 
 ## 📞 Contact
 
-**Corresponding Author**: Serge Guy Nana Engo  
-**Email**: serge.nana-engo@facsciences-uy1.cm  
-**Institution**: University of Yaoundé I, Cameroon
+**Corresponding Author**: Steve Cabrel Teguia Kouam  
+**Email**: steve.teguia@univ-douala.cm  
+**Institution**: University of Douala, Cameroon
 
 ---
 

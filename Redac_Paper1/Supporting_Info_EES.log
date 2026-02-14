@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.20)  14 FEB 2026 02:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.20)  14 FEB 2026 07:47
 entering extended mode
  %&-line parsing enabled.
 **Supporting_Info_EES.tex
@@ -284,6 +284,13 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count311
 \@thisrulewidth=\dimen176
 )
+(/usr/local/texlive/2025/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip57
+\multirow@cntb=\count312
+\multirow@dima=\skip58
+\bigstrutjot=\dimen177
+)
 (/usr/local/texlive/2025/texmf-dist/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 Package cleveref Info: `hyperref' support loaded on input line 2370.
@@ -301,47 +308,47 @@ LaTeX Info: Redefining \labelcpageref on input line 2370.
 ==> First Aid for cleveref.sty applied!
 (/usr/local/texlive/2025/texmf-dist/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2025-07-09 v3.4.14 A comprehensive (SI) units package
-\l__siunitx_number_uncert_offset_int=\count312
-\l__siunitx_number_exponent_fixed_int=\count313
-\l__siunitx_number_min_decimal_int=\count314
-\l__siunitx_number_min_integer_int=\count315
-\l__siunitx_number_round_precision_int=\count316
-\l__siunitx_number_lower_threshold_int=\count317
-\l__siunitx_number_upper_threshold_int=\count318
-\l__siunitx_number_group_first_int=\count319
-\l__siunitx_number_group_size_int=\count320
-\l__siunitx_number_group_minimum_int=\count321
-\l__siunitx_angle_tmp_dim=\dimen177
+\l__siunitx_number_uncert_offset_int=\count313
+\l__siunitx_number_exponent_fixed_int=\count314
+\l__siunitx_number_min_decimal_int=\count315
+\l__siunitx_number_min_integer_int=\count316
+\l__siunitx_number_round_precision_int=\count317
+\l__siunitx_number_lower_threshold_int=\count318
+\l__siunitx_number_upper_threshold_int=\count319
+\l__siunitx_number_group_first_int=\count320
+\l__siunitx_number_group_size_int=\count321
+\l__siunitx_number_group_minimum_int=\count322
+\l__siunitx_angle_tmp_dim=\dimen178
 \l__siunitx_angle_marker_box=\box55
 \l__siunitx_angle_unit_box=\box56
-\l__siunitx_compound_count_int=\count322
+\l__siunitx_compound_count_int=\count323
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/translations/translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
  (CN)
 )
 \l__siunitx_table_tmp_box=\box57
-\l__siunitx_table_tmp_dim=\dimen178
-\l__siunitx_table_column_width_dim=\dimen179
+\l__siunitx_table_tmp_dim=\dimen179
+\l__siunitx_table_column_width_dim=\dimen180
 \l__siunitx_table_integer_box=\box58
 \l__siunitx_table_decimal_box=\box59
 \l__siunitx_table_uncert_box=\box60
 \l__siunitx_table_before_box=\box61
 \l__siunitx_table_after_box=\box62
-\l__siunitx_table_before_dim=\dimen180
-\l__siunitx_table_carry_dim=\dimen181
-\l__siunitx_unit_tmp_int=\count323
-\l__siunitx_unit_position_int=\count324
-\l__siunitx_unit_total_int=\count325
+\l__siunitx_table_before_dim=\dimen181
+\l__siunitx_table_carry_dim=\dimen182
+\l__siunitx_unit_tmp_int=\count324
+\l__siunitx_unit_position_int=\count325
+\l__siunitx_unit_total_int=\count326
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
-\col@sep=\dimen182
+\col@sep=\dimen183
 \ar@mcellbox=\box63
-\extrarowheight=\dimen183
+\extrarowheight=\dimen184
 \NC@list=\toks25
-\extratabsurround=\skip57
-\backup@length=\skip58
+\extratabsurround=\skip59
+\backup@length=\skip60
 \ar@cellbox=\box64
 ))
 (/usr/local/texlive/2025/texmf-dist/tex/latex/physics/physics.sty
@@ -353,12 +360,12 @@ Package: expl3 2026-01-10 L3 programming layer (loader)
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count326
+\l__color_backend_stack_int=\count327
 ))
 Package: xparse 2025-10-09 L3 Experimental document command parser
 ))
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 29.
+h' as default language. on input line 34.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2025/01/14 v1.3e Standard LaTeX Color (DPC)
 
@@ -371,36 +378,36 @@ Package color Info: Driver file: pdftex.def on input line 149.
 No file Supporting_Info_EES.aux.
 \openout1 = `Supporting_Info_EES.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count327
-\scratchdimen=\dimen184
+\scratchcounter=\count328
+\scratchdimen=\dimen185
 \scratchbox=\box65
-\nofMPsegments=\count328
-\nofMParguments=\count329
+\nofMPsegments=\count329
+\nofMParguments=\count330
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count330
-\MPscratchDim=\dimen185
-\MPnumerator=\count331
-\makeMPintoPDFobject=\count332
+\MPscratchCnt=\count331
+\MPscratchDim=\dimen186
+\MPnumerator=\count332
+\makeMPintoPDFobject=\count333
 \everyMPtoPDFconversion=\toks27
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -414,9 +421,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 29.
-
-(./Supporting_Info_EES.out) (./Supporting_Info_EES.out)
+Package hyperref Info: Link coloring OFF on input line 34.
 \@outlinefile=\write3
 \openout3 = `Supporting_Info_EES.out'.
 
@@ -439,20 +444,20 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 29.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
+or `english'. on input line 34.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (109.30273pt too wide) in paragraph at lines 32--32
+Overfull \hbox (109.30273pt too wide) in paragraph at lines 37--37
  [][] 
  []
 
@@ -462,108 +467,63 @@ Overfull \hbox (109.30273pt too wide) in paragraph at lines 32--32
 \tf@toc=\write4
 \openout4 = `Supporting_Info_EES.toc'.
 
- [3]
+ [3] [4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts
+1.enc}]
+Overfull \hbox (11.4048pt too wide) in paragraph at lines 121--122
+[]$\OML/cmm/m/it/10.95 k[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^U\OT1/cmr/m
+/n/10.95 )$ = ab-sorp-tion co-ef-fi-cient (peaks at $940$$[]$, $1100$$[]$ [] $1
+400$$[]$) 
+ []
 
-LaTeX Warning: Command \textdegree invalid in math mode on input line 69.
+[5]
+Overfull \hbox (12.81522pt too wide) in paragraph at lines 171--172
+[]$\OML/cmm/m/it/10.95 r[]$ \OT1/cmr/m/n/10.95 = de-po-si-tion rate ($0\OML/cmm
+/m/it/10.95 :\OT1/cmr/m/n/10.95 1$$[]\OML/cmm/m/it/10.95 =[][]=\OT1/cmr/m/n/10.
+95 d$ [] $5$$[]\OML/cmm/m/it/10.95 =[][]=\OT1/cmr/m/n/10.95 d$, climate-depende
+nt) 
+ []
 
+[6]
+Overfull \hbox (13.17279pt too wide) in paragraph at lines 189--190
+\OT1/cmr/m/n/10.95 af-fect-ing quan-tum res-o-nance match-ing. Op-ti-mal trans-
+mis-sion win-dows ($750$$[]$
+ []
 
-LaTeX Warning: Command \textdegree invalid in math mode on input line 69.
-
-Missing character: There is no ° in font cmr10!
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 70.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 70.
-
-Missing character: There is no ° in font cmr10!
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 71.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 71.
-
-Missing character: There is no ° in font cmr10!
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 72.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 72.
-
-Missing character: There is no ° in font cmr10!
-[4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}]
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 84.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 84.
-
-Missing character: There is no ° in font cmr10!
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 90.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 90.
-
-Missing character: There is no ° in font cmr10!
-[5] [6] [7] [8] [9] [10]
-Overfull \hbox (3.7229pt too wide) in paragraph at lines 356--357
+[7] [8] [9] [10]
+Overfull \hbox (3.7229pt too wide) in paragraph at lines 361--362
 \OT1/cmr/m/n/10.95 We eval-u-ated sev-eral non-fullerene ac-cep-tor molecules f
 or quantum-optimized
  []
 
 [11]
-Overfull \hbox (3.23509pt too wide) in paragraph at lines 386--387
+Overfull \hbox (3.23509pt too wide) in paragraph at lines 391--392
 \OT1/cmr/m/n/10.95 The FMO com-plex con-sists of 7 bacteriochlorophyll-a (BChl-
 a) chro-mophores
  []
 
 
-LaTeX Warning: Reference `tab:fmo_hamiltonian' on page 12 undefined on input li
-ne 391.
+LaTeX Warning: Reference `tab:fmo_hamiltonian' on page 1 undefined on input lin
+e 396.
 
 
-Overfull \hbox (17.2996pt too wide) in paragraph at lines 398--414
+Overfull \hbox (17.2996pt too wide) in paragraph at lines 403--419
  [][] 
  []
 
-[12] [13] [14] [15] [16]
-! Undefined control sequence.
-<recently read> \multirow 
-                          
-l.619 \multirow
-               {4}{*}{Convergence}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-<recently read> \multirow 
-                          
-l.625 \multirow
-               {4}{*}{Physical}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Overfull \hbox (16.9567pt too wide) in paragraph at lines 423--424
+[]\OT1/cmr/m/n/10.95 Site en-er-gies span $420$$[][]$ ($295$$K$ $\OMS/cmsy/m/n/
+10.95 ^^Y$ $\OT1/cmr/m/n/10.95 205$$[][]$), en-sur-ing mixed quantum-
+ []
 
-! Undefined control sequence.
-<recently read> \multirow 
-                          
-l.631 \multirow
-               {4}{*}{Robustness}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+[12] [13] [14] [15]
+Overfull \hbox (10.26338pt too wide) in paragraph at lines 595--596
+[]\OT1/cmr/m/n/10.95 Quantum ad-van-tage mag-ni-tude varies $15$$%$ [] $30$$%$ 
+(quan-ti-ta-tive change) 
+ []
 
-
-Overfull \hbox (59.89749pt too wide) in paragraph at lines 614--640
+[16]
+Overfull \hbox (47.12245pt too wide) in paragraph at lines 620--646
  [][] 
  []
 
@@ -574,234 +534,73 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [17] [18]
-Overfull \hbox (26.16815pt too wide) in paragraph at lines 696--706
+Overfull \hbox (26.16815pt too wide) in paragraph at lines 702--712
  [][] 
  []
 
 
-Overfull \hbox (19.26787pt too wide) in paragraph at lines 712--712
+Overfull \hbox (19.26787pt too wide) in paragraph at lines 718--718
 []\OT1/cmr/bx/n/14.4 Process Tensor-HOPS with Low-Temperature Cor-
  []
 
 
-LaTeX Warning: Reference `tab:computational_benchmarks' on page 19 undefined on
- input line 715.
+LaTeX Warning: Reference `tab:computational_benchmarks' on page 1 undefined on 
+input line 721.
 
 
-Overfull \hbox (31.4638pt too wide) in paragraph at lines 722--737
+Overfull \hbox (33.2892pt too wide) in paragraph at lines 728--743
  [][] 
  []
 
-! Undefined control sequence.
-<recently read> \lt 
-                    
-l.741 ...o traditional HEOM while maintaining $\lt
-                                                  $2\% accuracy.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 [19]
-! Undefined control sequence.
-<recently read> \lt 
-                    
-l.758 ...ara cutoff: $N_{\rm Mat} = 10$ for T $\lt
-                                                  $ 150 K, $N_{\rm Mat} = 12...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Overfull \hbox (12.11803pt too wide) in paragraph at lines 761--762
-[]\OT1/cmr/m/n/10.95 Memory ker-nel trun-ca-tion: 20 ps (be-yond sys-tem de-co-
-her-ence timescales) 
+Overfull \hbox (11.51009pt too wide) in paragraph at lines 767--768
+[]\OT1/cmr/m/n/10.95 Memory ker-nel trun-ca-tion: $20$$[]$ (be-yond sys-tem de-
+co-her-ence timescales) 
  []
 
 [20] [21]
-<Graphics/Spectral_Density_Components_for_FMO_Environment.pdf, id=475, 732.2826
+<Graphics/Spectral_Density_Components_for_FMO_Environment.pdf, id=277, 732.2826
 7pt x 511.01666pt>
 File: Graphics/Spectral_Density_Components_for_FMO_Environment.pdf Graphic file
  (type pdf)
 <use Graphics/Spectral_Density_Components_for_FMO_Environment.pdf>
 Package pdftex.def Info: Graphics/Spectral_Density_Components_for_FMO_Environme
-nt.pdf  used on input line 830.
+nt.pdf  used on input line 836.
 (pdftex.def)             Requested size: 306.0022pt x 213.54947pt.
-
-
-! LaTeX Error: Unicode character Î» (U+03BB)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.831 ...ole in quantum-enhanced energy transfer.}
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! LaTeX Error: Unicode character Î³ (U+03B3)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.831 ...ole in quantum-enhanced energy transfer.}
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! LaTeX Error: Unicode character Ï‰ (U+03C9)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.831 ...ole in quantum-enhanced energy transfer.}
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! LaTeX Error: Unicode character Î» (U+03BB)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.831 ...ole in quantum-enhanced energy transfer.}
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! LaTeX Error: Unicode character Î³ (U+03B3)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.831 ...ole in quantum-enhanced energy transfer.}
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! LaTeX Error: Unicode character Ï‰ (U+03C9)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.831 ...ole in quantum-enhanced energy transfer.}
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-<Graphics/Global_Reactivity_Indices.pdf, id=476, 1073.30171pt x 709.7105pt>
+<Graphics/Global_Reactivity_Indices.pdf, id=278, 1073.30171pt x 709.7105pt>
 File: Graphics/Global_Reactivity_Indices.pdf Graphic file (type pdf)
 <use Graphics/Global_Reactivity_Indices.pdf>
 Package pdftex.def Info: Graphics/Global_Reactivity_Indices.pdf  used on input 
-line 839.
+line 845.
 (pdftex.def)             Requested size: 306.0022pt x 202.33456pt.
-
-! LaTeX Error: Unicode character Î· (U+03B7)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.840 ...maintaining environmental compatibility.}
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 8
-40.
-(/usr/local/texlive/2025/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2024/11/19 v2.5n Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 840.
-
-
-! LaTeX Error: Unicode character Î· (U+03B7)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.840 ...maintaining environmental compatibility.}
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-<Graphics/PAR_Transmission__Clean_vs_Dusty_Conditions.pdf, id=477, 1000.69734pt
+<Graphics/PAR_Transmission__Clean_vs_Dusty_Conditions.pdf, id=279, 1000.69734pt
  x 711.83728pt>
 File: Graphics/PAR_Transmission__Clean_vs_Dusty_Conditions.pdf Graphic file (ty
 pe pdf)
 <use Graphics/PAR_Transmission__Clean_vs_Dusty_Conditions.pdf>
 Package pdftex.def Info: Graphics/PAR_Transmission__Clean_vs_Dusty_Conditions.p
-df  used on input line 848.
+df  used on input line 854.
 (pdftex.def)             Requested size: 306.0022pt x 217.66943pt.
-<Graphics/Response_Functions__OPV_vs_PSU.pdf, id=478, 856.51868pt x 423.85098pt
+<Graphics/Response_Functions__OPV_vs_PSU.pdf, id=280, 856.51868pt x 423.85098pt
 >
 File: Graphics/Response_Functions__OPV_vs_PSU.pdf Graphic file (type pdf)
 <use Graphics/Response_Functions__OPV_vs_PSU.pdf>
 Package pdftex.def Info: Graphics/Response_Functions__OPV_vs_PSU.pdf  used on i
-nput line 857.
+nput line 863.
 (pdftex.def)             Requested size: 306.0022pt x 151.42856pt.
-<Graphics/fLatitude__lat__u00b0__Month__month.pdf, id=479, 1011.1352pt x 712.93
+<Graphics/fLatitude__lat__u00b0__Month__month.pdf, id=281, 1011.1352pt x 712.93
 102pt>
 File: Graphics/fLatitude__lat__u00b0__Month__month.pdf Graphic file (type pdf)
 <use Graphics/fLatitude__lat__u00b0__Month__month.pdf>
 Package pdftex.def Info: Graphics/fLatitude__lat__u00b0__Month__month.pdf  used
- on input line 866.
+ on input line 872.
 (pdftex.def)             Requested size: 323.9978pt x 228.4363pt.
-<Graphics/ETR_Uncertainty_Distribution.pdf, id=480, 856.48608pt x 351.581pt>
+<Graphics/ETR_Uncertainty_Distribution.pdf, id=282, 856.48608pt x 351.581pt>
 File: Graphics/ETR_Uncertainty_Distribution.pdf Graphic file (type pdf)
 <use Graphics/ETR_Uncertainty_Distribution.pdf>
 Package pdftex.def Info: Graphics/ETR_Uncertainty_Distribution.pdf  used on inp
-ut line 875.
+ut line 881.
 (pdftex.def)             Requested size: 306.0022pt x 125.60878pt.
-
-! LaTeX Error: Unicode character Ïƒ (U+03C3)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.876 ...ve to specific molecular configurations.}
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! LaTeX Error: Unicode character Ïƒ (U+03C3)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.876 ...ve to specific molecular configurations.}
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
 No file Supporting_Info_EES.bbl.
 [22] [23 <./Graphics/Spectral_Density_Components_for_FMO_Environment.pdf>]
@@ -826,54 +625,39 @@ Package rerunfilecheck Warning: File `Supporting_Info_EES.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `Supporting_Info_EES.out':
-(rerunfilecheck)             Before: 5B665753F28610EF6D80766245F7F27F;14081
+(rerunfilecheck)             Before: <no file>
 (rerunfilecheck)             After:  04F98D774B66A646A8FC91D091879B76;14260.
  ) 
 Here is how much of TeX's memory you used:
- 16587 strings out of 469437
- 326651 string characters out of 5466872
- 700076 words of memory out of 5000000
- 44967 multiletter control sequences out of 15000+600000
- 637349 words of font info for 76 fonts, out of 8000000 for 9000
+ 16560 strings out of 469437
+ 326213 string characters out of 5466872
+ 701593 words of memory out of 5000000
+ 44946 multiletter control sequences out of 15000+600000
+ 637518 words of font info for 77 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 75i,11n,79p,670b,1105s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{subsubsection.3.1.4} has been referenced but does n
-ot exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsubsection.3.1.3} has been referenced but does n
-ot exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsubsection.3.1.2} has been referenced but does n
-ot exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsubsection.3.1.1} has been referenced but does n
-ot exist, replaced by a fixed one
-
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
-/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
-usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
-sr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/
-local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lo
-cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
-l/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/
-texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/te
-xlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
-ve/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
-2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
-025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/202
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/
-texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2
-025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texli
-ve/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on Supporting_Info_EES.pdf (28 pages, 400933 bytes).
+ 75i,11n,79p,735b,1149s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
+r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
+local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
+cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loca
+l/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/
+texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/tex
+live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
+e/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2
+025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/202
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2025
+/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/
+2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texl
+ive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on Supporting_Info_EES.pdf (28 pages, 401474 bytes).
 PDF statistics:
- 918 PDF objects out of 1000 (max. 8388607)
- 574 compressed objects within 6 object streams
- 138 named destinations out of 1000 (max. 500000)
- 551 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 722 PDF objects out of 1000 (max. 8388607)
+ 378 compressed objects within 4 object streams
+ 134 named destinations out of 1000 (max. 500000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
