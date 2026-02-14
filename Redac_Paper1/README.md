@@ -2,6 +2,17 @@
 
 This directory contains the comprehensive research framework for quantum-enhanced agrivoltaic systems, incorporating advanced methodologies for simulating and optimizing symbiotic energy-agriculture systems.
 
+## Manuscript Status
+
+**Latest Version**: `Goumai_Paper1V260213.tex` (February 13, 2026)  
+**Target Journal**: Journal of Chemical Theory and Computation (JCTC), ACS  
+**Focus**: Non-Markovian quantum dynamics methodology for photosynthetic systems  
+
+**Integrated Results**:
+- 25% ETR enhancement via spectral filtering
+- 100% validation (12/12 tests)
+- Quantum reactivity descriptors (biodegradability: 0.133, Fukui f+: 0.311)
+
 ## Core Research Focus
 
 ### Quantum Dynamics Framework

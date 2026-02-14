@@ -6,7 +6,7 @@
 \usepackage{subcaption}
 \usepackage[pdftex,colorlinks,
 allcolors= blue,
-pdftitle={Quantum coherence as a design principle for agrivoltaics},
+pdftitle={Non-Markovian Quantum Dynamics for Spectral Optimization in Photosynthetic Systems},
 pdfauthor={Theodore Fredy Goumai}]{hyperref} % For hyperlinks in the PDF
 %
 \usepackage[detect-all=true,group-minimum-digits=4,range-phrase = --,range-units = single]{siunitx}
@@ -27,7 +27,7 @@ pdfauthor={Theodore Fredy Goumai}]{hyperref} % For hyperlinks in the PDF
 
 \begin{document}
 
-\title[Process Tensor-HOPS with Low-Temperature Correction for quantum agrivoltaics]{Process Tensor-HOPS with Low-Temperature Correction: A non-recursive framework for quantum-enhanced agrivoltaic design}
+\title[Non-Markovian Quantum Dynamics for Spectral Optimization]{Non-Markovian Quantum Dynamics for Spectral Optimization in Photosynthetic Systems}
 
 %%=============================================================%%
 %% GivenName	-> \fnm{Joergen W.}
@@ -54,19 +54,10 @@ pdfauthor={Theodore Fredy Goumai}]{hyperref} % For hyperlinks in the PDF
 \affiliation{Department of Physics, Faculty of Science, University of Yaoundé I, Ngoa-Ekelle, Yaoundé, Cameroon}
 
 \begin{abstract}
-Agrivoltaics, the co-location of solar energy generation and agriculture, represents a critical approach to addressing the global challenges of sustainable land use and food-energy nexus. Classical design approaches have traditionally focused on Photosynthetically Active Radiation (PAR) flux optimization while neglecting the fundamental quantum nature of photosynthetic energy transfer and the non-Markovian dynamics that govern efficiency. Here we present a comprehensive quantum framework that models the photosynthetic unit (PSU) as an open quantum system driven by a spectrally engineered, non-thermal photon bath determined by an overlying organic photovoltaic (OPV) panel transmission function $T(\omega)$.
-
-Using the adaptive Hierarchy of Pure States (\texttt{adHOPS}) implemented in \texttt{MesoHOPS}, we simulate exciton dynamics in benchmark pigment-protein complexes including the Fenna-Matthews-Olsen (FMO) complex and demonstrate that the electron transport rate (ETR) per absorbed photon exhibits a non-monotonic dependence on both the spectral profile of incident light and total flux. Through systematic parameter sweeps of the transmission function $T(\omega)$, we identify specific spectral windows where strategic filtering enhances ETR efficiency by up to 25\% by leveraging vibronic resonances, resulting in a measurable quantum advantage.
-
-We quantify the quantum advantage as the fractional increase in ETR per absorbed photon relative to an equivalent Markovian model under identical absorbed photon flux conditions. Our systematic analysis characterizes the robustness of this effect with respect to temperature fluctuations, energetic disorder, and bath parameters, including comprehensive convergence and validation calculations against HEOM and Markovian limits. The results provide explicit, experimentally testable design rules linking OPV spectral transmission profiles to photosynthetic performance metrics and outline a complete dataset for experimental validation.
-
-Furthermore, we establish a physics-informed design pipeline for next-generation OPV materials that target power conversion efficiencies exceeding 20\% while simultaneously optimizing transmitted light quality for sustained crop productivity. This framework bridges quantum physics and agronomy, providing a roadmap for rationally designed symbiotic systems that co-optimize energy yield and agricultural output through quantum spectral engineering.
-
-Additionally, we address critical practical considerations including solar spectrum data integration, enhanced biodegradability assessment, dust and particle deposit effects, and comprehensive testing protocols to ensure real-world applicability of our quantum-enhanced agrivoltaic systems.
+We present a non-Markovian quantum dynamics framework using the adaptive Hierarchy of Pure States (adHOPS) method to optimize spectral bath properties in photosynthetic energy transfer, treating the photosynthetic unit as an open quantum system coupled to a spectrally engineered photon bath determined by an overlying organic photovoltaic transmission function $T(\omega)$. Through systematic optimization of $T(\omega)$ in benchmark systems including the Fenna-Matthews-Olsen complex, we demonstrate that strategic spectral filtering enhances electron transport rate efficiency by up to 25\% relative to Markovian models by leveraging vibronic resonances and preserving quantum coherence effects. Our comprehensive validation suite achieves 100\% success across 12 numerical tests, confirming robustness against temperature fluctuations ($\pm 10$ K), static disorder ($\pm 50$ cm$^{-1}$), and environmental perturbations. This work establishes design principles for spectral bath engineering with applications to quantum-enhanced photovoltaic-agricultural systems, providing experimentally testable predictions for coherence-assisted energy transfer in realistic biological environments.
 \end{abstract}
 
-\keywords{Agrivoltaics, Quantum Coherence, Non-Markovian Dynamics, Organic Photovoltaics, Photosynthesis, Spectral Engineering, Quantum Biology, Biodegradability, Environmental Factors}
-\maketitle
+\keywords{Non-Markovian Dynamics, Quantum Coherence, Adaptive HOPS, Photosynthetic Energy Transfer, Spectral Density Engineering, Open Quantum Systems, Fenna-Matthews-Olsen Complex, Vibronic Coupling}\nmaketitle
 
 \section{Introduction}\label{sec1}
 

@@ -1,0 +1,74 @@
+% Main Manuscript File - JCTC Submission
+% Non-Markovian Quantum Dynamics for Spectral Optimization in Photosynthetic Systems
+%
+% Compiled with modular structure following LaTeX best practices
+
+\documentclass[aps,prb,onecolumn,superscriptaddress,notitlepage,nofootinbib,longbibliography,10pt]{revtex4-2}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb,graphicx,xcolor,booktabs}
+\usepackage{subcaption}
+\usepackage[pdftex,colorlinks,
+allcolors=blue,
+pdftitle={Non-Markovian Quantum Dynamics for Spectral Optimization in Photosynthetic Systems},
+pdfauthor={Theodore Fredy Goumai}]{hyperref}
+\usepackage[detect-all=true,group-minimum-digits=4,range-phrase = --,range-units = single]{siunitx}
+\declareSIUnit{\yr}{yr}
+
+% Additional packages
+\usepackage{mathtools}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{bm}
+
+\graphicspath{{./Graphics/}}
+
+\date{\today}
+
+\begin{document}
+
+\title[Non-Markovian Quantum Dynamics for Spectral Optimization]{Non-Markovian Quantum Dynamics for Spectral Optimization in Photosynthetic Systems}
+
+% Authors
+\author{Theodore Goumai Vodekoi}
+\email{theodore.goumai@facsciences-uy1.cm}
+\affiliation{Department of Physics, Faculty of Science, University of Yaoundé I, Ngoa-Ekelle, Yaoundé, Cameroon}
+
+\author{Steve Cabrel TEGUIA KOUAM}
+\affiliation{Department of Physics, Faculty of Science, University of Douala, Po. Box 24157, Douala, Cameroon}
+
+\author{Jean-Pierre Tchapet Njafa}
+\affiliation{Department of Physics, Faculty of Science, University of Yaoundé I, Ngoa-Ekelle, Yaoundé, Cameroon}
+
+\author{Serge Guy Nana Engo}
+\email{serge.nana-engo@facsciences-uy1.cm}
+\affiliation{Department of Physics, Faculty of Science, University of Yaoundé I, Ngoa-Ekelle, Yaoundé, Cameroon}
+
+\begin{abstract}
+We present a non-Markovian quantum dynamics framework using the adaptive Hierarchy of Pure States (adHOPS) method to optimize spectral bath properties in photosynthetic energy transfer, treating the photosynthetic unit as an open quantum system coupled to a spectrally engineered photon bath determined by an overlying organic photovoltaic transmission function $T(\omega)$. Through systematic optimization of $T(\omega)$ in benchmark systems including the Fenna-Matthews-Olsen complex, we demonstrate that strategic spectral filtering enhances electron transport rate efficiency by up to 25\% relative to Markovian models by leveraging vibronic resonances and preserving quantum coherence effects. Our comprehensive validation suite achieves 100\% success across 12 numerical tests, confirming robustness against temperature fluctuations ($\pm 10$ K), static disorder ($\pm 50$ cm$^{-1}$), and environmental perturbations. This work establishes design principles for spectral bath engineering with applications to quantum-enhanced photovoltaic-agricultural systems, providing experimentally testable predictions for coherence-assisted energy transfer in realistic biological environments.
+\end{abstract}
+
+\keywords{Non-Markovian Dynamics, Quantum Coherence, Adaptive HOPS, Photosynthetic Energy Transfer, Spectral Density Engineering, Open Quantum Systems, Fenna-Matthews-Olsen Complex, Vibronic Coupling}
+
+\maketitle
+
+% Include sections from separate files
+\input{files/introduction}
+\input{files/theory_methods}
+\input{files/results}
+\input{files/discussion}
+\input{files/conclusion}
+
+% Acknowledgments
+\begin{acknowledgments}
+We thank the MesoHOPS development team for making their software openly available. Computational resources were provided by [Institution/Resource]. This work was supported by [Funding Information].
+\end{acknowledgments}
+
+% Data Availability
+\section*{Data Availability}
+All simulation data, analysis scripts, and figure generation code are available at [Repository URL]. The MesoHOPS software is available at \url{https://github.com/MesoscienceLab/mesohops}.
+
+% Bibliography (placeholder - use actual .bib file)
+\bibliography{references}
+
+\end{document}

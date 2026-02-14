@@ -6,6 +6,20 @@ The quantum agrivoltaics research framework addresses the critical global challe
 
 The project specifically focuses on the comparative study of the Anderson model in weak and strong interaction regimes, implementing Process Tensor-HOPS with Low-Temperature Correction (PT-HOPS+LTC) as a breakthrough in non-Markovian quantum dynamics simulation. This enables realistic simulation of mesoscale photosynthetic systems (>1000 chromophores) essential for agrivoltaic applications.
 
+## Manuscript Status
+
+**Current Version**: `Goumai_Paper1V260213.tex` (February 13, 2026)  
+**Target Journal**: Journal of Chemical Theory and Computation (JCTC)  
+**Submission Status**: In preparation  
+
+**Key Numerical Results Integrated**:
+- ETR enhancement: Up to 25% under optimal spectral filtering
+- Validation success: 12/12 tests passed (100%)
+- Biodegradability score: 0.133 (normalized)
+- Maximum Fukui f+: 0.311 at site 4
+
+**Figures Prepared**: 10 high-quality PDF figures exported to `Graphics/` directory, with 4 integrated into main manuscript.
+
 ## Theoretical foundation
 
 ### Background and motivation

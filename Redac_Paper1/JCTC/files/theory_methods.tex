@@ -1,0 +1,92 @@
+% Theory and Methods Section
+% Non-Markovian Quantum Dynamics for Spectral Optimization in Photosynthetic Systems
+
+\section{Theory and Methods}\label{sec:Theory}
+
+\subsection{Open Quantum System Framework}
+
+We treat the photosynthetic unit as an open quantum system coupled to both a structured vibrational environment and a spectrally filtered photon bath. The dynamics of the reduced density matrix $\bm{\rho}(t)$ for the excitonic system is governed by the quantum master equation:
+\begin{equation}\label{eq:master_eq}
+\frac{d\bm{\rho}(t)}{dt} = \mathcal{L}(t)\bm{\rho}(t) = -\frac{i}{\hbar}[\hat{H}_S, \bm{\rho}(t)] + \mathcal{D}[\bm{\rho}(t)]
+\end{equation}
+where $\hat{H}_S$ is the system Hamiltonian and $\mathcal{D}[\bm{\rho}(t)]$ represents the dissipative terms due to system-bath interactions.
+
+The electronic Hamiltonian for the excitonic system is expressed as:
+\begin{equation}\label{eq:excitonic_hamiltonian}
+\hat{H}_{\rm el} = \sum_n \varepsilon_n |n\rangle\langle n| + \sum_{n \neq m} J_{nm} |n\rangle\langle m|
+\end{equation}
+where $\varepsilon_n$ represents the site energy of chromophore $n$, and $J_{nm}$ is the electronic coupling between chromophores $n$ and $m$.
+
+\subsection{System-Bath Interaction and Spectral Density}
+
+The interaction with the protein environment is modeled using a system-bath Hamiltonian:
+\begin{equation}\label{eq:system_bath_hamiltonian}
+\hat{H} = \hat{H}_S + \hat{H}_B + \hat{H}_{SB}
+\end{equation}
+where $\hat{H}_B$ describes the bath degrees of freedom, and $\hat{H}_{SB}$ represents the system-bath interaction.
+
+The spectral density function $J(\omega)$ characterizes the coupling between the system and bath modes:
+\begin{equation}\label{eq:spectral_density}
+J(\omega) = \frac{2\lambda\gamma\omega}{\omega^2 + \gamma^2} + \sum_k \frac{2\lambda_k\omega_k^2\gamma_k}{(\omega-\omega_k)^2 + \gamma_k^2}
+\end{equation}
+where the first term represents overdamped protein-solvent modes (reorganization energy $\lambda$, cutoff frequency $\gamma$), and the second term represents underdamped intramolecular vibrational modes (reorganization energies $\lambda_k$, frequencies $\omega_k$, damping rates $\gamma_k$).
+
+\subsection{Adaptive Hierarchy of Pure States (adHOPS)}
+
+Simulations are performed using the adaptive Hierarchy of Pure States method, implemented in the open-source MesoHOPS library \cite{Citty2024, Varvelo2021}. This numerically exact technique bypasses the exponential scaling limitations of traditional Hierarchical Equations of Motion (HEOM) by exploiting the dynamic localization of excitons, achieving size-invariant scaling $\mathcal{O}(1)$ for large molecular aggregates ($N>100$) \cite{Varvelo2021, Suess2014}.
+
+The key advantage of adHOPS is its ability to capture full non-Markovian quantum dynamics while maintaining computational tractability for complex multi-site systems. Unlike Markovian approximations that assume rapid environmental relaxation, the non-Markovian treatment preserves memory effects that can enhance energy transfer efficiency under appropriate conditions.
+
+\subsection{FMO Complex Model System}
+
+We use the well-characterized Fenna-Matthews-Olsen (FMO) complex as a benchmark system, consisting of 7 bacteriochlorophyll-a molecules with site energies $\varepsilon_n$ (12,000-13,000 cm$^{-1}$) and electronic couplings $J_{nm}$ (5-300 cm$^{-1}$) based on Adolphs \& Renger parameters \cite{Renger2004}.
+
+The spectral density includes:
+\begin{itemize}
+\item Drude-Lorentz contribution: $\lambda = 35$ cm$^{-1}$, $\gamma = 50$ cm$^{-1}$
+\item Vibronic modes at $\omega_k = \{150, 200, 575, 1185\}$ cm$^{-1}$ with Huang-Rhys factors $S_k = \{0.05, 0.02, 0.01, 0.005\}$
+\end{itemize}
+
+\subsection{Spectral Filtering and Optimization}
+
+The effective incident spectral density experienced by the photosynthetic system becomes:
+\begin{equation}
+J_{\rm plant}(\omega) = T(\omega) \times J_{\rm solar}(\omega)
+\end{equation}
+where $T(\omega)$ is the OPV transmission function and $J_{\rm solar}(\omega)$ is the solar spectral irradiance (AM1.5G).
+
+We systematically optimize $T(\omega)$ through parameter sweeps of center wavelength ($\lambda_c$), full-width-half-maximum (FWHM), and peak transmission intensity to maximize ETR per absorbed photon while maintaining acceptable power conversion efficiency in the OPV layer.
+
+\subsection{Quantum Metrics}
+
+We characterize quantum coherence and transport using:
+
+\textbf{$l_1$-norm of coherence:}
+\begin{equation}
+C_{l_1}(\rho) = \sum_{i \neq j} |\rho_{ij}|
+\end{equation}
+
+\textbf{Coherence lifetime $\tau_c$:} Characteristic decay time for off-diagonal density matrix elements to $1/e$ of initial value.
+
+\textbf{Inverse participation ratio (delocalization):}
+\begin{equation}
+\xi_{\rm deloc} = \left( \sum_n |\psi_n|^4 \right)^{-1}
+\end{equation}
+
+\textbf{Quantum advantage:}
+\begin{equation}\label{eq:quantum_advantage}
+\eta_{\rm quantum} = \frac{\mathrm{ETR}_{\rm HOPS}}{\mathrm{ETR}_{\rm Markovian}} - 1
+\end{equation}
+quantifying ETR enhancement relative to Markovian models under identical flux conditions.
+
+\subsection{Validation Framework}
+
+Comprehensive validation includes:
+\begin{itemize}
+\item Convergence against HEOM benchmarks for small systems
+\item Markovian limit verification
+\item Temperature robustness ($\pm 10$ K variations)
+\item Static disorder tolerance (Gaussian $\sigma = 50$ cm$^{-1}$)
+\item Environmental consistency checks
+\item Numerical precision validation (12 independent tests)
+\end{itemize}
