@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.20)  14 FEB 2026 07:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.20)  14 FEB 2026 08:32
 entering extended mode
  %&-line parsing enabled.
 **Supporting_Info_EES.tex
@@ -375,7 +375,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-No file Supporting_Info_EES.aux.
+(./Supporting_Info_EES.aux)
 \openout1 = `Supporting_Info_EES.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
@@ -396,6 +396,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
 LaTeX Font Info:    ... okay on input line 34.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
 LaTeX Font Info:    ... okay on input line 34.
+
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count328
@@ -422,6 +423,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package hyperref Info: Link coloring OFF on input line 34.
+
+(./Supporting_Info_EES.out) (./Supporting_Info_EES.out)
 \@outlinefile=\write3
 \openout3 = `Supporting_Info_EES.out'.
 
@@ -467,63 +470,65 @@ Overfull \hbox (109.30273pt too wide) in paragraph at lines 37--37
 \tf@toc=\write4
 \openout4 = `Supporting_Info_EES.toc'.
 
- [3] [4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts
-1.enc}]
-Overfull \hbox (11.4048pt too wide) in paragraph at lines 121--122
-[]$\OML/cmm/m/it/10.95 k[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^U\OT1/cmr/m
-/n/10.95 )$ = ab-sorp-tion co-ef-fi-cient (peaks at $940$$[]$, $1100$$[]$ [] $1
-400$$[]$) 
+ [3]
+Overfull \hbox (45.00543pt too wide) in paragraph at lines 61--62
+\OT1/cmr/m/n/10.95 We model this us-ing Beer-Lambert at-ten-u-a-tion, $\OML/cmm
+/m/it/10.95 J\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^U; ^^R[]\OT1/cmr/m/n/10.
+95 ) = \OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^U\OT1/c
+mr/m/n/10.95 ) [][][]$,
+ []
+
+
+Overfull \hbox (6.70125pt too wide) in paragraph at lines 61--62
+\OT1/cmr/m/n/10.95 where $\OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m
+/it/10.95 ^^U\OT1/cmr/m/n/10.95 )$ is the ex-trater-res-trial spec-trum, $\OML/
+cmm/m/it/10.95 ^^\\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^U\OT1/cmr/m/n/10.95
+ )$ is the wavelength-dependent
+ []
+
+
+Overfull \hbox (8.27498pt too wide) in paragraph at lines 67--68
+\OT1/cmr/m/n/10.95 The time-dependent so-lar zenith an-gle is cal-cu-lated as $
+[][][] = [][][] [][][] +
+ []
+
+[4]
+Overfull \hbox (7.45486pt too wide) in paragraph at lines 91--92
+\OT1/cmr/m/n/10.95 spec-trum to-ward the red. Op-ti-mal trans-mis-sion win-dows
+ ($750$$[]$ [] $820$$[]$)
  []
 
 [5]
-Overfull \hbox (12.81522pt too wide) in paragraph at lines 171--172
-[]$\OML/cmm/m/it/10.95 r[]$ \OT1/cmr/m/n/10.95 = de-po-si-tion rate ($0\OML/cmm
-/m/it/10.95 :\OT1/cmr/m/n/10.95 1$$[]\OML/cmm/m/it/10.95 =[][]=\OT1/cmr/m/n/10.
-95 d$ [] $5$$[]\OML/cmm/m/it/10.95 =[][]=\OT1/cmr/m/n/10.95 d$, climate-depende
-nt) 
+Overfull \hbox (28.5126pt too wide) in paragraph at lines 99--100
+\OT1/cmr/m/n/10.95 time (hourly res-o-lu-tion), ge-og-ra-phy (four rep-re-sen-t
+a-tive sites), and weather/soiling
  []
 
-[6]
-Overfull \hbox (13.17279pt too wide) in paragraph at lines 189--190
-\OT1/cmr/m/n/10.95 af-fect-ing quan-tum res-o-nance match-ing. Op-ti-mal trans-
-mis-sion win-dows ($750$$[]$
- []
-
-[7] [8] [9] [10]
-Overfull \hbox (3.7229pt too wide) in paragraph at lines 361--362
-\OT1/cmr/m/n/10.95 We eval-u-ated sev-eral non-fullerene ac-cep-tor molecules f
-or quantum-optimized
- []
-
-[11]
-Overfull \hbox (3.23509pt too wide) in paragraph at lines 391--392
+[6{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}] [7] [8]
+Overfull \hbox (3.23509pt too wide) in paragraph at lines 234--235
 \OT1/cmr/m/n/10.95 The FMO com-plex con-sists of 7 bacteriochlorophyll-a (BChl-
 a) chro-mophores
  []
 
 
-LaTeX Warning: Reference `tab:fmo_hamiltonian' on page 1 undefined on input lin
-e 396.
-
-
-Overfull \hbox (17.2996pt too wide) in paragraph at lines 403--419
+Overfull \hbox (17.2996pt too wide) in paragraph at lines 245--261
  [][] 
  []
 
 
-Overfull \hbox (16.9567pt too wide) in paragraph at lines 423--424
+Overfull \hbox (16.9567pt too wide) in paragraph at lines 265--266
 []\OT1/cmr/m/n/10.95 Site en-er-gies span $420$$[][]$ ($295$$K$ $\OMS/cmsy/m/n/
 10.95 ^^Y$ $\OT1/cmr/m/n/10.95 205$$[][]$), en-sur-ing mixed quantum-
  []
 
-[12] [13] [14] [15]
-Overfull \hbox (10.26338pt too wide) in paragraph at lines 595--596
-[]\OT1/cmr/m/n/10.95 Quantum ad-van-tage mag-ni-tude varies $15$$%$ [] $30$$%$ 
-(quan-ti-ta-tive change) 
+[9] [10] [11]
+Overfull \hbox (47.12245pt too wide) in paragraph at lines 322--348
+ [][] 
  []
 
-[16]
-Overfull \hbox (47.12245pt too wide) in paragraph at lines 620--646
+[12]
+Overfull \hbox (21.97089pt too wide) in paragraph at lines 404--414
  [][] 
  []
 
@@ -531,82 +536,84 @@ Overfull \hbox (47.12245pt too wide) in paragraph at lines 620--646
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Overfull \hbox (5.9179pt too wide) in paragraph at lines 420--420
+[]\OT1/cmr/bx/n/14.4 Process Tensor-HOPS with low-temperature cor-
+ []
 
-[17] [18]
-Overfull \hbox (26.16815pt too wide) in paragraph at lines 702--712
+[13]
+Overfull \hbox (33.2892pt too wide) in paragraph at lines 429--444
  [][] 
  []
 
 
-Overfull \hbox (19.26787pt too wide) in paragraph at lines 718--718
-[]\OT1/cmr/bx/n/14.4 Process Tensor-HOPS with Low-Temperature Cor-
+Overfull \hbox (3.68239pt too wide) in paragraph at lines 446--448
+\OT1/cmr/m/n/10.95 an-tenna com-plexes (100+ chro-mophores) with non-Markovian 
+ac-cu-racy. This
  []
 
 
-LaTeX Warning: Reference `tab:computational_benchmarks' on page 1 undefined on 
-input line 721.
-
-
-Overfull \hbox (33.2892pt too wide) in paragraph at lines 728--743
- [][] 
+Overfull \hbox (1.71552pt too wide) in paragraph at lines 446--448
+\OT1/cmr/m/n/10.95 method achieves ap-prox-i-mately $10\OMS/cmsy/m/n/10.95 ^^B$
+ \OT1/cmr/m/n/10.95 speedup com-pared to tra-di-tional HEOM
  []
 
-[19]
-Overfull \hbox (11.51009pt too wide) in paragraph at lines 767--768
-[]\OT1/cmr/m/n/10.95 Memory ker-nel trun-ca-tion: $20$$[]$ (be-yond sys-tem de-
-co-her-ence timescales) 
+[14]
+Overfull \hbox (11.72249pt too wide) in paragraph at lines 460--461
+\OT1/cmr/m/n/10.95 For sim-u-la-tions at phys-i-o-log-i-cal tem-per-a-tures and
+ be-low, the Low-Temperature
  []
 
-[20] [21]
-<Graphics/Spectral_Density_Components_for_FMO_Environment.pdf, id=277, 732.2826
+[15]
+<Graphics/Spectral_Density_Components_for_FMO_Environment.pdf, id=404, 732.2826
 7pt x 511.01666pt>
 File: Graphics/Spectral_Density_Components_for_FMO_Environment.pdf Graphic file
  (type pdf)
 <use Graphics/Spectral_Density_Components_for_FMO_Environment.pdf>
 Package pdftex.def Info: Graphics/Spectral_Density_Components_for_FMO_Environme
-nt.pdf  used on input line 836.
+nt.pdf  used on input line 495.
 (pdftex.def)             Requested size: 306.0022pt x 213.54947pt.
-<Graphics/Global_Reactivity_Indices.pdf, id=278, 1073.30171pt x 709.7105pt>
+<Graphics/Global_Reactivity_Indices.pdf, id=405, 1073.30171pt x 709.7105pt>
 File: Graphics/Global_Reactivity_Indices.pdf Graphic file (type pdf)
 <use Graphics/Global_Reactivity_Indices.pdf>
 Package pdftex.def Info: Graphics/Global_Reactivity_Indices.pdf  used on input 
-line 845.
+line 504.
 (pdftex.def)             Requested size: 306.0022pt x 202.33456pt.
-<Graphics/PAR_Transmission__Clean_vs_Dusty_Conditions.pdf, id=279, 1000.69734pt
+<Graphics/PAR_Transmission__Clean_vs_Dusty_Conditions.pdf, id=406, 1000.69734pt
  x 711.83728pt>
 File: Graphics/PAR_Transmission__Clean_vs_Dusty_Conditions.pdf Graphic file (ty
 pe pdf)
 <use Graphics/PAR_Transmission__Clean_vs_Dusty_Conditions.pdf>
 Package pdftex.def Info: Graphics/PAR_Transmission__Clean_vs_Dusty_Conditions.p
-df  used on input line 854.
+df  used on input line 513.
 (pdftex.def)             Requested size: 306.0022pt x 217.66943pt.
-<Graphics/Response_Functions__OPV_vs_PSU.pdf, id=280, 856.51868pt x 423.85098pt
+<Graphics/Response_Functions__OPV_vs_PSU.pdf, id=407, 856.51868pt x 423.85098pt
 >
 File: Graphics/Response_Functions__OPV_vs_PSU.pdf Graphic file (type pdf)
 <use Graphics/Response_Functions__OPV_vs_PSU.pdf>
 Package pdftex.def Info: Graphics/Response_Functions__OPV_vs_PSU.pdf  used on i
-nput line 863.
+nput line 522.
 (pdftex.def)             Requested size: 306.0022pt x 151.42856pt.
-<Graphics/fLatitude__lat__u00b0__Month__month.pdf, id=281, 1011.1352pt x 712.93
+<Graphics/fLatitude__lat__u00b0__Month__month.pdf, id=408, 1011.1352pt x 712.93
 102pt>
 File: Graphics/fLatitude__lat__u00b0__Month__month.pdf Graphic file (type pdf)
 <use Graphics/fLatitude__lat__u00b0__Month__month.pdf>
 Package pdftex.def Info: Graphics/fLatitude__lat__u00b0__Month__month.pdf  used
- on input line 872.
+ on input line 531.
 (pdftex.def)             Requested size: 323.9978pt x 228.4363pt.
-<Graphics/ETR_Uncertainty_Distribution.pdf, id=282, 856.48608pt x 351.581pt>
+<Graphics/ETR_Uncertainty_Distribution.pdf, id=409, 856.48608pt x 351.581pt>
 File: Graphics/ETR_Uncertainty_Distribution.pdf Graphic file (type pdf)
 <use Graphics/ETR_Uncertainty_Distribution.pdf>
 Package pdftex.def Info: Graphics/ETR_Uncertainty_Distribution.pdf  used on inp
-ut line 881.
+ut line 540.
 (pdftex.def)             Requested size: 306.0022pt x 125.60878pt.
+ (./Supporting_Info_EES.bbl
 
-No file Supporting_Info_EES.bbl.
-[22] [23 <./Graphics/Spectral_Density_Components_for_FMO_Environment.pdf>]
-[24 <./Graphics/Global_Reactivity_Indices.pdf>] [25 <./Graphics/PAR_Transmissio
-n__Clean_vs_Dusty_Conditions.pdf>] [26 <./Graphics/Response_Functions__OPV_vs_P
-SU.pdf>] [27 <./Graphics/fLatitude__lat__u00b0__Month__month.pdf>] [28 <./Graph
+Package natbib Warning: Empty `thebibliography' environment on input line 3.
+
+) [16] [17 <./Graphics/Spectral_Density_Components_for_FMO_Environment.pdf>]
+[18 <./Graphics/Global_Reactivity_Indices.pdf>] [19 <./Graphics/PAR_Transmissio
+n__Clean_vs_Dusty_Conditions.pdf>] [20 <./Graphics/Response_Functions__OPV_vs_P
+SU.pdf>] [21 <./Graphics/fLatitude__lat__u00b0__Month__month.pdf>] [22 <./Graph
 ics/ETR_Uncertainty_Distribution.pdf>] (./Supporting_Info_EES.aux)
  ***********
 LaTeX2e <2025-11-01>
@@ -614,28 +621,19 @@ L3 programming layer <2026-01-10>
  ***********
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Package rerunfilecheck Warning: File `Supporting_Info_EES.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Supporting_Info_EES.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  04F98D774B66A646A8FC91D091879B76;14260.
+Package rerunfilecheck Info: File `Supporting_Info_EES.out' has not changed.
+(rerunfilecheck)             Checksum: 648EC1953A92E043EB3D3B4CABEFEFBE;12584.
  ) 
 Here is how much of TeX's memory you used:
- 16560 strings out of 469437
- 326213 string characters out of 5466872
- 701593 words of memory out of 5000000
- 44946 multiletter control sequences out of 15000+600000
+ 16607 strings out of 469437
+ 327270 string characters out of 5466872
+ 702465 words of memory out of 5000000
+ 45009 multiletter control sequences out of 15000+600000
  637518 words of font info for 77 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 75i,11n,79p,735b,1149s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,726b,1139s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -654,10 +652,10 @@ e/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 /texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/
 2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texl
 ive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on Supporting_Info_EES.pdf (28 pages, 401474 bytes).
+Output written on Supporting_Info_EES.pdf (22 pages, 392868 bytes).
 PDF statistics:
- 722 PDF objects out of 1000 (max. 8388607)
- 378 compressed objects within 4 object streams
- 134 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 849 PDF objects out of 1000 (max. 8388607)
+ 509 compressed objects within 6 object streams
+ 109 named destinations out of 1000 (max. 500000)
+ 503 words of extra memory for PDF output out of 10000 (max. 10000000)
 
