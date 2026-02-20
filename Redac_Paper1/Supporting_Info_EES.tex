@@ -159,7 +159,7 @@ where $\rho_N(\vec{r})$, $\rho_{N+1}(\vec{r})$, and $\rho_{N-1}(\vec{r})$ denote
 
 \subsubsection{Computational details}
 
-Density functional theory (DFT) calculations employ the B3LYP hybrid exchange-correlation functional with a 6-31G(d,p) double-zeta polarised basis set, using Gaussian~16 or ORCA~5.0. Convergence criteria are set to $10^{-8}$~\si{\hartree} for the SCF procedure and $10^{-5}$~\si{\hartree\per\bohr} for geometry optimisation.
+Density functional theory (DFT) calculations employ the B3LYP hybrid exchange-correlation functional with a 6-31G(d,p) double-zeta polarised basis set, using Gaussian~16 or ORCA~5.0. Convergence criteria are set to \SI{e-8}{\hartree} for the SCF procedure and \SI{e-5}{\hartree\per\bohr} for geometry optimisation.
 
 For each candidate OPV molecule, the protocol proceeds as follows:
 \begin{enumerate}
@@ -235,16 +235,14 @@ The resulting classification scheme is:
     \item $30 < B_{\mathrm{index}} < 50$: Slowly biodegradable (1.5--5 years).
     \item $B_{\mathrm{index}} < 30$: Recalcitrant (${>}\,5$ years).
 \end{itemize}
-
 Two candidate non-fullerene acceptor molecules were evaluated for quantum-optimized agrivoltaic systems. \textbf{Molecule~A (PM6 derivative)} exhibits high biodegradability ($B_{\mathrm{index}} = 72$) due to four hydrolyzable ester linkages ($f^-_{\mathrm{max}} = 0.08$ at the carbonyl carbon) and a low minimum BDE of \SI{285}{\kilo\joule\per\mole} at the thiophene--ester bond. \textbf{Molecule~B (Y6-BO derivative)} is moderately biodegradable ($B_{\mathrm{index}} = 58$) with two ester linkages and a minimum BDE of \SI{310}{\kilo\joule\per\mole}. Both candidates achieve ${>}\,\SI{15}{\percent}$ PCE in semi-transparent configurations while ensuring environmental compatibility.
 
 The eco-design assessment framework integrates multiple sustainability metrics:
-
 \begin{enumerate}
-    \item \textbf{Biodegradability Analysis}: Using quantum reactivity descriptors to predict enzymatic degradation pathways and timeframes
-    \item \textbf{Life Cycle Assessment (LCA)}: Comprehensive evaluation of environmental impacts from material synthesis through end-of-life disposal
-    \item \textbf{Performance Metrics}: Power conversion efficiency, ETR enhancement, and operational lifetime
-    \item \textbf{Environmental Compatibility}: Assessment of impacts on soil health, water resources, and local ecosystems
+    \item \textbf{Biodegradability Analysis.} Using quantum reactivity descriptors to predict enzymatic degradation pathways and timeframes
+    \item \textbf{Life Cycle Assessment (LCA).} Comprehensive evaluation of environmental impacts from material synthesis through end-of-life disposal
+    \item \textbf{Performance Metrics.} Power conversion efficiency, ETR enhancement, and operational lifetime
+    \item \textbf{Environmental Compatibility.} Assessment of impacts on soil health, water resources, and local ecosystems
 \end{enumerate}
 
 The integrated eco-design score combines these metrics according to:
