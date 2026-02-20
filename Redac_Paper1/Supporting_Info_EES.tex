@@ -244,20 +244,17 @@ The eco-design assessment framework integrates multiple sustainability metrics:
     \item \textbf{Performance Metrics.} Power conversion efficiency, ETR enhancement, and operational lifetime
     \item \textbf{Environmental Compatibility.} Assessment of impacts on soil health, water resources, and local ecosystems
 \end{enumerate}
-
 The integrated eco-design score combines these metrics according to:
-
 \begin{equation}
 \eta_{\mathrm{eco}} = 0.4 \cdot \eta_{\mathrm{biodeg}} + 0.3 \cdot \eta_{\mathrm{PCE}} + 0.3 \cdot \eta_{\mathrm{LCA}},
 \end{equation}
-
 where $\eta_{\mathrm{biodeg}}$, $\eta_{\mathrm{PCE}}$, and $\eta_{\mathrm{LCA}}$ are normalized efficiency factors for biodegradability, power conversion efficiency, and life cycle impact respectively. Our analysis yields an eco-design score of $\eta_{\mathrm{eco}} = 0.78$ for the optimized materials, indicating good overall sustainability performance.
 
 %=============================================================================
 \section{Extended validation data}\label{si:validation}
 %=============================================================================
 
-This section documents the 12 validation tests referenced in Section~3 of the main text. Each test is assigned a pass/fail criterion; results are summarised in \cref{tab:validation}.
+This section documents the 12 validation tests referenced in Section~3 of the main text. Each test is assigned a pass/fail criterion; results are summarised in \Cref{tab:validation}.
 
 \subsection{FMO complex Hamiltonian}
 
@@ -265,8 +262,7 @@ The FMO complex consists of seven bacteriochlorophyll-a (BChl-a) chromophores. T
 \begin{equation}
 H_{\mathrm{sys}} = \sum_{n=1}^{7} \epsilon_n \dyad{n} + \sum_{n \neq m} J_{nm} \dyad{n}{m}.
 \end{equation}
-
-\cref{tab:fmo_hamiltonian} provides the complete parameterization based on X-ray crystallographic data and spectroscopic measurements.
+\Cref{tab:fmo_hamiltonian} provides the complete parameterization based on X-ray crystallographic data and spectroscopic measurements.
 
 \begin{table}[ht]
 \centering
@@ -385,7 +381,7 @@ At high temperature ($T = \SI{500}{\kelvin}$), adHOPS converges to the Redfield 
 
 \subsection{Site energies (Adolphs \& Renger, 2006)}
 
-Room-temperature (\SI{295}{\kelvin}) site energies for the FMO monomer are listed in \cref{tab:site_energies}.
+Room-temperature (\SI{295}{\kelvin}) site energies for the FMO monomer are listed in \Cref{tab:site_energies}.
 
 \begin{table}[ht]
 \centering
@@ -425,7 +421,7 @@ The coupling matrix $J_{nm}$ (\si{\per\cm}, symmetric) from the Adolphs \& Renge
 
 The \textbf{overdamped (Drude--Lorentz) component} has reorganization energy $\lambda_D = \SI{35}{\per\cm}$ and cutoff frequency $\gamma_D = \SI{50}{\per\cm}$ (corresponding to a \SI{200}{\femto\second} correlation time).
 
-The \textbf{underdamped (vibronic) modes} are parameterized in \cref{tab:vibronic_modes}.
+The \textbf{underdamped (vibronic) modes} are parameterized in \Cref{tab:vibronic_modes}.
 
 \begin{table}[ht]
 \centering
@@ -476,7 +472,7 @@ SBD & 1000 & 320.1 & 185.7 & N/A$^\dagger$ \\
 \end{tabular}
 \end{table}
 
-As shown in \cref{tab:computational_benchmarks}, PT-HOPS achieves a \num{10}-fold speedup over HEOM with ${<}\,\SI{2}{\percent}$ accuracy and exhibits near-linear scaling with system size for localised excitons, enabling simulations of complete photosynthetic antenna complexes (100+ chromophores) with non-Markovian accuracy. The SBD approach provides additional computational advantages for very large systems ($N > 500$ chromophores), maintaining ${<}\,\SI{5}{\percent}$ accuracy relative to PT-HOPS while enabling simulation of systems approaching the size of complete chloroplasts.
+As shown in \Cref{tab:computational_benchmarks}, PT-HOPS achieves a \num{10}-fold speedup over HEOM with ${<}\,\SI{2}{\percent}$ accuracy and exhibits near-linear scaling with system size for localised excitons, enabling simulations of complete photosynthetic antenna complexes (100+ chromophores) with non-Markovian accuracy. The SBD approach provides additional computational advantages for very large systems ($N > 500$ chromophores), maintaining ${<}\,\SI{5}{\percent}$ accuracy relative to PT-HOPS while enabling simulation of systems approaching the size of complete chloroplasts.
 
 \subsection{Padé decomposition of the bath correlation function}
 
