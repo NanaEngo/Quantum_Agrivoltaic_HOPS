@@ -9,6 +9,7 @@ import logging
 from typing import Optional, Dict, Any
 import numpy as np
 from numpy.typing import NDArray
+import sys
 
 # Import MesoHOPS modules
 try:
@@ -22,13 +23,61 @@ except ImportError:
     HopsBasis = None
     HopsTrajectory = None
 
-# Import fallback simulator
+# Import MesoHOPS modules
 try:
-    from quantum_dynamics_simulator import QuantumDynamicsSimulator
+    from mesohops.basis.hops_system import HopsSystem
+    from mesohops.basis.hops_basis import HopsBasis
+    from mesohops.trajectory.hops_trajectory import HopsTrajectory
+    MESOHOPS_AVAILABLE = True
 except ImportError:
-    QuantumDynamicsSimulator = None
+    MESOHOPS_AVAILABLE = False
+    HopsSystem = None
+    HopsBasis = None
+    HopsTrajectory = None
 
-from core.constants import DEFAULT_TEMPERATURE, DEFAULT_MAX_HIERARCHY
+# Import fallback simulators - we'll check if they can be instantiated in the init method
+try:
+    from quantum_dynamics_simulator import QuantumDynamicsSimulator as QDS
+    # Check if it can be used by testing if MesoHOPS is available
+    try:
+        # Create a minimal test instance to see if it fails due to missing MesoHOPS
+        dummy_ham = np.array([[0.0]])
+        test_sim = QDS(dummy_ham)
+        QuantumDynamicsSimulator = QDS
+    except ImportError:
+        # MesoHOPS not available, so this simulator won't work
+        QuantumDynamicsSimulator = None
+    except Exception:
+        # Some other error during instantiation
+        QuantumDynamicsSimulator = None
+except ImportError:
+    try:
+        from models.quantum_dynamics_simulator import QuantumDynamicsSimulator as QDS
+        # Check if it can be used by testing if MesoHOPS is available
+        try:
+            # Create a minimal test instance to see if it fails due to missing MesoHOPS
+            dummy_ham = np.array([[0.0]])
+            test_sim = QDS(dummy_ham)
+            QuantumDynamicsSimulator = QDS
+        except ImportError:
+            # MesoHOPS not available, so this simulator won't work
+            QuantumDynamicsSimulator = None
+        except Exception:
+            # Some other error during instantiation
+            QuantumDynamicsSimulator = None
+    except ImportError:
+        QuantumDynamicsSimulator = None
+
+# Import simple fallback simulator
+try:
+    from simple_quantum_dynamics_simulator import SimpleQuantumDynamicsSimulator
+except ImportError:
+    try:
+        from models.simple_quantum_dynamics_simulator import SimpleQuantumDynamicsSimulator
+    except ImportError:
+        SimpleQuantumDynamicsSimulator = None
+
+from .constants import DEFAULT_TEMPERATURE, DEFAULT_MAX_HIERARCHY, DEFAULT_REORGANIZATION_ENERGY, DEFAULT_DRUDE_CUTOFF
 
 logger = logging.getLogger(__name__)
 
@@ -131,40 +180,54 @@ class HopsSimulator:
     def _init_mesohops(self, **kwargs: Any) -> None:
         """Initialize MesoHOPS simulator with proper system parameters."""
         try:
-            if HopsSystem is None:
-                raise ImportError("HopsSystem not available")
-
             # Prepare system parameters for MesoHOPS - correct API format
             n_sites = self.hamiltonian.shape[0]
-            
+
             # Get bath parameters from kwargs or use defaults
             lambda_reorg = kwargs.get('reorganization_energy', DEFAULT_REORGANIZATION_ENERGY)
             gamma_cutoff = kwargs.get('drude_cutoff', DEFAULT_DRUDE_CUTOFF)
-            
+
             # Define system-bath coupling operators (Lindblad operators)
-            # Each site couples to its own independent bath
+            # MesoHOPS uses dense arrays for L operators based on test examples
             L_hier = []
+            L_noise = []
             for i in range(n_sites):
-                L_op = np.zeros((n_sites, n_sites))
+                L_op = np.zeros((n_sites, n_sites), dtype=np.float64)
                 L_op[i, i] = 1.0  # Diagonal operator for site i
                 L_hier.append(L_op)
-            
+                L_noise.append(L_op)
+
             # Bath correlation function parameters - Drude-Lorentz model
-            # Format: [[g1, w1], [g2, w2], ...] for exponential decomposition
-            gw_sysbath = [[lambda_reorg, gamma_cutoff]]  # Simplified single mode
-            
+            # Using the bcf_convert_dl_to_exp function from MesoHOPS
+            try:
+                from mesohops.util.bath_corr_functions import bcf_convert_dl_to_exp
+                dl_modes = bcf_convert_dl_to_exp(
+                    lambda_reorg, gamma_cutoff, self.temperature
+                )
+                # dl_modes is a list like [g0, w0] where g0 is complex and w0 is real
+                # Build gw_sysbath - one entry per site
+                gw_sysbath = []
+                for i in range(n_sites):
+                    gw_sysbath.append([dl_modes[0], dl_modes[1]])
+            except Exception as e:
+                # Fallback: simplified single mode
+                logger.warning(f"MesoHOPS bath correlation functions not available, using simplified model: {e}")
+                gw_sysbath = [[lambda_reorg, gamma_cutoff]]  # Simplified single mode
+
             # System parameters dictionary - MesoHOPS format
-            system_param = {
+            # Use the bcf_exp correlation function from MesoHOPS
+            from mesohops.trajectory.exp_noise import bcf_exp
+
+            self.system_param = {
                 'HAMILTONIAN': self.hamiltonian,
                 'GW_SYSBATH': gw_sysbath,
                 'L_HIER': L_hier,
-                'ALPHA_NOISE1': self._drude_correlation_function,
-                'PARAM_NOISE1': [lambda_reorg, gamma_cutoff, self.temperature],
+                'L_NOISE1': L_noise,
+                'ALPHA_NOISE1': bcf_exp,
+                'PARAM_NOISE1': gw_sysbath,
             }
-            
-            # Initialize MesoHOPS system with parameters
-            self.system = HopsSystem(system_param)
-            logger.info("MesoHOPS simulator initialized successfully")
+
+            logger.info("MesoHOPS system parameters prepared successfully")
         except Exception as e:
             logger.warning(f"Failed to initialize MesoHOPS: {e}")
             logger.info("Falling back to QuantumDynamicsSimulator")
@@ -173,19 +236,49 @@ class HopsSimulator:
 
     def _init_fallback(self, **kwargs: Any) -> None:
         """Initialize fallback simulator."""
-        try:
-            if QuantumDynamicsSimulator is None:
-                raise ImportError("QuantumDynamicsSimulator not available")
-
-            self.fallback_sim = QuantumDynamicsSimulator(
-                self.hamiltonian,
-                temperature=self.temperature,
-                **kwargs
-            )
-            logger.info("Fallback simulator initialized successfully")
-        except Exception as e:
-            logger.error(f"Failed to initialize fallback simulator: {e}")
-            self.fallback_sim = None
+        # First try the simple simulator as it doesn't require MesoHOPS
+        if SimpleQuantumDynamicsSimulator is not None:
+            try:
+                self.fallback_sim = SimpleQuantumDynamicsSimulator(
+                    self.hamiltonian,
+                    temperature=self.temperature
+                )
+                logger.info("SimpleQuantumDynamicsSimulator initialized successfully")
+                return
+            except Exception as e:
+                logger.error(f"Failed to initialize SimpleQuantumDynamicsSimulator: {e}")
+        
+        # Then try the full QuantumDynamicsSimulator (this may fail if MesoHOPS is not available)
+        if QuantumDynamicsSimulator is not None:
+            try:
+                # Filter kwargs to only pass parameters that QuantumDynamicsSimulator accepts
+                qds_kwargs = {}
+                valid_params = {'temperature', 'lambda_reorg', 'gamma_dl', 'k_matsubara', 
+                               'max_hier', 'n_traj', 'vibronic_modes'}
+                
+                for key, value in kwargs.items():
+                    if key in valid_params:
+                        qds_kwargs[key] = value
+                
+                # Use default values if not provided
+                qds_kwargs.setdefault('temperature', self.temperature)
+                qds_kwargs.setdefault('lambda_reorg', kwargs.get('reorganization_energy', DEFAULT_REORGANIZATION_ENERGY))
+                qds_kwargs.setdefault('gamma_dl', kwargs.get('drude_cutoff', DEFAULT_DRUDE_CUTOFF))
+                qds_kwargs.setdefault('max_hier', self.max_hierarchy)
+                qds_kwargs.setdefault('n_traj', 10)  # Use fewer trajectories for testing
+                
+                self.fallback_sim = QuantumDynamicsSimulator(
+                    self.hamiltonian,
+                    **qds_kwargs
+                )
+                logger.info("QuantumDynamicsSimulator initialized successfully")
+                return
+            except Exception as e:
+                logger.warning(f"Failed to initialize QuantumDynamicsSimulator: {e}")
+        
+        # If both fail, log error
+        logger.error("Failed to initialize any fallback simulator")
+        self.fallback_sim = None
 
     def simulate_dynamics(
         self,
@@ -219,7 +312,7 @@ class HopsSimulator:
         """
         logger.info(f"Starting dynamics simulation for {len(time_points)} time points")
 
-        if self.use_mesohops and self.system is not None:
+        if self.use_mesohops and hasattr(self, 'system_param') and self.system_param is not None:
             try:
                 logger.debug("Attempting MesoHOPS simulation")
                 return self._simulate_with_mesohops(
@@ -256,44 +349,49 @@ class HopsSimulator:
         where Ĥ_eff includes the system Hamiltonian and system-bath interactions.
         """
         # Import required MesoHOPS classes
-        if HopsBasis is None or HopsTrajectory is None:
+        if HopsTrajectory is None:
             raise RuntimeError("MesoHOPS not available for simulation")
         
         try:
             # Get simulation parameters
             max_hierarchy = kwargs.get('max_hierarchy', self.max_hierarchy)
-            n_traj = kwargs.get('n_traj', 50)  # Number of trajectories for ensemble average
             
             # Set up hierarchy parameters
             hierarchy_param = {'MAXHIER': max_hierarchy}
             
-            # Set up EOM parameters
+            # Set up EOM parameters - use LINEAR for simplicity
             eom_param = {
-                'EQUATION_OF_MOTION': 'NORMALIZED NONLINEAR',
-                'N_LM': kwargs.get('n_lanczos', 2)  # Lanczos vectors for adaptive
+                'EQUATION_OF_MOTION': 'LINEAR',
+                'TIME_DEPENDENCE': False,
             }
             
-            # Set up noise parameters
+            # Set up noise parameters based on test examples
             t_max = float(np.max(time_points)) if len(time_points) > 0 else 500.0
-            dt_save = kwargs.get('dt_save', 0.5)  # Time step for saving
+            dt_save = 1.0  # Time step for saving
             
             noise_param = {
                 'SEED': kwargs.get('seed', 42),
                 'MODEL': 'FFT_FILTER',
-                'TLEN': t_max + 100.0,  # Add buffer time
+                'TLEN': t_max + 100.0,  # Add buffer
                 'TAU': dt_save,
             }
             
-            # Set up integration parameters
-            integration_param = {'INTEGRATOR': 'RUNGE_KUTTA'}
+            # Set up integrator parameters based on test examples
+            integrator_param = {
+                'INTEGRATOR': 'RUNGE_KUTTA',
+                'EARLY_ADAPTIVE_INTEGRATOR': 'INCH_WORM',
+                'EARLY_INTEGRATOR_STEPS': 5,
+                'INCHWORM_CAP': 5,
+                'STATIC_BASIS': None,
+            }
             
-            # Create HOPS trajectory
+            # Create HOPS trajectory with all parameters
             trajectory = HopsTrajectory(
-                self.system,
-                eom_param=eom_param,
+                self.system_param,
                 noise_param=noise_param,
                 hierarchy_param=hierarchy_param,
-                integration_param=integration_param
+                eom_param=eom_param,
+                integration_param=integrator_param,
             )
             
             # Set initial state
@@ -305,7 +403,12 @@ class HopsSimulator:
             trajectory.initialize(initial_state.copy())
             
             # Propagate the system
-            trajectory.propagate(t_max, dt_save)
+            # Note: The actual timestep is tau * integrator_step
+            # We want actual timestep = TAU, so we pass tau = TAU / integrator_step
+            # Since default integrator_step is 0.5, we pass tau = 2.0 * TAU
+            integrator_step = 0.5  # Default RK integrator step
+            tau = dt_save / integrator_step
+            trajectory.propagate(t_max, tau)
             
             # Extract results from trajectory
             t_axis = np.array(trajectory.storage.data['t_axis'])
@@ -359,7 +462,7 @@ class HopsSimulator:
                 # QFI calculation (simplified)
                 try:
                     qfi_values[i] = self._calculate_qfi(rho, self.hamiltonian)
-                except:
+                except Exception:
                     qfi_values[i] = 0.0
             
             logger.debug("MesoHOPS simulation completed successfully")
@@ -423,7 +526,7 @@ class HopsSimulator:
                         qfi += 2.0 * (eigenvals[i] - eigenvals[j])**2 / denom * Hij
             
             return float(qfi)
-        except:
+        except Exception:
             return 0.0
 
     def create_basis(self) -> Optional[HopsBasis]:
@@ -486,7 +589,7 @@ class HopsSimulator:
     @property
     def is_using_mesohops(self) -> bool:
         """Check if MesoHOPS is being used."""
-        return self.use_mesohops and self.system is not None
+        return self.use_mesohops and hasattr(self, 'system_param') and self.system_param is not None
 
     @property
     def simulator_type(self) -> str:

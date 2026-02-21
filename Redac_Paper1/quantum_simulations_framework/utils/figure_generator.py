@@ -34,8 +34,12 @@ class FigureGenerator:
         self.figures_dir = figures_dir
         os.makedirs(figures_dir, exist_ok=True)
         
-        # Set publication-ready style
-        plt.style.use(['science', 'no-latex'])
+        # Set publication-ready style (use available styles)
+        try:
+            plt.style.use(['seaborn-v0_8', 'seaborn-v0_8-notebook'])
+        except OSError:
+            # Fallback to default if styles not available
+            pass
         
         logger.info(f"Figure generator initialized at {figures_dir}")
     
@@ -524,13 +528,13 @@ class FigureGenerator:
         ax_twin = ax.twinx()
         
         # Plot PCE vs temperature
-        pce_line = ax.plot(temperatures, pce_values, 'b-', linewidth=2, label='PCE', marker='o')
+        ax.plot(temperatures, pce_values, 'b-', linewidth=2, label='PCE', marker='o')
         ax.set_xlabel('Temperature (K)')
         ax.set_ylabel('PCE', color='b')
         ax.tick_params(axis='y', labelcolor='b')
         
         # Plot ETR vs temperature
-        etr_line = ax_twin.plot(temperatures, etr_values, 'r-', linewidth=2, label='ETR', marker='s')
+        ax_twin.plot(temperatures, etr_values, 'r-', linewidth=2, label='ETR', marker='s')
         ax_twin.set_ylabel('ETR', color='r')
         ax_twin.tick_params(axis='y', labelcolor='r')
         

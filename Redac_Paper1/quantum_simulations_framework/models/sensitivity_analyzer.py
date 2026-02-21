@@ -374,9 +374,9 @@ class SensitivityAnalyzer:
             # Plot PCE and ETR on same axis
             ax2 = ax.twinx()
 
-            line1 = ax.plot(data['param_values'], data['pce_values'],
+            ax.plot(data['param_values'], data['pce_values'],
                            'b-', marker='o', label='PCE', linewidth=2)
-            line2 = ax2.plot(data['param_values'], data['etr_values'],
+            ax2.plot(data['param_values'], data['etr_values'],
                             'r-', marker='s', label='ETR', linewidth=2)
 
             ax.set_xlabel(param_name.replace('_', ' ').title(), fontsize=10)

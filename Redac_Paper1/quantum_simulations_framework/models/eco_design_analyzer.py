@@ -8,12 +8,10 @@ for sustainable organic photovoltaic materials in agrivoltaic systems.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 import logging
 from datetime import datetime
 import os
-from scipy.optimize import minimize
-import warnings
 
 
 logger = logging.getLogger(__name__)
@@ -528,8 +526,8 @@ class EcoDesignAnalyzer:
         x_pos = np.arange(len(chem_potentials))
         width = 0.35
         
-        bars3 = ax4.bar(x_pos - width/2, chem_potentials, width, label='Chemical Potential', alpha=0.7)
-        bars4 = ax4.bar(x_pos + width/2, chem_hardnesses, width, label='Chemical Hardness', alpha=0.7)
+        ax4.bar(x_pos - width/2, chem_potentials, width, label='Chemical Potential', alpha=0.7)
+        ax4.bar(x_pos + width/2, chem_hardnesses, width, label='Chemical Hardness', alpha=0.7)
         
         ax4.set_xlabel('Material Rank')
         ax4.set_ylabel('Energy (eV)')
@@ -585,7 +583,7 @@ if __name__ == "__main__":
     
     # Generate optimized materials
     candidates = analyzer.optimize_material_design(n_candidates=5)
-    print(f"\nTop 3 candidates:")
+    print("\nTop 3 candidates:")
     for i, candidate in enumerate(candidates[:3]):
         print(f"{i+1}. {candidate['material_name']}: PCE={candidate['pce']:.3f}, "
               f"B-index={candidate['b_index']:.1f}, Score={candidate['sustainability_score']:.3f}")

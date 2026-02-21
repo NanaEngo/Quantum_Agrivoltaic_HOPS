@@ -9,11 +9,10 @@ a quantum-enhanced agrivoltaic system with realistic efficiency values.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from scipy.optimize import minimize, differential_evolution
-from scipy.linalg import eig, expm
-from scipy.integrate import quad, trapezoid
+from scipy.optimize import differential_evolution
+from scipy.linalg import expm
+from scipy.integrate import trapezoid
 import logging
-from typing import Optional, Tuple, Dict, Any
 from datetime import datetime
 import os
 
@@ -796,7 +795,8 @@ if __name__ == "__main__":
     model = AgrivoltaicCouplingModel(fmo_ham_eV, temperature=295)
     
     # Test with neutral transmission (no filtering)
-    neutral_transmission = lambda wavelengths: np.ones_like(wavelengths)
+    def neutral_transmission(wavelengths):
+        return np.ones_like(wavelengths)
     pce = model.calculate_opv_efficiency(neutral_transmission)
     etr = model.calculate_psu_efficiency(neutral_transmission)
     

@@ -10,7 +10,7 @@ import pandas as pd
 from datetime import datetime
 import numpy as np
 import logging
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any
 
 
 logger = logging.getLogger(__name__)

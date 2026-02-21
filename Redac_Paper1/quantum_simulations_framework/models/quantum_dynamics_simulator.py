@@ -9,7 +9,7 @@ energy transfer in photosynthetic systems and quantum-enhanced agrivoltaics.
 import numpy as np
 from scipy.sparse import csc_matrix
 import scipy.linalg as la
-from typing import Dict, Any, Optional, Tuple
+from typing import Dict, Any
 import logging
 from datetime import datetime
 import os
@@ -628,7 +628,6 @@ class QuantumDynamicsSimulator:
             for i in range(n):
                 for j in range(i+1, n):
                     # Extract 2x2 reduced density matrix for sites i,j
-                    indices = [i, j]
                     rho_ij = np.zeros((2, 2), dtype=complex)
                     
                     # Create reduced density matrix by tracing out other sites
@@ -754,7 +753,8 @@ class QuantumDynamicsSimulator:
         Q < 0 indicates non-classical (quantum) behavior.
         """
         mean_occ = np.mean(vibrational_mode_occupations)
-        if mean_occ < 1e-12: return 0.0
+        if mean_occ < 1e-12:
+            return 0.0
         variance = np.var(vibrational_mode_occupations)
         return (variance - mean_occ) / mean_occ
 

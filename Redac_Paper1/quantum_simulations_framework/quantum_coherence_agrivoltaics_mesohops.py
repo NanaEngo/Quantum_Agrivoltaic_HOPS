@@ -88,30 +88,33 @@ except ImportError as e:
 try:
     from environmental_factors import EnvironmentalFactors
 except ImportError:
-    logger.warning("EnvironmentalFactors module not found, using full implementation")
+    try:
+        from models.environmental_factors import EnvironmentalFactors
+    except ImportError:
+        logger.warning("EnvironmentalFactors module not found, using full implementation")
 
-    class EnvironmentalFactors:
-        r"""
-        Class to model environmental factors that affect agrivoltaic system performance.
+        class EnvironmentalFactors:
+            r"""
+            Class to model environmental factors that affect agrivoltaic system performance.
 
-        Mathematical Framework:
-        Environmental factors in agrivoltaic systems include:
+            Mathematical Framework:
+            Environmental factors in agrivoltaic systems include:
 
-        1. Dust accumulation: modeled as time-dependent attenuation following a power law
-           A(t) = A_0 * (1 + \alpha * t^\beta)
+            1. Dust accumulation: modeled as time-dependent attenuation following a power law
+               A(t) = A_0 * (1 + \alpha * t^\beta)
 
-        2. Temperature effects: affect OPV efficiency and photosynthetic performance
-           \eta(T) = \eta_ref * [1 - \gamma * (T - T_ref)]
+            2. Temperature effects: affect OPV efficiency and photosynthetic performance
+               \eta(T) = \eta_ref * [1 - \gamma * (T - T_ref)]
 
-        3. Humidity effects: impact charge transport and photosynthetic activity
+            3. Humidity effects: impact charge transport and photosynthetic activity
 
-        4. Wind effects: influence heat dissipation and dust removal
+            4. Wind effects: influence heat dissipation and dust removal
 
-        5. Precipitation: affects dust levels and temperature
+            5. Precipitation: affects dust levels and temperature
 
-        These factors are combined into a comprehensive environmental impact model
-        that modifies the base performance metrics of the agrivoltaic system.
-        """
+            These factors are combined into a comprehensive environmental impact model
+            that modifies the base performance metrics of the agrivoltaic system.
+            """
 
         def __init__(self):
             """Initialize environmental factors with default parameters."""
@@ -525,7 +528,7 @@ except ImportError:
 
 
 # Set publication style plots
-plt.style.use(['science', 'notebook'])
+plt.style.use(['seaborn-v0_8', 'seaborn-v0_8-notebook'])
 
 
 def create_fmo_hamiltonian(include_reaction_center: bool = False) -> tuple:
@@ -773,7 +776,11 @@ def total_spectral_density(omega: np.ndarray, lambda_reorg: float = DEFAULT_REOR
 
     if omega_vib is None:
         omega_vib = DEFAULT_VIBRONIC_FREQUENCIES
+
+    if S_vib is None:
         S_vib = DEFAULT_HUANG_RHYS_FACTORS
+
+    if Gamma_vib is None:
         Gamma_vib = DEFAULT_VIBRONIC_DAMPING
 
     J_vib = spectral_density_vibronic(omega, omega_vib, S_vib, Gamma_vib)
@@ -789,6 +796,12 @@ __all__ = [
     'TestingValidationProtocols',
     'EnvironmentalFactors',
     'LCAAnalyzer',
+    'AgrivoltaicCouplingModel',
+    'SpectralOptimizer',
+    'EcoDesignAnalyzer',
+    'QuantumDynamicsSimulator',
+    'CSVDataStorage',
+    'FigureGenerator',
     'create_fmo_hamiltonian',
     'create_meso_hops_basis',
     'create_meso_hops_trajectory',

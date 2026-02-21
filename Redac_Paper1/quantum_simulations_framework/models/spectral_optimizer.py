@@ -8,10 +8,10 @@ in agrivoltaic systems to maximize combined OPV and PSU performance.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from scipy.optimize import differential_evolution, minimize
+from scipy.optimize import differential_evolution
 from scipy.integrate import trapezoid
 import logging
-from typing import Dict, Any, Tuple, Callable, Optional
+from typing import Dict, Any, Tuple
 from datetime import datetime
 import os
 
@@ -582,7 +582,7 @@ if __name__ == "__main__":
     # Run optimization
     results = optimizer.optimize_spectral_splitting(n_filters=2, maxiter=50)
     
-    print(f"Optimization completed:")
+    print("Optimization completed:")
     print(f"  PCE: {results['optimal_pce']:.4f}")
     print(f"  ETR: {results['optimal_etr']:.4f}")
     print(f"  Success: {results['success']}")
