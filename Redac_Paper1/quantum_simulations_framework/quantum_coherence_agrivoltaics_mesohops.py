@@ -785,7 +785,7 @@ def total_spectral_density(omega: np.ndarray, lambda_reorg: float = DEFAULT_REOR
 
     J_vib = spectral_density_vibronic(omega, omega_vib, S_vib, Gamma_vib)
 
-    return J_drude + J_vib
+    return J_drude + J_vibhttps://doi.org/10.1142/3609
 
 
 # Import other classes from their modules
