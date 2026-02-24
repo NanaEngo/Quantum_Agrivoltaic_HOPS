@@ -91,21 +91,26 @@ class FigureGenerator:
         
         # Create subplots
         n_cols = 2
-        n_rows = max(2, n_metrics)  # At least 2 rows for populations and coherences
+        # Row 0: populations and coherences
+        # Subsequent rows: 2 metrics per row
+        n_rows = 1 + (n_metrics + 1) // 2
         
-        fig, axes = plt.subplots(n_rows, n_cols, figsize=(16, 4 * n_rows))
+        fig, axes = plt.subplots(n_rows, n_cols, figsize=(16, 5 * n_rows))
         fig.suptitle('Quantum Dynamics Simulation Results', fontsize=16, fontweight='bold')
         
+        # Ensure axes is always a 2D array for consistent indexing
+        if n_rows == 1:
+            axes = np.array([axes]).reshape(1, n_cols)
+        
         # Plot populations over time
+        ax0 = axes[0, 0]
         if n_sites == 1:
-            ax0 = axes[0, 0] if n_rows > 1 else axes[0]
             ax0.plot(time_points, populations, 'b-', linewidth=2)
             ax0.set_xlabel('Time (fs)')
             ax0.set_ylabel('Population')
             ax0.set_title('Population Dynamics')
             ax0.grid(True, alpha=0.3)
         else:
-            ax0 = axes[0, 0] if n_rows > 1 else axes[0]
             for i in range(min(n_sites, 10)):  # Limit to first 10 sites for readability
                 ax0.plot(time_points, populations[:, i], label=f'Site {i+1}', linewidth=1.5)
             ax0.set_xlabel('Time (fs)')
@@ -115,7 +120,7 @@ class FigureGenerator:
             ax0.grid(True, alpha=0.3)
         
         # Plot coherences
-        ax1 = axes[0, 1] if n_rows > 1 else axes[1]
+        ax1 = axes[0, 1]
         ax1.plot(time_points, coherences, 'r-', linewidth=2)
         ax1.set_xlabel('Time (fs)')
         ax1.set_ylabel('Coherence')
@@ -123,23 +128,26 @@ class FigureGenerator:
         ax1.grid(True, alpha=0.3)
         
         # Plot quantum metrics
-        metric_idx = 1
         for i, (metric_name, metric_values) in enumerate(quantum_metrics.items()):
-            if metric_idx < n_rows:
-                ax = axes[metric_idx, 0] if i % 2 == 0 else axes[metric_idx, 1]
-                if metric_idx >= n_rows and i % 2 == 0:
-                    metric_idx += 1
-                    if metric_idx >= n_rows:
-                        break
-                    ax = axes[metric_idx, 0]
-                
+            row = 1 + i // n_cols
+            col = i % n_cols
+            
+            if row < n_rows:
+                ax = axes[row, col]
                 ax.plot(time_points, metric_values, linewidth=2)
                 ax.set_xlabel('Time (fs)')
                 ax.set_ylabel(metric_name)
                 ax.set_title(f'{metric_name.replace("_", " ").title()} Evolution')
                 ax.grid(True, alpha=0.3)
         
-        plt.tight_layout()
+        # Remove empty subplots if any
+        for i in range(n_metrics, (n_rows - 1) * n_cols):
+            row = 1 + i // n_cols
+            col = i % n_cols
+            if row < n_rows:
+                fig.delaxes(axes[row, col])
+        
+        plt.tight_layout(rect=[0, 0.03, 1, 0.95])
         
         # Save figures in multiple formats
         plt.savefig(pdf_path, dpi=300, bbox_inches='tight')

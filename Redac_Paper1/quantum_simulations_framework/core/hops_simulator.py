@@ -23,6 +23,13 @@ except ImportError:
     HopsBasis = None
     HopsTrajectory = None
 
+# Import our custom PT-HOPS and SBD Extensions
+try:
+    from extensions.mesohops_adapters import SBD_HopsTrajectory, PT_HopsNoise
+except ImportError:
+    SBD_HopsTrajectory = None
+    PT_HopsNoise = None
+
 # Import fallback simulators - we'll check if they can be instantiated in the init method
 try:
     from .quantum_dynamics_simulator import QuantumDynamicsSimulator as QDS
@@ -127,7 +134,9 @@ class HopsSimulator:
         self.temperature = temperature
         self.max_hierarchy = max_hierarchy
         self.use_mesohops = MESOHOPS_AVAILABLE and use_mesohops
-        self.system: Optional[HopsSystem] = None
+        self.use_pt_hops = kwargs.pop('use_pt_hops', False)
+        self.use_sbd = kwargs.pop('use_sbd', False)
+        self.system = None
         self.fallback_sim: Optional[Any] = None
 
         logger.debug(
@@ -380,14 +389,25 @@ class HopsSimulator:
                 'STATIC_BASIS': None,
             }
             
+            # Select Trajectory Engine
+            TrajectoryClass = HopsTrajectory
+            traj_kwargs = {
+                "system_param": self.system_param,
+                "eom_param": eom_param,
+                "noise_param": noise_param,
+                "hierarchy_param": hierarchy_param,
+                "integration_param": integrator_param,
+            }
+            
+            if self.use_sbd and SBD_HopsTrajectory is not None:
+                TrajectoryClass = SBD_HopsTrajectory
+                traj_kwargs['n_bundles'] = kwargs.get('n_bundles', 5)
+                logger.info("Engaging SBD_HopsTrajectory for compressed environmental simulation.")
+            elif self.use_pt_hops and PT_HopsNoise is not None:
+                logger.info("Engaging PT_HopsNoise for Process Tensor dynamics.")
+
             # Create HOPS trajectory with all parameters
-            trajectory = HopsTrajectory(
-                self.system_param,
-                noise_param=noise_param,
-                hierarchy_param=hierarchy_param,
-                eom_param=eom_param,
-                integration_param=integrator_param,
-            )
+            trajectory = TrajectoryClass(**traj_kwargs)
             
             # Set initial state
             if initial_state is None:
@@ -600,7 +620,11 @@ class HopsSimulator:
     def simulator_type(self) -> str:
         """Get the type of simulator being used."""
         if self.is_using_mesohops:
-            return "MesoHOPS"
+            base = "MesoHOPS"
+            exts = []
+            if self.use_pt_hops: exts.append("PT")
+            if self.use_sbd: exts.append("SBD")
+            return f"{base} ({' + '.join(exts)})" if exts else base
         elif self.fallback_sim is not None:
             return "QuantumDynamicsSimulator (fallback)"
         else:

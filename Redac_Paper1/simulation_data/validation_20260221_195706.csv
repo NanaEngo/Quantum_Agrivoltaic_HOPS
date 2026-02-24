@@ -1,2 +1,0 @@
-test_name,status,expected,actual
-Hamiltonian Validation,PASSED,Symmetric & Hermitian,Valid

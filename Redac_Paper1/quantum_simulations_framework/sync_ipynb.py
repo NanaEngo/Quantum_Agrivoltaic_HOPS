@@ -70,6 +70,44 @@ csv_path = csv_storage.save_biodegradability_analysis(eco_data, filename_prefix=
     print(f"  - Total samples: 10")"""
                 source = source.replace(sens_old, sens_new)
                 
+            # --- 4. Advanced Simulation Features Injection ---
+            if "import pandas as pd" in source:
+                source = source.replace("import pandas as pd", "import pandas as pd\nfrom models.techno_economic_model import TechnoEconomicModel\nfrom models.spectroscopy_2des import Spectroscopy2DES")
+
+            if "simulator = HopsSimulator(" in source:
+                source = source.replace("use_mesohops=True", "use_mesohops=True, use_sbd=True, use_pt_hops=True")
+
+            if "lca_results = lca_analyzer.calculate_lca_impact(" in source:
+                # Inject Techno-Economic after LCA
+                te_block = """
+    # Run Techno-Economic analysis
+    print("Initializing Techno-Economic Model...")
+    te_model = TechnoEconomicModel()
+    te_results = te_model.evaluate_project_viability(
+        area_hectares=10.0,
+        pv_coverage_ratio=0.3,
+        pce=result_b['pce'],
+        etr=0.81
+    )
+    print(f"✓ Techno-Economic evaluation completed (10ha farm, 30% coverage):")
+    print(f"  - NPV: ${te_results['npv_usd']:,.2f}")
+    print(f"  - Revenue per hectare: ${te_results['total_revenue_yr_usd_per_ha']:,.2f}/yr")
+"""
+                source = source + te_block
+
+            if "fig_path = lca_analyzer.plot_lca_results(lca_results)" in source:
+                # Inject 2DES after LCA plots
+                spec_block = """
+    # Run 2DES spectroscopy simulation
+    print("Initializing 2D Electronic Spectroscopy (2DES) simulation...")
+    spec_2des = Spectroscopy2DES(system_size=H_fmo.shape[0])
+    for T in [0.0, 500.0]:
+        spec_results = spec_2des.simulate_2d_spectrum(H_fmo, waiting_time=T)
+        spec_fig_path = spec_2des.plot_2d_spectrum(spec_results)
+        print(f"  ✓ 2DES spectrum (T={T}fs) saved")
+"""
+                source = source + spec_block
+                
             cell.source = source
             
     with open(notebook_path, 'w', encoding='utf-8') as f:
