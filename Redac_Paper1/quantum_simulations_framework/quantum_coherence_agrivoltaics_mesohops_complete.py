@@ -592,6 +592,37 @@ print()
 # | **Y6-BO Derivative (Molecule B)** | 58 | >15% | Good stability, tunable absorption |
 # 
 # **B-index Interpretation**: Higher values indicate greater predicted biodegradability based on quantum reactivity descriptors (Fukui functions f⁺, f⁻, f⁰). PM6's higher B-index suggests more favorable sites for enzymatic attack during degradation pathways.
+#
+# ### External DFT Requirements
+#
+# The electron densities required for Fukui function calculations must be computed externally using quantum chemistry software. The framework accepts pre-computed densities as input:
+#
+# **Required Input Format:**
+# ```python
+# electron_densities = {
+#     'neutral': np.array([...]),   # ρ_N: Electron density of neutral molecule
+#     'n_plus_1': np.array([...]),  # ρ_{N+1}: Electron density of anion
+#     'n_minus_1': np.array([...])  # ρ_{N-1}: Electron density of cation
+# }
+# ```
+#
+# **Recommended DFT Software:**
+# | Software | Method | Basis Set | Notes |
+# |----------|--------|-----------|-------|
+# | **Gaussian** | B3LYP/ωB97X-D | 6-31G(d)/def2-SVP | Industry standard |
+# | **ORCA** | B3LYP-D3BJ | def2-SVP | Free for academic use |
+# | **Q-Chem** | ωB97X-V | def2-SVP | Excellent for charge-transfer |
+# | **Psi4** | B3LYP | cc-pVDZ | Open source |
+#
+# **DFT Calculation Workflow:**
+# 1. Optimize geometry at neutral charge state
+# 2. Compute electron density for N electrons (neutral)
+# 3. Compute electron density for N+1 electrons (anion)
+# 4. Compute electron density for N-1 electrons (cation)
+# 5. Extract Mulliken/Loewdin charges or cube files for density analysis
+# 6. Feed densities to `EcoDesignAnalyzer.evaluate_material_sustainability()`
+#
+# **Note:** The example below uses synthetic electron densities for demonstration. For production use, replace with actual DFT-computed values.
 
 # In[ ]:
 
