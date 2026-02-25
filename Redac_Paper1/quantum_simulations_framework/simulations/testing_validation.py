@@ -1,19 +1,29 @@
 """
-Testing and Validation Protocols for quantum agrivoltaics simulations.
+TestingValidationProtocols: Comprehensive testing and validation for quantum agrivoltaics.
 
-This module provides comprehensive testing and validation for quantum simulations,
-including comparison with literature values, convergence analysis, and classical
-benchmarking.
+This module provides validation protocols to ensure simulation accuracy and
+consistency with literature values.
 """
 
 import logging
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Dict, Any, List, Optional
 import numpy as np
-from numpy.typing import NDArray
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+from datetime import datetime
 
-from core.constants import (
-    DEFAULT_TEMPERATURE,
-)
+# Import required classes
+# Import required classes
+try:
+    from core.hops_simulator import HopsSimulator
+except ImportError:
+    HopsSimulator = None
+
+try:
+    from models.agrivoltaic_coupling_model import AgrivoltaicCouplingModel
+except ImportError:
+    AgrivoltaicCouplingModel = None
 
 logger = logging.getLogger(__name__)
 
@@ -34,87 +44,70 @@ class TestingValidationProtocols:
 
     Parameters
     ----------
-    quantum_simulator : HopsSimulator or QuantumDynamicsSimulator
-        The quantum simulator instance to validate
-    agrivoltaic_model : AgrivoltaicCouplingModel
-        The agrivoltaic coupling model instance
+    quantum_simulator : Any
+        Quantum dynamics simulator instance
+    agrivoltaic_model : Any
+        Agrivoltaic coupling model instance
 
     Attributes
     ----------
-    quantum_simulator : object
-        The quantum simulator being validated
-    agrivoltaic_model : object
-        The agrivoltaic model being validated
-    literature_values : Dict[str, float]
-        Reference values from scientific literature
-
-    Examples
-    --------
-    >>> from simulations.testing_validation import TestingValidationProtocols
-    >>> from core.hops_simulator import HopsSimulator
-    >>> hamiltonian, _ = create_fmo_hamiltonian()
-    >>> sim = HopsSimulator(hamiltonian)
-    >>> validator = TestingValidationProtocols(sim, agrivoltaic_model)
-    >>> report = validator.run_full_validation_suite()
+    quantum_simulator : Any
+        The quantum simulator instance
+    agrivoltaic_model : Any
+        The agrivoltaic model instance
+    literature_values : dict
+        Reference values from literature for validation
     """
 
-    def __init__(
-        self,
-        quantum_simulator: Any,
-        agrivoltaic_model: Any
-    ):
-        """Initialize the testing and validation protocols."""
+    def __init__(self, quantum_simulator, agrivoltaic_model):
+        """Initialize testing and validation protocols."""
         self.quantum_simulator = quantum_simulator
         self.agrivoltaic_model = agrivoltaic_model
 
         # Reference values from literature
-        self.literature_values: Dict[str, float] = {
-            'fmo_coherence_lifetime_77K': 400.0,    # fs (Engel et al., 2007)
-            'fmo_coherence_lifetime_295K': 420.0,   # fs (Manuscript Figure 3a)
-            'fmo_transfer_time': 1000.0,            # fs (typical transfer time to RC)
+        self.literature_values = {
+            'fmo_coherence_lifetime_77K': 400,  # fs (Engel et al., 2007)
+            'fmo_coherence_lifetime_295K': 420,  # fs (Manuscript Figure 3a)
+            'fmo_transfer_time': 1000,  # fs (typical transfer time to RC)
             'chlorophyll_quantum_efficiency': 0.95,  # Near-unity for PSI
-            'opv_typical_pce': 0.18,                # Manuscript Target PCE
-            'am15g_total_irradiance': 1000.0,       # W/m^2
+            'opv_typical_pce': 0.18,  # Manuscript Target PCE
+            'am15g_total_irradiance': 1000,  # W/m^2
         }
 
-        logger.info("TestingValidationProtocols initialized with literature values")
+        logger.info("TestingValidationProtocols initialized")
 
     def validate_fmo_hamiltonian(self) -> Dict[str, Any]:
         """
         Validate FMO Hamiltonian against literature values.
 
-        Checks:
-        - Site energies within expected range
-        - Coupling strengths within expected range
-        - Bandwidth within expected range
-        - Hamiltonian is Hermitian
-
         Returns
         -------
-        Dict[str, Any]
-            Validation results with pass/fail status for each check
+        dict
+            Validation results with pass/fail status
         """
-        logger.debug("Validating FMO Hamiltonian")
-
-        H = self.quantum_simulator.hamiltonian
-
-        # Get eigenvalues if available
-        if hasattr(self.quantum_simulator, 'evals'):
-            evals = self.quantum_simulator.evals
+        # Get Hamiltonian from simulator
+        if hasattr(self.quantum_simulator, 'hamiltonian'):
+            H = self.quantum_simulator.hamiltonian
+        elif hasattr(self.quantum_simulator, 'H'):
+            H = self.quantum_simulator.H
         else:
-            evals = np.linalg.eigvals(H)
+            logger.error("Cannot find Hamiltonian in simulator")
+            return {'error': 'Hamiltonian not found'}
+
+        # Calculate eigenvalues
+        evals = np.linalg.eigvalsh(H)
 
         # Expected ranges from Adolphs & Renger 2006
-        expected_site_energy_range: Tuple[float, float] = (11900.0, 12300.0)  # cm^-1
-        expected_coupling_range: Tuple[float, float] = (5.0, 200.0)  # cm^-1
-        expected_bandwidth: Tuple[float, float] = (300.0, 500.0)  # cm^-1
+        expected_site_energy_range = (11900, 12300)  # cm^-1
+        expected_coupling_range = (5, 200)  # cm^-1
+        expected_bandwidth = (300, 500)  # cm^-1
 
         # Extract diagonal and off-diagonal elements
         site_energies = np.diag(H)
         couplings = H[np.triu_indices_from(H, k=1)]
-        bandwidth = float(np.max(np.real(evals)) - np.min(np.real(evals)))
+        bandwidth = np.max(evals) - np.min(evals)
 
-        results: Dict[str, Any] = {
+        results = {
             'site_energies': {
                 'min': float(np.min(site_energies)),
                 'max': float(np.max(site_energies)),
@@ -130,7 +123,7 @@ class TestingValidationProtocols:
                 'pass': np.max(np.abs(couplings)) <= expected_coupling_range[1]
             },
             'bandwidth': {
-                'value': bandwidth,
+                'value': float(bandwidth),
                 'expected_range': expected_bandwidth,
                 'pass': (
                     bandwidth >= expected_bandwidth[0] and
@@ -138,74 +131,64 @@ class TestingValidationProtocols:
                 )
             },
             'hermitian': {
-                'pass': bool(np.allclose(H, H.T.conj()))
+                'pass': np.allclose(H, H.T.conj())
             }
         }
 
-        passed = sum(1 for r in results.values() if r.get('pass', False))
-        logger.info(f"Hamiltonian validation: {passed}/{len(results)} tests passed")
-
+        logger.debug("FMO Hamiltonian validation completed")
         return results
 
     def validate_quantum_dynamics(self) -> Dict[str, Any]:
         """
         Validate quantum dynamics against expected behavior.
 
-        Checks:
-        - Population conservation
-        - Coherence decay behavior
-        - Purity bounds
-        - Population positivity
-
         Returns
         -------
-        Dict[str, Any]
-            Validation results for each check
+        dict
+            Validation results
         """
-        logger.debug("Validating quantum dynamics")
-
         # Run short simulation
         time_points = np.linspace(0, 500, 500)
 
-        try:
-            sim_result = self.quantum_simulator.simulate_dynamics(time_points)
-            populations = sim_result.get('populations', np.zeros((len(time_points), 7)))
-            coherences = sim_result.get('coherences', np.zeros(len(time_points)))
-            purity_vals = sim_result.get('purity_values', np.zeros(len(time_points)))
-        except Exception as e:
-            logger.error(f"Simulation failed during validation: {e}")
-            return {'error': str(e)}
+        if hasattr(self.quantum_simulator, 'simulate_dynamics'):
+            result = self.quantum_simulator.simulate_dynamics(
+                time_points=time_points
+            )
 
-        results: Dict[str, Any] = {
-            'population_conservation': {
-                'initial_sum': float(np.sum(populations[0, :])),
-                'final_sum': float(np.sum(populations[-1, :])),
-                'pass': (
-                    np.abs(np.sum(populations[0, :]) - np.sum(populations[-1, :])) < 0.1
-                )
-            },
-            'coherence_decay': {
-                'initial': float(coherences[0]),
-                'final': float(coherences[-1]),
-                'decays': bool(coherences[-1] < coherences[0]) if coherences[0] > 0 else True,
-                'pass': True  # Coherence should generally decay
-            },
-            'purity_bounds': {
-                'min': float(np.min(purity_vals)),
-                'max': float(np.max(purity_vals)),
-                'pass': (
-                    np.min(purity_vals) >= 0 and np.max(purity_vals) <= 1.1
-                )
-            },
-            'population_positivity': {
-                'min_population': float(np.min(populations)),
-                'pass': np.min(populations) >= -0.1  # Allow small numerical errors
+            # Extract results
+            populations = result.get('populations', np.array([]))
+            coherences = result.get('coherences', np.array([]))
+
+            results = {
+                'population_conservation': {
+                    'initial_sum': float(np.sum(populations[0, :])) if populations.size > 0 else 0,
+                    'final_sum': float(np.sum(populations[-1, :])) if populations.size > 0 else 0,
+                    'pass': (
+                        populations.size > 0 and
+                        np.abs(np.sum(populations[0, :]) - np.sum(populations[-1, :])) < 0.1
+                    )
+                },
+                'coherence_decay': {
+                    'initial': float(coherences[0]) if coherences.size > 0 else 0,
+                    'final': float(coherences[-1]) if coherences.size > 0 else 0,
+                    'decays': (
+                        coherences[-1] < coherences[0]
+                        if coherences.size > 0 and coherences[0] > 0 else True
+                    ),
+                    'pass': True  # Coherence should generally decay
+                },
+                'population_positivity': {
+                    'min_population': float(np.min(populations)) if populations.size > 0 else 0,
+                    'pass': (
+                        populations.size > 0 and
+                        np.min(populations) >= -0.1  # Allow small numerical errors
+                    )
+                }
             }
-        }
+        else:
+            results = {'error': 'Simulator does not have simulate_dynamics method'}
 
-        passed = sum(1 for r in results.values() if r.get('pass', False))
-        logger.info(f"Dynamics validation: {passed}/{len(results)} tests passed")
-
+        logger.debug("Quantum dynamics validation completed")
         return results
 
     def convergence_analysis(
@@ -217,61 +200,70 @@ class TestingValidationProtocols:
 
         Parameters
         ----------
-        max_time_steps : List[int], optional
-            List of time step counts to test. Default: [50, 100, 200, 400]
+        max_time_steps : list, optional
+            List of time step counts to test
 
         Returns
         -------
-        Dict[str, Any]
+        dict
             Convergence analysis results
         """
         if max_time_steps is None:
             max_time_steps = [125, 250, 500, 1000]
 
-        logger.debug(f"Running convergence analysis with {len(max_time_steps)} refinement levels")
-
-        final_populations: List[NDArray] = []
-        final_coherences: List[float] = []
+        final_populations = []
+        final_coherences = []
 
         for n_steps in max_time_steps:
             time_points = np.linspace(0, 500, n_steps)
-            try:
-                sim_result = self.quantum_simulator.simulate_dynamics(time_points)
-                populations = sim_result.get('populations', np.zeros((n_steps, 7)))
-                coherences = sim_result.get('coherences', np.zeros(n_steps))
-                final_populations.append(populations[-1, :])
-                final_coherences.append(float(coherences[-1]))
-            except Exception as e:
-                logger.error(f"Convergence test failed at n_steps={n_steps}: {e}")
-                continue
+
+            if hasattr(self.quantum_simulator, 'simulate_dynamics'):
+                result = self.quantum_simulator.simulate_dynamics(
+                    time_points=time_points
+                )
+                populations = result.get('populations', np.array([]))
+                coherences = result.get('coherences', np.array([]))
+
+                if populations.size > 0:
+                    final_populations.append(populations[-1, :])
+                if coherences.size > 0:
+                    final_coherences.append(coherences[-1])
 
         # Calculate relative differences between successive refinements
-        pop_convergence: List[float] = []
-        coh_convergence: List[float] = []
+        pop_convergence = []
+        coh_convergence = []
 
         for i in range(1, len(final_populations)):
-            pop_diff = np.linalg.norm(final_populations[i] - final_populations[i-1])
-            norm = np.linalg.norm(final_populations[i])
-            pop_convergence.append(pop_diff / norm if norm > 0 else 0.0)
-
-            coh_diff = np.abs(final_coherences[i] - final_coherences[i-1])
-            coh_convergence.append(
-                coh_diff / final_coherences[i] if final_coherences[i] > 0 else 0.0
+            pop_diff = np.linalg.norm(
+                final_populations[i] - final_populations[i - 1]
+            )
+            pop_norm = np.linalg.norm(final_populations[i])
+            pop_convergence.append(
+                pop_diff / pop_norm if pop_norm > 0 else 0
             )
 
-        results: Dict[str, Any] = {
+            if i < len(final_coherences):
+                coh_diff = np.abs(
+                    final_coherences[i] - final_coherences[i - 1]
+                )
+                coh_convergence.append(
+                    coh_diff / final_coherences[i]
+                    if final_coherences[i] > 0 else 0
+                )
+
+        results = {
             'time_steps': max_time_steps,
             'final_populations': final_populations,
             'final_coherences': final_coherences,
             'population_convergence': pop_convergence,
             'coherence_convergence': coh_convergence,
             'converged': (
-                pop_convergence[-1] < 0.05 if len(pop_convergence) > 0 else False
+                pop_convergence[-1] < 0.05
+                if len(pop_convergence) > 0 else False
             )
         }
 
-        logger.info(f"Convergence analysis complete: converged={results['converged']}")
-
+        logger.debug("Convergence analysis completed")
         return results
 
     def compare_with_classical(self) -> Dict[str, Any]:
@@ -280,75 +272,78 @@ class TestingValidationProtocols:
 
         Mathematical Framework:
         Classical (Markovian) models assume no memory effects:
-        dρ/dt = L[ρ]
+        d\rho/dt = L[\rho]
 
         Quantum advantage is quantified as the improvement in ETR
         from non-Markovian effects.
 
         Returns
         -------
-        Dict[str, Any]
-            Comparison results including quantum advantage metrics
+        dict
+            Comparison results
         """
-        logger.debug("Comparing quantum vs classical simulation")
-
-        # Import here to avoid circular dependency
-        from core.hops_simulator import HopsSimulator
-
-        # Quantum simulation (non-Markovian)
         time_points = np.linspace(0, 500, 500)
 
-        try:
-            sim_result = self.quantum_simulator.simulate_dynamics(time_points)
-            pop_quantum = sim_result.get('populations', np.zeros((100, 7)))
-            coh_quantum = sim_result.get('coherences', np.zeros(100))
-        except Exception as e:
-            logger.error(f"Quantum simulation failed: {e}")
-            return {'error': str(e)}
+        # Quantum simulation (non-Markovian)
+        if hasattr(self.quantum_simulator, 'simulate_dynamics'):
+            result_quantum = self.quantum_simulator.simulate_dynamics(
+                time_points=time_points
+            )
+            pop_quantum = result_quantum.get('populations', np.array([]))
+            coh_quantum = result_quantum.get('coherences', np.array([]))
+        else:
+            pop_quantum = np.array([])
+            coh_quantum = np.array([])
 
         # Classical simulation (higher dephasing to approximate Markovian limit)
-        try:
+        if HopsSimulator is not None and hasattr(self.quantum_simulator, 'hamiltonian'):
             classical_sim = HopsSimulator(
                 self.quantum_simulator.hamiltonian,
-                temperature=getattr(self.quantum_simulator, 'temperature', DEFAULT_TEMPERATURE),
+                temperature=getattr(self.quantum_simulator, 'temperature', 295),
                 dephasing_rate=100  # High dephasing for classical limit
             )
-            classical_result = classical_sim.simulate_dynamics(time_points)
-            pop_classical = classical_result.get('populations', np.zeros((100, 7)))
-            coh_classical = classical_result.get('coherences', np.zeros(100))
-        except Exception as e:
-            logger.error(f"Classical simulation failed: {e}")
-            return {'error': str(e)}
+            result_classical = classical_sim.simulate_dynamics(
+                time_points=time_points
+            )
+            pop_classical = result_classical.get('populations', np.array([]))
+            coh_classical = result_classical.get('coherences', np.array([]))
+        else:
+            pop_classical = np.array([])
+            coh_classical = np.array([])
 
         # Calculate quantum advantage
         # Transfer efficiency: population that leaves initial site
-        quantum_transfer = float(1 - pop_quantum[-1, 0])
-        classical_transfer = float(1 - pop_classical[-1, 0])
+        if pop_quantum.size > 0:
+            quantum_transfer = 1 - pop_quantum[-1, 0]
+        else:
+            quantum_transfer = 0
+
+        if pop_classical.size > 0:
+            classical_transfer = 1 - pop_classical[-1, 0]
+        else:
+            classical_transfer = 0
 
         quantum_advantage = (
             (quantum_transfer - classical_transfer) / classical_transfer * 100
-            if classical_transfer > 0 else 0.0
+            if classical_transfer > 0 else 0
         )
 
-        comparison: Dict[str, Any] = {
-            'quantum_transfer': quantum_transfer,
-            'classical_transfer': classical_transfer,
-            'quantum_advantage_percent': quantum_advantage,
-            'quantum_coherence_final': float(coh_quantum[-1]),
-            'classical_coherence_final': float(coh_classical[-1]),
+        comparison = {
+            'quantum_transfer': float(quantum_transfer),
+            'classical_transfer': float(classical_transfer),
+            'quantum_advantage_percent': float(quantum_advantage),
+            'quantum_coherence_final': float(coh_quantum[-1]) if coh_quantum.size > 0 else 0,
+            'classical_coherence_final': float(coh_classical[-1]) if coh_classical.size > 0 else 0,
             'coherence_enhancement': (
-                coh_quantum[-1] / coh_classical[-1] if coh_classical[-1] > 0 else 0.0
+                coh_quantum[-1] / coh_classical[-1]
+                if coh_classical.size > 0 and coh_classical[-1] > 0 else 0
             ),
             'time_points': time_points,
             'pop_quantum': pop_quantum,
             'pop_classical': pop_classical
         }
 
-        logger.info(
-            f"Quantum advantage: {quantum_advantage:.1f}% "
-            f"(quantum: {quantum_transfer:.3f}, classical: {classical_transfer:.3f})"
-        )
-
+        logger.debug("Classical comparison completed")
         return comparison
 
     def run_full_validation_suite(self) -> Dict[str, Any]:
@@ -357,12 +352,12 @@ class TestingValidationProtocols:
 
         Returns
         -------
-        Dict[str, Any]
-            Complete validation report with all test results and summary
+        dict
+            Complete validation report
         """
         logger.info("Running full validation suite...")
 
-        report: Dict[str, Any] = {
+        report = {
             'hamiltonian_validation': self.validate_fmo_hamiltonian(),
             'dynamics_validation': self.validate_quantum_dynamics(),
             'convergence_analysis': self.convergence_analysis(),
@@ -385,57 +380,243 @@ class TestingValidationProtocols:
             'total_tests': total_tests,
             'passed_tests': passed_tests,
             'pass_rate': (
-                passed_tests / total_tests * 100 if total_tests > 0 else 0.0
+                passed_tests / total_tests * 100 if total_tests > 0 else 0
             )
         }
 
         logger.info(
-            f"Validation complete: {passed_tests}/{total_tests} tests passed "
+            f"Validation suite completed: {passed_tests}/{total_tests} tests passed "
             f"({report['summary']['pass_rate']:.1f}%)"
         )
 
         return report
 
-    def print_validation_report(self, report: Dict[str, Any]) -> None:
+    def save_validation_results_to_csv(
+        self,
+        report: Dict[str, Any],
+        filename_prefix: str = 'validation_report',
+        output_dir: str = '../simulation_data/'
+    ) -> str:
         """
-        Print a formatted validation report.
+        Save validation results to CSV.
 
         Parameters
         ----------
-        report : Dict[str, Any]
-            The validation report from run_full_validation_suite()
+        report : dict
+            Results from run_full_validation_suite()
+        filename_prefix : str
+            Prefix for output filename
+        output_dir : str
+            Directory to save CSV file
+
+        Returns
+        -------
+        str
+            Path to saved CSV file
         """
-        print("\n" + "="*60)
-        print("VALIDATION SUMMARY")
-        print("="*60)
+        os.makedirs(output_dir, exist_ok=True)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-        summary = report.get('summary', {})
-        print(f"Total tests: {summary.get('total_tests', 0)}")
-        print(f"Passed tests: {summary.get('passed_tests', 0)}")
-        print(f"Pass rate: {summary.get('pass_rate', 0):.1f}%")
+        # Flatten the report for CSV
+        rows = []
 
-        # Print detailed results
-        print("\n--- Hamiltonian Validation ---")
+        # Hamiltonian validation
         hamiltonian = report.get('hamiltonian_validation', {})
-        for test_name, result in hamiltonian.items():
-            if isinstance(result, dict) and 'pass' in result:
-                status = '✓' if result['pass'] else '✗'
-                print(f"  {status} {test_name}")
+        for test_name, test_data in hamiltonian.items():
+            if isinstance(test_data, dict):
+                rows.append({
+                    'category': 'hamiltonian_validation',
+                    'test_name': test_name,
+                    'passed': test_data.get('pass', False),
+                    'details': str(test_data)
+                })
 
-        print("\n--- Dynamics Validation ---")
+        # Dynamics validation
         dynamics = report.get('dynamics_validation', {})
-        for test_name, result in dynamics.items():
-            if isinstance(result, dict) and 'pass' in result:
-                status = '✓' if result['pass'] else '✗'
-                print(f"  {status} {test_name}")
+        for test_name, test_data in dynamics.items():
+            if isinstance(test_data, dict):
+                rows.append({
+                    'category': 'dynamics_validation',
+                    'test_name': test_name,
+                    'passed': test_data.get('pass', False),
+                    'details': str(test_data)
+                })
 
-        print("\n--- Classical Comparison ---")
-        comp = report.get('classical_comparison', {})
-        if 'error' not in comp:
-            print(f"  Quantum transfer efficiency: {comp.get('quantum_transfer', 0):.3f}")
-            print(f"  Classical transfer efficiency: {comp.get('classical_transfer', 0):.3f}")
-            print(f"  Quantum advantage: {comp.get('quantum_advantage_percent', 0):.1f}%")
+        # Summary
+        summary = report.get('summary', {})
+        rows.append({
+            'category': 'summary',
+            'test_name': 'total_tests',
+            'value': summary.get('total_tests', 0),
+            'details': ''
+        })
+        rows.append({
+            'category': 'summary',
+            'test_name': 'passed_tests',
+            'value': summary.get('passed_tests', 0),
+            'details': ''
+        })
+        rows.append({
+            'category': 'summary',
+            'test_name': 'pass_rate_percent',
+            'value': summary.get('pass_rate', 0),
+            'details': ''
+        })
+
+        df = pd.DataFrame(rows)
+        filename = f"{filename_prefix}_{timestamp}.csv"
+        filepath = os.path.join(output_dir, filename)
+        df.to_csv(filepath, index=False)
+
+        logger.info(f"Validation report saved to {filepath}")
+        return filepath
+
+    def plot_validation_results(
+        self,
+        report: Dict[str, Any],
+        filename_prefix: str = 'validation_report',
+        figures_dir: str = '../Graphics/'
+    ) -> str:
+        """
+        Plot validation results.
+
+        Parameters
+        ----------
+        report : dict
+            Results from run_full_validation_suite()
+        filename_prefix : str
+            Prefix for output filename
+        figures_dir : str
+            Directory to save figures
+
+        Returns
+        -------
+        str
+            Path to saved figure
+        """
+        os.makedirs(figures_dir, exist_ok=True)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+        fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+        fig.suptitle('Validation Report', fontsize=16, fontweight='bold')
+
+        # 1. Test pass/fail summary
+        ax1 = axes[0, 0]
+        summary = report.get('summary', {})
+        pass_rate = summary.get('pass_rate', 0)
+        labels = ['Passed', 'Failed']
+        sizes = [summary.get('passed_tests', 0), summary.get('total_tests', 0) - summary.get('passed_tests', 0)]
+        colors = ['#2ca02c', '#d62728']
+        explode = (0.05, 0)
+
+        if sum(sizes) > 0:
+            ax1.pie(sizes, explode=explode, labels=labels, colors=colors,
+                   autopct='%1.1f%%', shadow=True, startangle=90)
+            ax1.set_title(f'Test Results (Pass Rate: {pass_rate:.1f}%)', fontsize=12)
         else:
-            print(f"  Error: {comp['error']}")
+            ax1.text(0.5, 0.5, 'No test data', ha='center', va='center', transform=ax1.transAxes)
 
-        print("="*60)
+        # 2. Hamiltonian validation
+        ax2 = axes[0, 1]
+        hamiltonian = report.get('hamiltonian_validation', {})
+        tests = []
+        results = []
+        for test_name, test_data in hamiltonian.items():
+            if isinstance(test_data, dict) and 'pass' in test_data:
+                tests.append(test_name.replace('_', ' ').title())
+                results.append(1 if test_data['pass'] else 0)
+
+        if tests:
+            colors_bar = ['#2ca02c' if r == 1 else '#d62728' for r in results]
+            ax2.barh(tests, results, color=colors_bar, alpha=0.7, edgecolor='black')
+            ax2.set_xlim(0, 1.2)
+            ax2.set_xlabel('Pass (1) / Fail (0)', fontsize=10)
+            ax2.set_title('Hamiltonian Validation', fontsize=12)
+            ax2.grid(axis='x', alpha=0.3)
+        else:
+            ax2.text(0.5, 0.5, 'No hamiltonian tests', ha='center', va='center', transform=ax2.transAxes)
+
+        # 3. Dynamics validation
+        ax3 = axes[1, 0]
+        dynamics = report.get('dynamics_validation', {})
+        tests = []
+        results = []
+        for test_name, test_data in dynamics.items():
+            if isinstance(test_data, dict) and 'pass' in test_data:
+                tests.append(test_name.replace('_', ' ').title())
+                results.append(1 if test_data['pass'] else 0)
+
+        if tests:
+            colors_bar = ['#2ca02c' if r == 1 else '#d62728' for r in results]
+            ax3.barh(tests, results, color=colors_bar, alpha=0.7, edgecolor='black')
+            ax3.set_xlim(0, 1.2)
+            ax3.set_xlabel('Pass (1) / Fail (0)', fontsize=10)
+            ax3.set_title('Dynamics Validation', fontsize=12)
+            ax3.grid(axis='x', alpha=0.3)
+        else:
+            ax3.text(0.5, 0.5, 'No dynamics tests', ha='center', va='center', transform=ax3.transAxes)
+
+        # 4. Classical comparison
+        ax4 = axes[1, 1]
+        comparison = report.get('classical_comparison', {})
+        if comparison:
+            quantum_transfer = comparison.get('quantum_transfer', 0)
+            classical_transfer = comparison.get('classical_transfer', 0)
+            quantum_advantage = comparison.get('quantum_advantage_percent', 0)
+
+            categories = ['Quantum', 'Classical']
+            values = [quantum_transfer, classical_transfer]
+            colors_comp = ['#1f77b4', '#ff7f0e']
+
+            bars = ax4.bar(categories, values, color=colors_comp, alpha=0.7, edgecolor='black')
+            ax4.set_ylabel('Transfer Efficiency', fontsize=10)
+            ax4.set_title(f'Quantum vs Classical (Advantage: {quantum_advantage:.1f}%)', fontsize=12)
+            ax4.grid(axis='y', alpha=0.3)
+
+            # Add value labels
+            for bar, val in zip(bars, values):
+                height = bar.get_height()
+                ax4.text(bar.get_x() + bar.get_width()/2., height,
+                        f'{val:.3f}', ha='center', va='bottom', fontsize=9)
+        else:
+            ax4.text(0.5, 0.5, 'No comparison data', ha='center', va='center', transform=ax4.transAxes)
+
+        plt.tight_layout()
+
+        filename = f"{filename_prefix}_{timestamp}.pdf"
+        filepath = os.path.join(figures_dir, filename)
+        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+
+        png_filename = f"{filename_prefix}_{timestamp}.png"
+        png_filepath = os.path.join(figures_dir, png_filename)
+        plt.savefig(png_filepath, dpi=150, bbox_inches='tight')
+
+        plt.close()
+
+        logger.info(f"Validation plots saved to {filepath}")
+        return filepath
+
+
+if __name__ == "__main__":
+    # Example usage
+    logger.info("TestingValidationProtocols module - example usage")
+
+    # Create dummy simulator for demonstration
+    class DummySimulator:
+        def __init__(self):
+            self.hamiltonian = np.diag([12200, 12070, 11980, 12050, 12140, 12130, 12260])
+            self.temperature = 295
+
+        def simulate_dynamics(self, time_points):
+            n_steps = len(time_points)
+            return {
+                'populations': np.random.rand(n_steps, 7),
+                'coherences': np.random.rand(n_steps)
+            }
+
+    dummy_sim = DummySimulator()
+    validator = TestingValidationProtocols(dummy_sim, None)
+
+    # Run validation
+    report = validator.run_full_validation_suite()
+    print(f"Pass rate: {report['summary']['pass_rate']:.1f}%")

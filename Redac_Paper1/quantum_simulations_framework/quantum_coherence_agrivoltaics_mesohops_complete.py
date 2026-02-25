@@ -80,7 +80,7 @@ print()
 # 1. **Simulation parameters**: Temperature, dephasing rate, time points, max time, hierarchy depth
 # 2. **FMO Hamiltonian parameters**: Include reaction center flag, site energies, couplings
 # 3. **OPV parameters**: Bandgap, absorption coefficient, efficiency targets
-# 4. **Quantum metrics flags**: Enable/disable QFI, entropy, purity, concurrence calculations
+# 4. **Quantum metrics flags**: Enable/disable QFI, entropy, concurrence calculations
 # 5. **Optimization parameters**: maxiter, popsize, strategy for differential evolution
 # 6. **Solar spectrum parameters**: Wavelength range, geographic location, seasonal factors
 # 7. **Bath parameters**: Reorganization energy, Drude cutoff, vibronic modes
@@ -168,8 +168,6 @@ print()
 # |--------|--------|-------------|---------|
 # | **Quantum Fisher Information** | QFI | Parameter estimation sensitivity | QFI = 4(⟨ψ'|ψ'⟩ - |⟨ψ|ψ'⟩|²) |
 # | **Von Neumann Entropy** | S | System mixedness/information | S = -Tr[ρ log ρ] |
-# | **Purity** | γ | State coherence preservation | γ = Tr[ρ²] |
-# | **Linear Entropy** | Sₗ | Entropy approximation | Sₗ = 1 - Tr[ρ²] |
 # | **Concurrence** | C | Bipartite entanglement (Wootters) | C = max(0, λ₁-λ₂-λ₃-λ₄) |
 # | **Bipartite Entanglement** | E | Subsystem entanglement | Via reduced density matrices |
 # | **Multipartite Entanglement** | M | Multi-site entanglement | Across full chromophore network |
@@ -181,7 +179,6 @@ print()
 # ### Physical significance
 # 
 # - **QFI**: Quantifies quantum advantage in parameter estimation (e.g., light-harvesting efficiency)
-# - **Purity**: γ → 1 indicates pure quantum state; γ < 1 indicates environmental decoherence
 # - **Entanglement**: Non-classical correlations enabling coherent energy transfer
 # - **Discord**: Quantum correlations beyond entanglement, relevant for mixed states
 
@@ -194,8 +191,6 @@ print()
 metrics = [
     ('Quantum Fisher Information (QFI)', 'Parameter estimation sensitivity'),
     ('Von Neumann Entropy', 'System mixedness'),
-    ('Purity', 'State coherence preservation'),
-    ('Linear Entropy', 'Mixed state approximation'),
     ('Concurrence', 'Bipartite entanglement'),
     ('Bipartite Entanglement', 'Subsystem correlations'),
     ('Multipartite Entanglement', 'Multi-site quantum correlations'),
@@ -283,39 +278,27 @@ from core.constants import (
 )
 
 # Import core classes
-from core.hops_simulator import HopsSimulator
+from core import HopsSimulator
 
 # Import models
-from models.biodegradability_analyzer import BiodegradabilityAnalyzer
-from models.sensitivity_analyzer import SensitivityAnalyzer
-from models.testing_validation_protocols import TestingValidationProtocols
-from models.lca_analyzer import LCAAnalyzer
-from models.techno_economic_model import TechnoEconomicModel
-from models.spectroscopy_2des import Spectroscopy2DES
-from models.multi_scale_transformer import MultiScaleTransformer
+from models import (
+    BiodegradabilityAnalyzer,
+    SensitivityAnalyzer,
+    LCAAnalyzer,
+    TechnoEconomicModel,
+    Spectroscopy2DES,
+    MultiScaleTransformer,
+    QuantumDynamicsSimulator,
+    AgrivoltaicCouplingModel,
+    SpectralOptimizer,
+    EcoDesignAnalyzer,
+    EnvironmentalFactors
+)
+from simulations import TestingValidationProtocols
+from utils import CSVDataStorage
+from utils.figure_generator import FigureGenerator
 
-# Import other framework modules with fallback
-try:
-    from models.quantum_dynamics_simulator import QuantumDynamicsSimulator
-    from models.agrivoltaic_coupling_model import AgrivoltaicCouplingModel
-    from models.spectral_optimizer import SpectralOptimizer
-    from models.eco_design_analyzer import EcoDesignAnalyzer
-    from utils.csv_data_storage import CSVDataStorage
-    from utils.figure_generator import FigureGenerator
-    logger.info("Framework modules imported successfully")
-except ImportError as e:
-    logger.error(f"Failed to import framework modules: {e}")
-    raise
-
-# Import with fallback for missing modules
-try:
-    from environmental_factors import EnvironmentalFactors
-except ImportError:
-    try:
-        from models.environmental_factors import EnvironmentalFactors
-    except ImportError:
-        pass # Silenced warning
-        EnvironmentalFactors = None
+logger.info("Framework modules imported successfully")
 
 print("✓ Core modules imported successfully")
 print(f"  - FMO Site Energies: {FMO_SITE_ENERGIES_7}")
@@ -377,7 +360,7 @@ print()
 # - **Ensemble averaging** of multiple HOPS trajectories
 # - **Non-Markovian open quantum system** dynamics
 # - **Structured phonon bath** with Drude-Lorentz spectral density
-# - **Quantum metrics calculation** (QFI, entropy, purity, etc.)
+# - **Quantum metrics calculation** (QFI, entropy, etc.)
 
 # In[9]:
 

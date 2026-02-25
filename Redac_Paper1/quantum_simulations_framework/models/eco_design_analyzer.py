@@ -8,11 +8,12 @@ for sustainable organic photovoltaic materials in agrivoltaic systems.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 import logging
 from datetime import datetime
 import os
 
+from utils.orca_wrapper import OrcaRunner
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +39,7 @@ class EcoDesignAnalyzer:
        that predicts environmental degradation pathways.
     """
     
-    def __init__(self, target_pce: float = 0.18, target_biodegradability: float = 0.8, target_lc50: float = 400.0):
+    def __init__(self, target_pce: float = 0.18, target_biodegradability: float = 0.8, target_lc50: float = 400.0, orca_path: Optional[str] = None):
         """
         Initialize eco-design analyzer.
         
@@ -48,11 +49,20 @@ class EcoDesignAnalyzer:
             Target power conversion efficiency
         target_biodegradability : float
             Target biodegradability fraction (0-1)
+        orca_path : str, optional
+            Path to Orca executable
         """
         self.target_pce = target_pce
         self.target_biodegradability = target_biodegradability
         self.target_lc50 = target_lc50
         
+        # Initialize Orca wrapper
+        if orca_path:
+            self.orca_runner = OrcaRunner(orca_path)
+        else:
+            # Try default path from audit
+            self.orca_runner = OrcaRunner("/home/taamangtchu/orca_6_1_0/orca")
+            
         # Reference values for reactivity descriptors
         self.reference_values = {
             'chemical_potential': -4.0,  # eV
@@ -63,6 +73,36 @@ class EcoDesignAnalyzer:
         }
         
         logger.info("EcoDesignAnalyzer initialized")
+
+    def evaluate_material_sustainability_with_dft(self, 
+                                                material_name: str,
+                                                coords: str,
+                                                pce: float,
+                                                ionization_potential: float,
+                                                electron_affinity: float,
+                                                method: str = "wB97X-D4",
+                                                basis: str = "def2-SVP",
+                                                molecular_weight: float = 500.0,
+                                                bde: float = 300.0,
+                                                lc50: float = 500.0) -> Dict[str, Any]:
+        """
+        Evaluate sustainability using genuine DFT calculations via Orca.
+        """
+        logger.info(f"Starting genuine DFT-based sustainability evaluation for {material_name}")
+        
+        # 1. Run 3-state DFT to get Fukui functions and orbital energies
+        results = self.orca_runner.calculate_reactivity_descriptors(
+            material_name, coords, method, basis
+        )
+        
+        # 2. Proceed with sustainability evaluation
+        # Use obtained HOMO/LUMO for IP/EA if appropriate, or keep provided ones
+        return self.evaluate_material_sustainability(
+            material_name, pce, 
+            ionization_potential if ionization_potential else -results['homo_ev'],
+            electron_affinity if electron_affinity else -results['lumo_ev'],
+            results, molecular_weight, bde, lc50
+        )
     
     def calculate_fukui_functions(self, 
                                   n_electrons: int,
@@ -290,11 +330,15 @@ class EcoDesignAnalyzer:
         dict
             Sustainability evaluation results
         """
-        # Calculate reactivity descriptors
-        fukui_functions = self.calculate_fukui_functions(
-            n_electrons=50,  # Example value
-            electron_densities=electron_densities
-        )
+        # Calculate reactivity descriptors (only if not already provided)
+        if 'fukui_nucleophilic' in electron_densities:
+            fukui_functions = electron_densities
+            logger.debug("Using provided Fukui functions")
+        else:
+            fukui_functions = self.calculate_fukui_functions(
+                n_electrons=50,  # Example value
+                electron_densities=electron_densities
+            )
         
         global_indices = self.calculate_global_reactivity_indices(
             ionization_potential, electron_affinity
@@ -627,63 +671,3 @@ class EcoDesignAnalyzer:
         return filepath
 
 
-if __name__ == "__main__":
-    # Example usage
-    logger.info("Testing EcoDesignAnalyzer...")
-    
-    analyzer = EcoDesignAnalyzer()
-    
-    # Example molecular properties (these would come from DFT calculations)
-    example_electron_densities = {
-        'neutral': np.array([0.1, 0.15, 0.12, 0.18, 0.14, 0.16, 0.13, 0.17, 0.11, 0.19]),
-        'n_plus_1': np.array([0.08, 0.13, 0.10, 0.16, 0.12, 0.14, 0.11, 0.15, 0.09, 0.17]),
-        'n_minus_1': np.array([0.12, 0.17, 0.14, 0.20, 0.16, 0.18, 0.15, 0.19, 0.13, 0.21])
-    }
-    
-    # Evaluate Molecule A (PM6 derivative) and Molecule B (Y6-BO derivative) from QWEN.md specifications
-    result_a = analyzer.evaluate_material_sustainability(
-        "PM6 Derivative (Molecule A)",
-        pce=0.155,
-        ionization_potential=5.4,
-        electron_affinity=3.2,
-        electron_densities=example_electron_densities,
-        molecular_weight=2000.0, # Realistic MW for PM6 polymer segment
-        bde=285.0,
-        lc50=450.0
-    )
-    # result_a['b_index'] = 72.0  # Force index for exact demo match with paper
-    result_a['sustainability_score'] = 0.4 * (0.155/0.18) + 0.3 * (result_a['b_index']/70.0) + 0.3 * (450.0/400.0)
-
-    result_b = analyzer.evaluate_material_sustainability(
-        "Y6-BO Derivative (Molecule B)",
-        pce=0.152,
-        ionization_potential=5.6,
-        electron_affinity=3.8,
-        electron_densities={
-            'neutral': np.array([0.1, 0.12, 0.1, 0.15, 0.12, 0.14, 0.11, 0.16, 0.1, 0.18]),
-            'n_plus_1': np.array([0.09, 0.11, 0.09, 0.14, 0.11, 0.13, 0.10, 0.15, 0.09, 0.17]),
-            'n_minus_1': np.array([0.11, 0.13, 0.11, 0.16, 0.13, 0.15, 0.12, 0.17, 0.11, 0.19])
-        },
-        molecular_weight=2000.0,
-        bde=310.0,
-        lc50=420.0
-    )
-    # result_b['b_index'] = 58.0  # Force index for exact demo match with paper
-    result_b['sustainability_score'] = 0.4 * (0.152/0.18) + 0.3 * (result_b['b_index']/70.0) + 0.3 * (420.0/400.0)
-
-    for result in [result_a, result_b]:
-        print(f"Material: {result['material_name']}")
-        print(f"PCE: {result['pce']:.3f} (Score: {result['pce_score']:.3f})")
-        print(f"B-index: {result['b_index']:.1f}")
-        print(f"BDE: {result['bde']:.1f} kJ/mol")
-        print(f"LC50: {result['lc50']:.1f} mg/L")
-        print(f"Sustainability Score: {result['sustainability_score']:.3f}")
-        print("---")
-    
-    # Generate optimized materials
-    candidates = analyzer.optimize_material_design(n_candidates=5)
-    print("\nTop 3 randomly generated candidates:")
-    for i, candidate in enumerate(candidates[:3]):
-        print(f"{i+1}. {candidate['material_name']}: PCE={candidate['pce']:.3f}, "
-              f"B-index={candidate['b_index']:.1f}, LC50={candidate['lc50']:.1f}, "
-              f"Score={candidate['sustainability_score']:.3f}")

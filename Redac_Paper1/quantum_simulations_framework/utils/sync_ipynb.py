@@ -8,6 +8,10 @@ def patch_notebook():
         nb = nbformat.read(f, as_version=4)
         
     for cell in nb.cells:
+        # --- 0. Version Bump ---
+        if cell.cell_type == "code" and "Framework Version:" in cell.source:
+            cell.source = cell.source.replace("MesoHOPS Integration Complete", "2.0 (Verification Ready)")
+
         if cell.cell_type == "code":
             source = cell.source
             
@@ -93,6 +97,10 @@ csv_path = csv_storage.save_biodegradability_analysis(eco_data, filename_prefix=
     print(f"  - NPV: ${te_results['npv_usd']:,.2f}")
     print(f"  - Revenue per hectare: ${te_results['total_revenue_yr_usd_per_ha']:,.2f}/yr")
 """
+                # Update keys in print statements if they were old, but avoid duplication
+                if "total_revenue_yr_usd" in source and "total_revenue_yr_usd_per_ha" not in source:
+                    source = source.replace("total_revenue_yr_usd", "total_revenue_yr_usd_per_ha")
+                
                 source = source + te_block
 
             if "fig_path = lca_analyzer.plot_lca_results(lca_results)" in source:
@@ -103,9 +111,12 @@ csv_path = csv_storage.save_biodegradability_analysis(eco_data, filename_prefix=
     spec_2des = Spectroscopy2DES(system_size=H_fmo.shape[0])
     for T in [0.0, 500.0]:
         spec_results = spec_2des.simulate_2d_spectrum(H_fmo, waiting_time=T)
+        # Verify keys match new API
+        assert 'omega_exc' in spec_results
         spec_fig_path = spec_2des.plot_2d_spectrum(spec_results)
         print(f"  ✓ 2DES spectrum (T={T}fs) saved")
 """
+                source = source.replace("results['w_axis']", "results['omega_exc']")
                 source = source + spec_block
                 
             cell.source = source

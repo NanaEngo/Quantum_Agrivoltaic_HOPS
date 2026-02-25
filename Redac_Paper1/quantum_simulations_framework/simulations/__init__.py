@@ -5,7 +5,7 @@ This module contains simulation orchestration and workflow management.
 """
 
 try:
-    from simulations.testing_validation import TestingValidationProtocols
+    from .testing_validation import TestingValidationProtocols
 except ImportError:
     TestingValidationProtocols = None
 

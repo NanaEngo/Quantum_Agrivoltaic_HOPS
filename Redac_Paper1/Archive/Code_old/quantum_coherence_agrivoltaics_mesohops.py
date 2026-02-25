@@ -59,7 +59,7 @@ from core.hops_simulator import HopsSimulator
 # Import models
 from models.biodegradability_analyzer import BiodegradabilityAnalyzer
 from models.sensitivity_analyzer import SensitivityAnalyzer
-from models.testing_validation_protocols import TestingValidationProtocols
+from simulations.testing_validation import TestingValidationProtocols
 from models.lca_analyzer import LCAAnalyzer
 
 # Import MesoHOPS modules with fallback

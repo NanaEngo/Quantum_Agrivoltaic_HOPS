@@ -75,7 +75,8 @@ class Spectroscopy2DES:
                 spectrum += transfer_intensity * np.exp(-((W_tau - energies[i])**2 + (W_t - energies[j])**2) / (2 * linewidth**2))
         
         return {
-            'w_axis': w_axis,
+            'omega_exc': w_axis,
+            'omega_det': w_axis,
             'spectrum': spectrum,
             'waiting_time': waiting_time,
             'eigenenergies': energies
@@ -91,11 +92,11 @@ class Spectroscopy2DES:
         os.makedirs(output_dir, exist_ok=True)
         
         plt.figure(figsize=(8, 7))
-        plt.contourf(results['w_axis'], results['w_axis'], results['spectrum'].T, 50, cmap='nipy_spectral')
+        plt.contourf(results['omega_exc'], results['omega_det'], results['spectrum'].T, 50, cmap='nipy_spectral')
         plt.colorbar(label='Signal Intensity (arb. units)')
         
         # Draw diagonal line
-        plt.plot(results['w_axis'], results['w_axis'], 'w--', alpha=0.5)
+        plt.plot(results['omega_exc'], results['omega_exc'], 'w--', alpha=0.5)
         
         plt.xlabel(r'Excitation Frequency $\omega_{\tau}$ (cm$^{-1}$)')
         plt.ylabel(r'Detection Frequency $\omega_t$ (cm$^{-1}$)')

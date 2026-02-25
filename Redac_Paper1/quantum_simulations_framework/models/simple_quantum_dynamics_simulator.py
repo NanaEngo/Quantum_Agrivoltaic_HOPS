@@ -55,8 +55,6 @@ class SimpleQuantumDynamicsSimulator:
         coherences = np.zeros(n_times)
         qfi_values = np.zeros(n_times)
         entropy_values = np.zeros(n_times)
-        purity_values = np.zeros(n_times)
-        linear_entropy_values = np.zeros(n_times)
         
         # Calculate time evolution
         logger.info(f"Simulating quantum dynamics for {n_times} time points...")
@@ -93,10 +91,7 @@ class SimpleQuantumDynamicsSimulator:
                         off_diag_sum += np.abs(rho_t[m, n])
             coherences[i] = off_diag_sum
             
-            # Calculate purity: Tr[rho^2]
-            purity = np.real(np.trace(rho_t @ rho_t))
-            purity_values[i] = purity
-            
+
             # Calculate von Neumann entropy: -Tr[rho * log(rho)]
             eigenvals_rho = np.linalg.eigvals(rho_t)
             eigenvals_rho = np.real(eigenvals_rho)  # Take real part to handle numerical errors
@@ -115,9 +110,7 @@ class SimpleQuantumDynamicsSimulator:
                     entropy += -ev * np.log(ev)
             entropy_values[i] = entropy
             
-            # Calculate linear entropy: 1 - Tr[rho^2]
-            linear_entropy_values[i] = 1.0 - purity_values[i]
-            
+
             # Simplified QFI calculation
             qfi_values[i] = 4 * np.var(np.real(np.diag(rho_t)))
             
@@ -132,8 +125,6 @@ class SimpleQuantumDynamicsSimulator:
             'coherences': coherences,
             'qfi': qfi_values,
             'entropy': entropy_values,
-            'purity': purity_values,
-            'linear_entropy': linear_entropy_values,
             'bipartite_ent': np.zeros(n_times),
             'multipartite_ent': np.zeros(n_times),
             'pairwise_concurrence': np.zeros(n_times),

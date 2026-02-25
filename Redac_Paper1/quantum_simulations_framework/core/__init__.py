@@ -4,7 +4,7 @@ Core module for quantum agrivoltaic simulations.
 This module contains fundamental classes and constants for the simulation framework.
 """
 
-from core.constants import (
+from .constants import (
     DEFAULT_TEMPERATURE,
     DEFAULT_MAX_HIERARCHY,
     DEFAULT_TIME_POINTS,
@@ -14,7 +14,7 @@ from core.constants import (
 )
 
 try:
-    from core.hops_simulator import HopsSimulator
+    from .hops_simulator import HopsSimulator
 except ImportError:
     HopsSimulator = None
 

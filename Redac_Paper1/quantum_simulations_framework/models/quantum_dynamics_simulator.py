@@ -329,8 +329,6 @@ class QuantumDynamicsSimulator:
         coherences = np.zeros(n_times)
         qfi_values = np.zeros(n_times)
         entropy_values = np.zeros(n_times)
-        purity_values = np.zeros(n_times)
-        linear_entropy_values = np.zeros(n_times)
         bipartite_ent_values = np.zeros(n_times)
         multipartite_ent_values = np.zeros(n_times)
         pairwise_concurrence_values = np.zeros(n_times)
@@ -364,16 +362,6 @@ class QuantumDynamicsSimulator:
                 entropy_values[i] = self.calculate_entropy_von_neumann(rho)
             except Exception:
                 entropy_values[i] = 0.0
-
-            try:
-                purity_values[i] = self.calculate_purity(rho)
-            except Exception:
-                purity_values[i] = 0.0
-
-            try:
-                linear_entropy_values[i] = self.calculate_linear_entropy(rho)
-            except Exception:
-                linear_entropy_values[i] = 0.0
 
             try:
                 bipartite_ent_values[i] = self.calculate_bipartite_entanglement(rho)
@@ -415,8 +403,6 @@ class QuantumDynamicsSimulator:
             'coherences': coherences,
             'qfi': qfi_values,
             'entropy': entropy_values,
-            'purity': purity_values,
-            'linear_entropy': linear_entropy_values,
             'bipartite_ent': bipartite_ent_values,
             'multipartite_ent': multipartite_ent_values,
             'pairwise_concurrence': pairwise_concurrence_values,
@@ -589,29 +575,7 @@ class QuantumDynamicsSimulator:
         entropy = -np.sum(eigenvals * np.log(eigenvals))
         return entropy
     
-    def calculate_purity(self, rho):
-        """Calculate the purity of a quantum state."""
-        # Calculate Tr[ρ²]
-        purity = np.real(np.trace(rho @ rho))
-        return purity
 
-    def calculate_linear_entropy(self, rho):
-        """Calculate the linear entropy of a quantum state."""
-        d = rho.shape[0]  # Hilbert space dimension
-        
-        if d == 1:
-            return 0.0
-        
-        # Calculate Tr[ρ²]
-        tr_rho_sq = np.real(np.trace(rho @ rho))
-        
-        # Calculate linear entropy
-        linear_entropy = (d / (d - 1)) * (1 - tr_rho_sq)
-        
-        # Ensure it's within valid range
-        linear_entropy = np.clip(linear_entropy, 0.0, 1.0)
-        return linear_entropy
-    
     def calculate_concurrence(self, rho):
         """Calculate the concurrence of a quantum state (for 2-qubit systems)."""
         n = rho.shape[0]
@@ -926,8 +890,6 @@ def save_quantum_dynamics_results(
     coherences = results.get('coherences', np.array([]))
     qfi = results.get('qfi', np.array([]))
     entropy = results.get('entropy', np.array([]))
-    purity = results.get('purity', np.array([]))
-    linear_entropy = results.get('linear_entropy', np.array([]))
     bipartite_ent = results.get('bipartite_ent', np.array([]))
     multipartite_ent = results.get('multipartite_ent', np.array([]))
     pairwise_concurrence = results.get('pairwise_concurrence', np.array([]))
@@ -951,10 +913,6 @@ def save_quantum_dynamics_results(
         data['qfi'] = qfi
     if len(entropy) > 0:
         data['entropy'] = entropy
-    if len(purity) > 0:
-        data['purity'] = purity
-    if len(linear_entropy) > 0:
-        data['linear_entropy'] = linear_entropy
     if len(bipartite_ent) > 0:
         data['bipartite_ent'] = bipartite_ent
     if len(multipartite_ent) > 0:
@@ -1009,10 +967,9 @@ def plot_quantum_dynamics_results(
     coherences = results.get('coherences', np.array([]))
     qfi = results.get('qfi', np.array([]))
     entropy = results.get('entropy', np.array([]))
-    purity = results.get('purity', np.array([]))
 
     # Create figure with subplots
-    n_metrics = sum(x.size > 0 for x in [coherences, qfi, entropy, purity])
+    n_metrics = sum(x.size > 0 for x in [coherences, qfi, entropy])
     n_plots = max(2, n_metrics + 1)  # At least populations and one metric
     
     n_cols = 2
@@ -1048,8 +1005,7 @@ def plot_quantum_dynamics_results(
     metrics_to_plot = [
         (coherences, 'Coherence', 'coherences'),
         (qfi, 'QFI', 'qfi'),
-        (entropy, 'Entropy', 'entropy'),
-        (purity, 'Purity', 'purity')
+        (entropy, 'Entropy', 'entropy')
     ]
     
     for metric_values, metric_label, metric_key in metrics_to_plot:

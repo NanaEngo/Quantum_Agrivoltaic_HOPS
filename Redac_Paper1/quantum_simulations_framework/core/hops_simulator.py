@@ -30,51 +30,22 @@ except ImportError:
     SBD_HopsTrajectory = None
     PT_HopsNoise = None
 
-# Import fallback simulators - we'll check if they can be instantiated in the init method
+# Import fallback simulators from models package
 try:
-    from .quantum_dynamics_simulator import QuantumDynamicsSimulator as QDS
-    # Check if it can be used by testing if MesoHOPS is available
-    try:
-        # Create a minimal test instance to see if it fails due to missing MesoHOPS
-        dummy_ham = np.array([[0.0]])
-        test_sim = QDS(dummy_ham)
-        QuantumDynamicsSimulator = QDS
-    except ImportError:
-        # MesoHOPS not available, so this simulator won't work
-        QuantumDynamicsSimulator = None
-    except Exception:
-        # Some other error during instantiation
-        QuantumDynamicsSimulator = None
+    from models import QuantumDynamicsSimulator, SimpleQuantumDynamicsSimulator
 except ImportError:
-    try:
-        from models.quantum_dynamics_simulator import QuantumDynamicsSimulator as QDS
-        # Check if it can be used by testing if MesoHOPS is available
-        try:
-            # Create a minimal test instance to see if it fails due to missing MesoHOPS
-            dummy_ham = np.array([[0.0]])
-            test_sim = QDS(dummy_ham)
-            QuantumDynamicsSimulator = QDS
-        except ImportError:
-            # MesoHOPS not available, so this simulator won't work
-            QuantumDynamicsSimulator = None
-        except Exception:
-            # Some other error during instantiation
-            QuantumDynamicsSimulator = None
-    except ImportError:
-        QuantumDynamicsSimulator = None
+    QuantumDynamicsSimulator = None
+    SimpleQuantumDynamicsSimulator = None
 
-# Import simple fallback simulator
-try:
-    from .simple_quantum_dynamics_simulator import SimpleQuantumDynamicsSimulator
-except ImportError:
-    try:
-        from models.simple_quantum_dynamics_simulator import SimpleQuantumDynamicsSimulator
-    except ImportError:
-        SimpleQuantumDynamicsSimulator = None
+from .constants import (
+    DEFAULT_TEMPERATURE, 
+    DEFAULT_MAX_HIERARCHY, 
+    DEFAULT_REORGANIZATION_ENERGY, 
+    DEFAULT_DRUDE_CUTOFF
+)
+from utils.logging_config import get_logger
 
-from .constants import DEFAULT_TEMPERATURE, DEFAULT_MAX_HIERARCHY, DEFAULT_REORGANIZATION_ENERGY, DEFAULT_DRUDE_CUTOFF
-
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 class HopsSimulator:
@@ -146,8 +117,9 @@ class HopsSimulator:
 
         if self.use_mesohops:
             self._init_mesohops(**kwargs)
-        else:
-            self._init_fallback(**kwargs)
+        
+        # Always initialize fallback as well, just in case
+        self._init_fallback(**kwargs)
 
     def _drude_correlation_function(self, t_axis, lambda_reorg, gamma_cutoff, temperature):
         """
@@ -405,9 +377,20 @@ class HopsSimulator:
                 logger.info("Engaging SBD_HopsTrajectory for compressed environmental simulation.")
             elif self.use_pt_hops and PT_HopsNoise is not None:
                 logger.info("Engaging PT_HopsNoise for Process Tensor dynamics.")
+                # We will handle PT-HOPS by overriding the noise component after trajectory init
+                pass
 
             # Create HOPS trajectory with all parameters
             trajectory = TrajectoryClass(**traj_kwargs)
+            
+            # If PT-HOPS, inject our custom noise adapter
+            if self.use_pt_hops and PT_HopsNoise is not None:
+                pt_noise = PT_HopsNoise(noise_param, self.system_param['PARAM_NOISE1'])
+                # Some mesohops versions use .noise, others .noise_engine
+                if hasattr(trajectory, 'noise'):
+                    trajectory.noise = pt_noise
+                # Prepare the Process Tensor on the trajectory's time grid
+                pt_noise._prepare_noise(self.system_param['L_NOISE1'], time_points=time_points)
             
             # Set initial state
             if initial_state is None:
@@ -467,8 +450,6 @@ class HopsSimulator:
             # Calculate other quantum metrics
             qfi_values = np.zeros(n_times)
             entropy_values = np.zeros(n_times)
-            purity_values = np.zeros(n_times)
-            linear_entropy_values = np.zeros(n_times)
             
             for i in range(n_times):
                 # Calculate density matrix from ensemble average if multiple trajectories
@@ -480,9 +461,7 @@ class HopsSimulator:
                 if trace_rho > 1e-10:
                     rho = rho / trace_rho
                 
-                purity_values[i] = self._calculate_purity(rho)
                 entropy_values[i] = self._calculate_von_neumann_entropy(rho)
-                linear_entropy_values[i] = self._calculate_linear_entropy(rho)
                 
                 # QFI calculation (simplified)
                 try:
@@ -498,20 +477,14 @@ class HopsSimulator:
                 'coherences': coherences,
                 'qfi': qfi_values,
                 'entropy': entropy_values,
-                'purity': purity_values,
-                'linear_entropy': linear_entropy_values,
                 'simulator': 'MesoHOPS',
                 'n_traj_used': 1,  # Single trajectory
                 'max_hierarchy_used': max_hierarchy
             }
             
         except Exception as e:
-            logger.error(f"MesoHOPS simulation failed: {e}")
+            import traceback; traceback.print_exc(); logger.error(f"MesoHOPS simulation failed: {e}")
             raise RuntimeError(f"MesoHOPS simulation failed: {e}")
-
-    def _calculate_purity(self, rho: NDArray[np.float64]) -> float:
-        """Calculate the purity of a density matrix: Tr[rho^2]."""
-        return float(np.real(np.trace(np.dot(rho, rho))))
 
     def _calculate_von_neumann_entropy(self, rho: NDArray[np.float64]) -> float:
         """Calculate the von Neumann entropy: -Tr[rho * log(rho)]."""
@@ -524,10 +497,6 @@ class HopsSimulator:
         entropy = -np.sum(eigenvals * np.log(eigenvals))
         return float(entropy)
 
-    def _calculate_linear_entropy(self, rho: NDArray[np.float64]) -> float:
-        """Calculate the linear entropy: 1 - Tr[rho^2]."""
-        purity = self._calculate_purity(rho)
-        return float(1.0 - purity)
 
     def _calculate_qfi(self, rho: NDArray[np.float64], H: NDArray[np.float64]) -> float:
         """
