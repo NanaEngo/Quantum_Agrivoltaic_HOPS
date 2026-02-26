@@ -6,25 +6,26 @@ MesoHOPS (Mesoscale Hierarchy of Pure States) framework for simulating
 energy transfer in photosynthetic systems and quantum-enhanced agrivoltaics.
 """
 
-import numpy as np
-from scipy.sparse import csc_matrix
-import scipy.linalg as la
-from typing import Dict, Any
 import logging
-from datetime import datetime
 import os
+from datetime import datetime
+from typing import Any, Dict
 
+import numpy as np
+import scipy.linalg as la
+from scipy.sparse import csc_matrix
 
 logger = logging.getLogger(__name__)
 
 
 try:
+    import mesohops.eom.hops_eom as _eom_mod
+    from mesohops.trajectory.hops_trajectory import HopsTrajectory
     from mesohops.util.bath_corr_functions import (
         bcf_convert_dl_to_exp_with_Matsubara,
         bcf_convert_sdl_to_exp,
     )
-    import mesohops.eom.hops_eom as _eom_mod
-    from mesohops.trajectory.hops_trajectory import HopsTrajectory
+
     MESOHOPS_AVAILABLE = True
 except ImportError:
     # Fallback or warning if mesohops is not installed
@@ -81,21 +82,30 @@ class QuantumDynamicsSimulator:
     Adolphs & Renger, Biophys. J. 91, 2778–2797 (2006).
     """
 
-    def __init__(self, hamiltonian, temperature=295, lambda_reorg=35.0,
-                 gamma_dl=50.0, k_matsubara=0, max_hier=10, n_traj=50,
-                 vibronic_modes=None):
+    def __init__(
+        self,
+        hamiltonian,
+        temperature=295,
+        lambda_reorg=35.0,
+        gamma_dl=50.0,
+        k_matsubara=0,
+        max_hier=10,
+        n_traj=50,
+        vibronic_modes=None,
+    ):
 
         if not MESOHOPS_AVAILABLE:
-            raise ImportError("MesoHOPS is required but not available. "
-                            "Please install it: pip install mesohops")
+            raise ImportError(
+                "MesoHOPS is required but not available. Please install it: pip install mesohops"
+            )
 
         # Patch EOM_DICT_TYPES for adHOPS support in MesoHOPS v1.6.0
         if MESOHOPS_AVAILABLE and _eom_mod is not None:
-            if 'ADAPTIVE_H' not in _eom_mod.EOM_DICT_TYPES:
-                _eom_mod.EOM_DICT_TYPES['ADAPTIVE_H'] = [bool]
-                _eom_mod.EOM_DICT_TYPES['ADAPTIVE_S'] = [bool]
-                _eom_mod.EOM_DICT_TYPES['UPDATE_STEP'] = [float, bool, type(None)]
-                _eom_mod.EOM_DICT_TYPES['F_DISCARD'] = [float, int]
+            if "ADAPTIVE_H" not in _eom_mod.EOM_DICT_TYPES:
+                _eom_mod.EOM_DICT_TYPES["ADAPTIVE_H"] = [bool]
+                _eom_mod.EOM_DICT_TYPES["ADAPTIVE_S"] = [bool]
+                _eom_mod.EOM_DICT_TYPES["UPDATE_STEP"] = [float, bool, type(None)]
+                _eom_mod.EOM_DICT_TYPES["F_DISCARD"] = [float, int]
 
         self.H_raw = np.array(hamiltonian, dtype=complex)
         self.n_sites = self.H_raw.shape[0]
@@ -124,7 +134,7 @@ class QuantumDynamicsSimulator:
         vib_mode_list = []
         for vm in self.vibronic_modes:
             g_vib, w_vib = bcf_convert_sdl_to_exp(
-                vm['lambda'], vm['gamma'], vm['omega'], temperature
+                vm["lambda"], vm["gamma"], vm["omega"], temperature
             )
             vib_mode_list.append((g_vib, w_vib))
         self.n_modes_vib = len(vib_mode_list)
@@ -161,9 +171,11 @@ class QuantumDynamicsSimulator:
                 self.l_noise1.append(self._L_ops[site_idx])
                 self.param_noise1.append([g_vib, w_vib])
 
-        logger.info(f"Bath decomposition: {self.n_modes_dl} DL modes "
-              f"+ {self.n_modes_vib} vibronic modes per site "
-              f"= {self.n_modes_per_site * self.n_sites} total hierarchy modes")
+        logger.info(
+            f"Bath decomposition: {self.n_modes_dl} DL modes "
+            f"+ {self.n_modes_vib} vibronic modes per site "
+            f"= {self.n_modes_per_site * self.n_sites} total hierarchy modes"
+        )
 
     @staticmethod
     def _alpha_noise1(t_axis, g, w):
@@ -216,8 +228,7 @@ class QuantumDynamicsSimulator:
         )
         return hops
 
-    def simulate_dynamics(self, initial_state=None, time_points=None,
-                          dt_save=0.5, seeds=None):
+    def simulate_dynamics(self, initial_state=None, time_points=None, dt_save=0.5, seeds=None):
         """
         Run ensemble-averaged non-Markovian dynamics via MesoHOPS.
 
@@ -257,6 +268,7 @@ class QuantumDynamicsSimulator:
             - 'mandel_q': np.ndarray (n_times,)
         """
         import warnings
+
         warnings.filterwarnings("ignore", category=RuntimeWarning)
 
         n_sites = self.n_sites
@@ -281,8 +293,10 @@ class QuantumDynamicsSimulator:
             seeds = list(range(n_traj))
 
         # ── Run ensemble of trajectories ─────────────────────────────
-        logger.info(f"  Running {n_traj} HOPS trajectories ({t_max:.0f} fs, "
-              f"dt={dt_save} fs, MAXHIER={self.max_hier})...")
+        logger.info(
+            f"  Running {n_traj} HOPS trajectories ({t_max:.0f} fs, "
+            f"dt={dt_save} fs, MAXHIER={self.max_hier})..."
+        )
 
         all_psi_trajs = []
         t_axis = None
@@ -290,35 +304,46 @@ class QuantumDynamicsSimulator:
         for k, seed in enumerate(seeds):
             try:
                 hops = self._build_hops_trajectory(seed, t_max, dt_save)
-                required_tau = hops.noise1.param['TAU'] / hops.integrator_step
+                required_tau = hops.noise1.param["TAU"] / hops.integrator_step
                 hops.initialize(psi_0.copy())
                 hops.propagate(t_max, required_tau)
 
-                psi_traj = np.array(hops.storage.data['psi_traj'])[:, :n_sites]
+                psi_traj = np.array(hops.storage.data["psi_traj"])[:, :n_sites]
                 if t_axis is None:
-                    t_axis = np.array(hops.storage.data['t_axis'])
+                    t_axis = np.array(hops.storage.data["t_axis"])
 
                 # Check for NaN
                 if not np.any(np.isnan(psi_traj)):
                     all_psi_trajs.append(psi_traj)
 
                 if (k + 1) % max(1, n_traj // 5) == 0 or k == n_traj - 1:
-                    logger.info(f"    Trajectory {k+1}/{n_traj} completed "
-                          f"({len(all_psi_trajs)} valid)")
+                    logger.info(
+                        f"    Trajectory {k + 1}/{n_traj} completed ({len(all_psi_trajs)} valid)"
+                    )
 
-            except Exception as e:
-                # CRITICAL FIX: Catch Numba/NumPy version mismatch
+            except RuntimeError as e:
+                # CRITICAL FIX: Catch specific RuntimeErrors such as Numba/NumPy mismatch
                 if "Numba needs NumPy" in str(e):
-                    raise RuntimeError(f"Numba/NumPy version mismatch: {e}. "
-                                       f"Please downgrade NumPy to < 2.4 (e.g., `pip install numpy<2.4`).") from e
-                
-                logger.warning(f"    Trajectory {k+1}/{n_traj} failed: {str(e)[:60]}")
+                    raise RuntimeError(
+                        f"Numba/NumPy version mismatch: {e}. "
+                        f"Please downgrade NumPy to < 2.4 (e.g., `pip install numpy<2.4`)."
+                    ) from e
+
+                logger.warning(
+                    f"    Trajectory {k + 1}/{n_traj} failed (RuntimeError): {str(e)[:120]}"
+                )
+                continue
+
+            except (AttributeError, ValueError, TypeError, np.linalg.LinAlgError) as e:
+                # Recoverable numeric / attribute errors: log and continue
+                logger.warning(f"    Trajectory {k + 1}/{n_traj} failed: {str(e)[:120]}")
                 continue
 
         n_valid = len(all_psi_trajs)
         if n_valid == 0:
-            raise RuntimeError("All HOPS trajectories failed. "
-                               "Try increasing MAXHIER or decreasing dt_save.")
+            raise RuntimeError(
+                "All HOPS trajectories failed. Try increasing MAXHIER or decreasing dt_save."
+            )
 
         logger.info(f"  Ensemble: {n_valid}/{n_traj} valid trajectories")
 
@@ -355,60 +380,68 @@ class QuantumDynamicsSimulator:
 
             try:
                 qfi_values[i] = self.calculate_qfi(rho, self.H_raw)
-            except Exception:
+            except (np.linalg.LinAlgError, ValueError, TypeError) as e:
+                logger.debug(f"QFI calculation failed at t={i}: {e}")
                 qfi_values[i] = 0.0
 
             try:
                 entropy_values[i] = self.calculate_entropy_von_neumann(rho)
-            except Exception:
+            except (np.linalg.LinAlgError, ValueError, TypeError) as e:
+                logger.debug(f"Entropy calculation failed at t={i}: {e}")
                 entropy_values[i] = 0.0
 
             try:
                 bipartite_ent_values[i] = self.calculate_bipartite_entanglement(rho)
-            except Exception:
+            except (np.linalg.LinAlgError, ValueError, TypeError) as e:
+                logger.debug(f"Bipartite entanglement calc failed at t={i}: {e}")
                 bipartite_ent_values[i] = 0.0
 
             try:
                 multipartite_ent_values[i] = self.calculate_multipartite_entanglement(rho)
-            except Exception:
+            except (np.linalg.LinAlgError, ValueError, TypeError) as e:
+                logger.debug(f"Multipartite entanglement calc failed at t={i}: {e}")
                 multipartite_ent_values[i] = 0.0
 
             try:
                 pairwise_concurrence_values[i] = self.calculate_pairwise_concurrence(rho)
-            except Exception:
+            except (np.linalg.LinAlgError, ValueError, TypeError) as e:
+                logger.debug(f"Pairwise concurrence calc failed at t={i}: {e}")
                 pairwise_concurrence_values[i] = 0.0
 
             try:
                 discord_values[i] = self.calculate_quantum_discord(rho)
-            except Exception:
+            except (np.linalg.LinAlgError, ValueError, TypeError) as e:
+                logger.debug(f"Quantum discord calc failed at t={i}: {e}")
                 discord_values[i] = 0.0
 
             try:
                 # Fidelity relative to initial state
                 rho_0 = density_matrices[0]
                 fidelity_values[i] = self.calculate_fidelity(rho, rho_0)
-            except Exception:
+            except (np.linalg.LinAlgError, ValueError, TypeError) as e:
+                logger.debug(f"Fidelity calc failed at t={i}: {e}")
                 fidelity_values[i] = 1.0 if i == 0 else 0.0
 
             try:
                 # Mandel Q requires vibrational occupations - using population weighted average as dummy
                 mandel_q_values[i] = self.calculate_mandel_q_parameter(populations[i])
-            except Exception:
+            except (ValueError, TypeError) as e:
+                logger.debug(f"Mandel Q calc failed at t={i}: {e}")
                 mandel_q_values[i] = 0.0
 
         return {
-            't_axis': t_axis,
-            'density_matrices': density_matrices,
-            'populations': populations,
-            'coherences': coherences,
-            'qfi': qfi_values,
-            'entropy': entropy_values,
-            'bipartite_ent': bipartite_ent_values,
-            'multipartite_ent': multipartite_ent_values,
-            'pairwise_concurrence': pairwise_concurrence_values,
-            'discord': discord_values,
-            'fidelity': fidelity_values,
-            'mandel_q': mandel_q_values
+            "t_axis": t_axis,
+            "density_matrices": density_matrices,
+            "populations": populations,
+            "coherences": coherences,
+            "qfi": qfi_values,
+            "entropy": entropy_values,
+            "bipartite_ent": bipartite_ent_values,
+            "multipartite_ent": multipartite_ent_values,
+            "pairwise_concurrence": pairwise_concurrence_values,
+            "discord": discord_values,
+            "fidelity": fidelity_values,
+            "mandel_q": mandel_q_values,
         }
 
     def calculate_etr(self, populations, time_points):
@@ -497,13 +530,14 @@ class QuantumDynamicsSimulator:
             for j in range(n):
                 denom = eigenvals[i] + eigenvals[j]
                 if denom > 1e-12:
-                    H_ij = np.abs(eigenvecs[:, i].conj() @ H @ eigenvecs[:, j])**2
-                    qfi += 2.0 * (eigenvals[i] - eigenvals[j])**2 / denom * H_ij
+                    H_ij = np.abs(eigenvecs[:, i].conj() @ H @ eigenvecs[:, j]) ** 2
+                    qfi += 2.0 * (eigenvals[i] - eigenvals[j]) ** 2 / denom * H_ij
 
         return float(np.real(qfi))
 
-    def analyze_robustness(self, temperature_range=(273, 320),
-                           disorder_strengths=(0, 100), n_points=5):
+    def analyze_robustness(
+        self, temperature_range=(273, 320), disorder_strengths=(0, 100), n_points=5
+    ):
         """
         Robustness analysis across temperature and static disorder.
 
@@ -522,26 +556,29 @@ class QuantumDynamicsSimulator:
             Temperature and disorder sensitivity data.
         """
         results = {
-            'temperature_sensitivity': [],
-            'disorder_sensitivity': [],
-            'temperatures': [],
-            'disorder_strengths': []
+            "temperature_sensitivity": [],
+            "disorder_sensitivity": [],
+            "temperatures": [],
+            "disorder_strengths": [],
         }
 
         # Temperature sweep
         temperatures = np.linspace(temperature_range[0], temperature_range[1], n_points)
         for temp in temperatures:
             sim = QuantumDynamicsSimulator(
-                self.H_raw, temperature=temp,
-                lambda_reorg=self.lambda_reorg, gamma_dl=self.gamma_dl,
+                self.H_raw,
+                temperature=temp,
+                lambda_reorg=self.lambda_reorg,
+                gamma_dl=self.gamma_dl,
                 k_matsubara=self.k_matsubara,
-                max_hier=self.max_hier, n_traj=max(5, self.n_traj // 10),
+                max_hier=self.max_hier,
+                n_traj=max(5, self.n_traj // 10),
             )
             res = sim.simulate_dynamics(time_points=np.linspace(0, 200, 200), dt_save=1.0)
-            pops = res['populations']
+            pops = res["populations"]
             etr_proxy = np.sum(pops[-1, 1:])
-            results['temperature_sensitivity'].append(etr_proxy)
-            results['temperatures'].append(temp)
+            results["temperature_sensitivity"].append(etr_proxy)
+            results["temperatures"].append(temp)
 
         # Disorder sweep
         disorder_vals = np.linspace(disorder_strengths[0], disorder_strengths[1], n_points)
@@ -549,16 +586,19 @@ class QuantumDynamicsSimulator:
             disorder_vec = np.random.normal(0, max(disorder, 0.01), self.n_sites)
             ham_dis = self.H_raw + np.diag(disorder_vec)
             sim = QuantumDynamicsSimulator(
-                ham_dis, temperature=self.temperature,
-                lambda_reorg=self.lambda_reorg, gamma_dl=self.gamma_dl,
+                ham_dis,
+                temperature=self.temperature,
+                lambda_reorg=self.lambda_reorg,
+                gamma_dl=self.gamma_dl,
                 k_matsubara=self.k_matsubara,
-                max_hier=self.max_hier, n_traj=max(5, self.n_traj // 10),
+                max_hier=self.max_hier,
+                n_traj=max(5, self.n_traj // 10),
             )
             res = sim.simulate_dynamics(time_points=np.linspace(0, 200, 200), dt_save=1.0)
-            pops = res['populations']
+            pops = res["populations"]
             etr_proxy = np.sum(pops[-1, 1:])
-            results['disorder_sensitivity'].append(etr_proxy)
-            results['disorder_strengths'].append(disorder)
+            results["disorder_sensitivity"].append(etr_proxy)
+            results["disorder_strengths"].append(disorder)
 
         return results
 
@@ -566,107 +606,106 @@ class QuantumDynamicsSimulator:
         """Calculate the von Neumann entropy of a quantum state."""
         # Calculate eigenvalues
         eigenvals = np.linalg.eigvals(rho)
-        
+
         # Take only the real part and ensure non-negative
         eigenvals = np.real(eigenvals)
         eigenvals = np.clip(eigenvals, a_min=1e-12, a_max=None)
-        
+
         # Calculate entropy: -Σ λᵢ log λᵢ
         entropy = -np.sum(eigenvals * np.log(eigenvals))
         return entropy
-    
 
     def calculate_concurrence(self, rho):
         """Calculate the concurrence of a quantum state (for 2-qubit systems)."""
         n = rho.shape[0]
-        
+
         if n < 2:
             return 0.0
-        
+
         # For systems larger than 2x2, calculate average pairwise concurrence
         if n > 2:
             total_concurrence = 0.0
             n_pairs = 0
-            
+
             # Calculate concurrence for each pair of sites
             for i in range(n):
-                for j in range(i+1, n):
+                for j in range(i + 1, n):
                     # Extract 2x2 reduced density matrix for sites i,j
                     rho_ij = np.zeros((2, 2), dtype=complex)
-                    
+
                     # Create reduced density matrix by tracing out other sites
                     # For simplicity, we'll use a direct approach for 2x2 subsystem
                     rho_ij[0, 0] = rho[i, i]
                     rho_ij[0, 1] = rho[i, j]
                     rho_ij[1, 0] = rho[j, i]
                     rho_ij[1, 1] = rho[j, j]
-                    
+
                     # Calculate concurrence for this pair
                     pair_concurrence = self._calculate_2x2_concurrence(rho_ij)
                     total_concurrence += pair_concurrence
                     n_pairs += 1
-            
+
             return total_concurrence / n_pairs if n_pairs > 0 else 0.0
         else:
             # For 2x2 system, calculate directly
             return self._calculate_2x2_concurrence(rho)
-    
+
     def _calculate_2x2_concurrence(self, rho):
         """Helper to calculate concurrence for a 2x2 density matrix."""
         # Define the spin-flipped density matrix
         sigma_y = np.array([[0, -1j], [1j, 0]])
         rho_tilde = np.kron(sigma_y, sigma_y) @ rho.conj() @ np.kron(sigma_y, sigma_y)
-        
+
         # Calculate R = sqrt(rho * rho_tilde)
         R = la.sqrtm(rho @ rho_tilde)
-        
+
         # Calculate eigenvalues of R
         evals = np.linalg.eigvals(R)
         evals = np.sort(np.real(evals))[::-1]  # Sort in descending order
-        
+
         # Calculate concurrence
         c = max(0, evals[0] - evals[1] - evals[2] - evals[3])
         return c
-    
+
     def calculate_bipartite_entanglement(self, rho, partition=None):
         """Calculate bipartite entanglement using von Neumann entropy of reduced density matrix."""
         n = rho.shape[0]
-        
+
         if partition is None:
             # Default partition: first half vs second half
             partition = list(range(n // 2))
-        
+
         if len(partition) == 0 or len(partition) == n:
             return 0.0
-        
+
         # Calculate reduced density matrix by tracing out subsystem B
         reduced_rho = np.zeros((len(partition), len(partition)), dtype=complex)
-        
+
         for i, idx_i in enumerate(partition):
             for j, idx_j in enumerate(partition):
                 reduced_rho[i, j] = rho[idx_i, idx_j]
-        
+
         # Normalize the reduced density matrix
         trace = np.trace(reduced_rho)
         if trace > 0:
             reduced_rho = reduced_rho / trace
         else:
             return 0.0
-        
+
         return self.calculate_entropy_von_neumann(reduced_rho)
-    
+
     def calculate_multipartite_entanglement(self, rho):
         """Calculate multipartite entanglement measure."""
         n = rho.shape[0]
-        
+
         if n < 2:
             return 0.0
-        
+
         # For computational efficiency, we'll calculate entanglement for
         # a subset of bipartitions rather than all possible partitions
         total_entanglement = 0.0
         n_partitions = 0
-        
+
         # Calculate entanglement for different bipartitions
         for i in range(1, min(n, 6)):  # Limit to avoid combinatorial explosion
             # Partition into first i sites vs remaining sites
@@ -674,36 +713,36 @@ class QuantumDynamicsSimulator:
             ent = self.calculate_bipartite_entanglement(rho, partition)
             total_entanglement += ent
             n_partitions += 1
-        
+
         return total_entanglement / n_partitions if n_partitions > 0 else 0.0
-    
+
     def calculate_pairwise_concurrence(self, rho):
         """Calculate average pairwise concurrence across all pairs of sites."""
         n = rho.shape[0]
-        
+
         if n < 2:
             return 0.0
-        
+
         total_concurrence = 0.0
         n_pairs = 0
-        
+
         # Calculate concurrence for each pair of sites
         for i in range(n):
-            for j in range(i+1, n):
+            for j in range(i + 1, n):
                 # Extract 2x2 reduced density matrix for sites i,j
                 rho_ij = np.zeros((2, 2), dtype=complex)
                 rho_ij[0, 0] = rho[i, i]
                 rho_ij[0, 1] = rho[i, j]
                 rho_ij[1, 0] = rho[j, i]
                 rho_ij[1, 1] = rho[j, j]
-                
+
                 # Calculate concurrence for this pair
                 pair_concurrence = self._calculate_2x2_concurrence(rho_ij)
                 total_concurrence += pair_concurrence
                 n_pairs += 1
-        
+
         return total_concurrence / n_pairs if n_pairs > 0 else 0.0
-    
+
     def calculate_quantum_synergy_index(self, rho_opv, rho_psu):
         """Calculate quantum synergy index between OPV and photosynthetic system."""
         numerator = np.trace(rho_opv @ rho_psu) - np.trace(rho_opv) * np.trace(rho_psu)
@@ -727,8 +766,10 @@ class QuantumDynamicsSimulator:
         try:
             sqrt_rho = la.sqrtm(rho)
             matrix = sqrt_rho @ sigma @ sqrt_rho
-            return np.real(np.trace(la.sqrtm(matrix)))**2
-        except Exception:
+            return np.real(np.trace(la.sqrtm(matrix))) ** 2
+        except (np.linalg.LinAlgError, ValueError, TypeError) as e:
+            # Fallback fidelity for non-positive/ill-conditioned matrices
+            logger.debug(f"Fidelity calculation fallback due to: {e}")
             return np.real(np.trace(rho @ sigma))
 
     def calculate_quantum_discord(self, rho):
@@ -741,7 +782,7 @@ class QuantumDynamicsSimulator:
         p_others = diag[1:]
         p_others_sum = np.sum(p_others)
         if p_others_sum < 1e-12:
-             return 0.0
+            return 0.0
         p_others /= p_others_sum
         s_others = -np.sum(p_others * np.log(p_others + 1e-15))
         return max(0.0, s_others - s_total)
@@ -752,7 +793,7 @@ class QuantumDynamicsSimulator:
         L_SBD[rho] = sum_alpha p_alpha * (L rho L_dag - 0.5 * {L_dag L, rho})
         """
         d_rho = np.zeros_like(rho, dtype=complex)
-        for L, p in zip(l_bundled, p_alpha):
+        for L, p in zip(l_bundled, p_alpha, strict=False):
             if p > 0:
                 L_dag = L.conj().T
                 d_rho += p * (L @ rho @ L_dag - 0.5 * (L_dag @ L @ rho + rho @ L_dag @ L))
@@ -762,9 +803,9 @@ class QuantumDynamicsSimulator:
 def spectral_density_drude_lorentz(omega, lambda_reorg, gamma):
     """
     Drude-Lorentz spectral density.
-    
+
     J(omega) = (2 * lambda_reorg * gamma * omega) / (omega^2 + gamma^2)
-    
+
     Parameters
     ----------
     omega : array-like
@@ -773,7 +814,7 @@ def spectral_density_drude_lorentz(omega, lambda_reorg, gamma):
         Reorganization energy in cm^-1
     gamma : float
         Cutoff frequency in cm^-1
-        
+
     Returns
     -------
     J : array-like
@@ -789,10 +830,10 @@ def spectral_density_drude_lorentz(omega, lambda_reorg, gamma):
 def spectral_density_vibronic(omega, omega_mode, lambda_mode, gamma_mode):
     """
     Underdamped vibronic mode spectral density (Shifted Drude-Lorentz).
-    
-    J(omega) = (2 * lambda_mode * omega_mode * gamma_mode * omega) / 
+
+    J(omega) = (2 * lambda_mode * omega_mode * gamma_mode * omega) /
                ((omega^2 - omega_mode^2)^2 + omega^2 * gamma_mode^2)
-    
+
     Parameters
     ----------
     omega : array-like
@@ -803,7 +844,7 @@ def spectral_density_vibronic(omega, omega_mode, lambda_mode, gamma_mode):
         Reorganization energy of the mode in cm^-1
     gamma_mode : float
         Damping rate in cm^-1
-        
+
     Returns
     -------
     J : array-like
@@ -811,7 +852,7 @@ def spectral_density_vibronic(omega, omega_mode, lambda_mode, gamma_mode):
     """
     omega = np.asarray(omega)
     numerator = 2 * lambda_mode * omega_mode * gamma_mode * omega
-    denominator = (omega**2 - omega_mode**2)**2 + omega**2 * gamma_mode**2
+    denominator = (omega**2 - omega_mode**2) ** 2 + omega**2 * gamma_mode**2
     J = numerator / denominator
     # Avoid division by zero at omega=0
     J[omega == 0] = 0
@@ -821,7 +862,7 @@ def spectral_density_vibronic(omega, omega_mode, lambda_mode, gamma_mode):
 def spectral_density_total(omega, lambda_reorg, gamma, vibronic_modes=None):
     """
     Total spectral density combining Drude-Lorentz and vibronic modes.
-    
+
     Parameters
     ----------
     omega : array-like
@@ -832,35 +873,30 @@ def spectral_density_total(omega, lambda_reorg, gamma, vibronic_modes=None):
         Cutoff frequency for Drude-Lorentz component in cm^-1
     vibronic_modes : list of dict, optional
         List of vibronic modes, each with keys 'omega', 'lambda', 'gamma'
-        
+
     Returns
     -------
     J : array-like
         Total spectral density values
     """
     omega = np.asarray(omega)
-    
+
     # Drude-Lorentz component
     J_total = spectral_density_drude_lorentz(omega, lambda_reorg, gamma)
-    
+
     # Add vibronic modes if provided
     if vibronic_modes:
         for mode in vibronic_modes:
-            J_vib = spectral_density_vibronic(
-                omega, 
-                mode['omega'], 
-                mode['lambda'], 
-                mode['gamma']
-            )
+            J_vib = spectral_density_vibronic(omega, mode["omega"], mode["lambda"], mode["gamma"])
             J_total += J_vib
-    
+
     return J_total
 
 
 def save_quantum_dynamics_results(
     results: Dict[str, Any],
-    filename_prefix: str = 'quantum_dynamics',
-    output_dir: str = '../simulation_data/'
+    filename_prefix: str = "quantum_dynamics",
+    output_dir: str = "../simulation_data/",
 ) -> str:
     """
     Save quantum dynamics simulation results to CSV.
@@ -880,51 +916,51 @@ def save_quantum_dynamics_results(
         Path to saved CSV file
     """
     import pandas as pd
-    
+
     os.makedirs(output_dir, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     # Extract data from results
-    t_axis = results.get('t_axis', [])
-    populations = results.get('populations', np.array([]))
-    coherences = results.get('coherences', np.array([]))
-    qfi = results.get('qfi', np.array([]))
-    entropy = results.get('entropy', np.array([]))
-    bipartite_ent = results.get('bipartite_ent', np.array([]))
-    multipartite_ent = results.get('multipartite_ent', np.array([]))
-    pairwise_concurrence = results.get('pairwise_concurrence', np.array([]))
-    discord = results.get('discord', np.array([]))
-    fidelity = results.get('fidelity', np.array([]))
-    mandel_q = results.get('mandel_q', np.array([]))
+    t_axis = results.get("t_axis", [])
+    populations = results.get("populations", np.array([]))
+    coherences = results.get("coherences", np.array([]))
+    qfi = results.get("qfi", np.array([]))
+    entropy = results.get("entropy", np.array([]))
+    bipartite_ent = results.get("bipartite_ent", np.array([]))
+    multipartite_ent = results.get("multipartite_ent", np.array([]))
+    pairwise_concurrence = results.get("pairwise_concurrence", np.array([]))
+    discord = results.get("discord", np.array([]))
+    fidelity = results.get("fidelity", np.array([]))
+    mandel_q = results.get("mandel_q", np.array([]))
 
     # Create DataFrame
-    data = {'time_fs': t_axis}
-    
+    data = {"time_fs": t_axis}
+
     # Add populations for each site
     if len(populations) > 0 and len(populations[0]) > 0:
         n_sites = len(populations[0])
         for i in range(n_sites):
-            data[f'population_site_{i+1}'] = [p[i] for p in populations]
-    
+            data[f"population_site_{i + 1}"] = [p[i] for p in populations]
+
     # Add quantum metrics
     if len(coherences) > 0:
-        data['coherences'] = coherences
+        data["coherences"] = coherences
     if len(qfi) > 0:
-        data['qfi'] = qfi
+        data["qfi"] = qfi
     if len(entropy) > 0:
-        data['entropy'] = entropy
+        data["entropy"] = entropy
     if len(bipartite_ent) > 0:
-        data['bipartite_ent'] = bipartite_ent
+        data["bipartite_ent"] = bipartite_ent
     if len(multipartite_ent) > 0:
-        data['multipartite_ent'] = multipartite_ent
+        data["multipartite_ent"] = multipartite_ent
     if len(pairwise_concurrence) > 0:
-        data['pairwise_concurrence'] = pairwise_concurrence
+        data["pairwise_concurrence"] = pairwise_concurrence
     if len(discord) > 0:
-        data['discord'] = discord
+        data["discord"] = discord
     if len(fidelity) > 0:
-        data['fidelity'] = fidelity
+        data["fidelity"] = fidelity
     if len(mandel_q) > 0:
-        data['mandel_q'] = mandel_q
+        data["mandel_q"] = mandel_q
 
     df = pd.DataFrame(data)
     filename = f"{filename_prefix}_{timestamp}.csv"
@@ -937,8 +973,8 @@ def save_quantum_dynamics_results(
 
 def plot_quantum_dynamics_results(
     results: Dict[str, Any],
-    filename_prefix: str = 'quantum_dynamics',
-    figures_dir: str = '../Graphics/'
+    filename_prefix: str = "quantum_dynamics",
+    figures_dir: str = "../Graphics/",
 ) -> str:
     """
     Plot quantum dynamics simulation results.
@@ -958,26 +994,26 @@ def plot_quantum_dynamics_results(
         Path to saved figure
     """
     import matplotlib.pyplot as plt
-    
+
     os.makedirs(figures_dir, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-    t_axis = results.get('t_axis', [])
-    populations = results.get('populations', np.array([]))
-    coherences = results.get('coherences', np.array([]))
-    qfi = results.get('qfi', np.array([]))
-    entropy = results.get('entropy', np.array([]))
+    t_axis = results.get("t_axis", [])
+    populations = results.get("populations", np.array([]))
+    coherences = results.get("coherences", np.array([]))
+    qfi = results.get("qfi", np.array([]))
+    entropy = results.get("entropy", np.array([]))
 
     # Create figure with subplots
     n_metrics = sum(x.size > 0 for x in [coherences, qfi, entropy])
     n_plots = max(2, n_metrics + 1)  # At least populations and one metric
-    
+
     n_cols = 2
     n_rows = (n_plots + 1) // 2
-    
+
     fig, axes = plt.subplots(n_rows, n_cols, figsize=(15, 5 * n_rows))
-    fig.suptitle('Quantum Dynamics Simulation Results', fontsize=16, fontweight='bold')
-    
+    fig.suptitle("Quantum Dynamics Simulation Results", fontsize=16, fontweight="bold")
+
     # Handle single row case
     if n_rows == 1:
         axes = [axes] if n_cols == 1 else axes
@@ -992,10 +1028,10 @@ def plot_quantum_dynamics_results(
         ax = axes[ax_idx]
         n_sites = len(populations[0])
         for i in range(min(n_sites, 7)):  # Limit to first 7 sites for readability
-            ax.plot(t_axis, [p[i] for p in populations], label=f'Site {i+1}', linewidth=1.5)
-        ax.set_xlabel('Time (fs)')
-        ax.set_ylabel('Population')
-        ax.set_title('Site Populations vs Time')
+            ax.plot(t_axis, [p[i] for p in populations], label=f"Site {i + 1}", linewidth=1.5)
+        ax.set_xlabel("Time (fs)")
+        ax.set_ylabel("Population")
+        ax.set_title("Site Populations vs Time")
         ax.legend(fontsize=8)
         ax.grid(True, alpha=0.3)
     else:
@@ -1003,35 +1039,35 @@ def plot_quantum_dynamics_results(
 
     # Plot quantum metrics
     metrics_to_plot = [
-        (coherences, 'Coherence', 'coherences'),
-        (qfi, 'QFI', 'qfi'),
-        (entropy, 'Entropy', 'entropy')
+        (coherences, "Coherence", "coherences"),
+        (qfi, "QFI", "qfi"),
+        (entropy, "Entropy", "entropy"),
     ]
-    
-    for metric_values, metric_label, metric_key in metrics_to_plot:
+
+    for metric_values, metric_label, _metric_key in metrics_to_plot:
         if len(metric_values) > 0:
             ax_idx += 1
             if ax_idx < len(axes):
                 ax = axes[ax_idx]
                 ax.plot(t_axis, metric_values, linewidth=2)
-                ax.set_xlabel('Time (fs)')
+                ax.set_xlabel("Time (fs)")
                 ax.set_ylabel(metric_label)
-                ax.set_title(f'{metric_label} Evolution')
+                ax.set_title(f"{metric_label} Evolution")
                 ax.grid(True, alpha=0.3)
-    
+
     # Remove unused subplots
     for idx in range(ax_idx + 1, len(axes)):
         fig.delaxes(axes[idx])
-    
+
     plt.tight_layout()
 
     filename = f"{filename_prefix}_{timestamp}.pdf"
     filepath = os.path.join(figures_dir, filename)
-    plt.savefig(filepath, dpi=300, bbox_inches='tight')
+    plt.savefig(filepath, dpi=300, bbox_inches="tight")
 
     png_filename = f"{filename_prefix}_{timestamp}.png"
     png_filepath = os.path.join(figures_dir, png_filename)
-    plt.savefig(png_filepath, dpi=150, bbox_inches='tight')
+    plt.savefig(png_filepath, dpi=150, bbox_inches="tight")
 
     plt.close()
 

@@ -7,6 +7,7 @@ quantum chemical calculations and Fukui functions.
 
 import logging
 from typing import Dict, Optional, Tuple
+
 import numpy as np
 from numpy.typing import NDArray
 from scipy.linalg import eig
@@ -66,11 +67,7 @@ class BiodegradabilityAnalyzer:
     >>> score = analyzer.calculate_biodegradability_score()
     """
 
-    def __init__(
-        self,
-        molecular_hamiltonian: NDArray[np.float64],
-        n_electrons: int
-    ):
+    def __init__(self, molecular_hamiltonian: NDArray[np.float64], n_electrons: int):
         """Initialize the biodegradability analyzer."""
         self.molecular_hamiltonian = molecular_hamiltonian
         self.n_electrons = n_electrons
@@ -95,10 +92,7 @@ class BiodegradabilityAnalyzer:
 
         logger.info("BiodegradabilityAnalyzer initialized successfully")
 
-    def _calculate_density_matrix(
-        self,
-        n_electrons: int
-    ) -> NDArray[np.complex128]:
+    def _calculate_density_matrix(self, n_electrons: int) -> NDArray[np.complex128]:
         """
         Calculate electron density matrix for a given number of electrons.
 
@@ -112,10 +106,7 @@ class BiodegradabilityAnalyzer:
         NDArray[np.complex128]
             Electron density matrix (n_orbitals x n_orbitals)
         """
-        density_matrix = np.zeros(
-            (self.n_orbitals, self.n_orbitals),
-            dtype=complex
-        )
+        density_matrix = np.zeros((self.n_orbitals, self.n_orbitals), dtype=complex)
         n_filled_orbitals = min(n_electrons // 2, self.n_orbitals)
 
         # Fill lowest energy orbitals with 2 electrons each (closed shell)
@@ -131,7 +122,7 @@ class BiodegradabilityAnalyzer:
         return density_matrix
 
     def calculate_fukui_functions(
-        self
+        self,
     ) -> Tuple[NDArray[np.float64], NDArray[np.float64], NDArray[np.float64]]:
         """
         Calculate Fukui functions for the molecular system.
@@ -171,13 +162,12 @@ class BiodegradabilityAnalyzer:
         rho_n_plus_1 = np.real(np.diag(density_n_plus_1))
 
         # Calculate Fukui functions
-        f_plus = rho_n_minus_1 - rho_n    # Electrophilic attack
-        f_minus = rho_n - rho_n_plus_1    # Nucleophilic attack
-        f_zero = (f_plus + f_minus) / 2   # Radical attack
+        f_plus = rho_n_minus_1 - rho_n  # Electrophilic attack
+        f_minus = rho_n - rho_n_plus_1  # Nucleophilic attack
+        f_zero = (f_plus + f_minus) / 2  # Radical attack
 
         logger.debug(
-            f"Fukui functions calculated: max f+={np.max(f_plus):.3f}, "
-            f"max f-={np.max(f_minus):.3f}"
+            f"Fukui functions calculated: max f+={np.max(f_plus):.3f}, max f-={np.max(f_minus):.3f}"
         )
 
         return f_plus, f_minus, f_zero
@@ -204,8 +194,7 @@ class BiodegradabilityAnalyzer:
         dual_descriptor = f_plus - f_minus
 
         logger.debug(
-            f"Dual descriptor range: {np.min(dual_descriptor):.3f} to "
-            f"{np.max(dual_descriptor):.3f}"
+            f"Dual descriptor range: {np.min(dual_descriptor):.3f} to {np.max(dual_descriptor):.3f}"
         )
 
         return dual_descriptor
@@ -250,15 +239,13 @@ class BiodegradabilityAnalyzer:
         if n_filled_orbitals < self.n_orbitals:
             e_lumo = self.evals[n_filled_orbitals]
         else:
-            e_lumo = np.inf   # No unoccupied orbitals
+            e_lumo = np.inf  # No unoccupied orbitals
 
         # Calculate global reactivity indices
         if np.isfinite(e_homo) and np.isfinite(e_lumo):
             chemical_potential = -(e_homo + e_lumo) / 2
             chemical_hardness = (e_lumo - e_homo) / 2
-            chemical_softness = (
-                1.0 / (2 * chemical_hardness) if chemical_hardness != 0 else 0
-            )
+            chemical_softness = 1.0 / (2 * chemical_hardness) if chemical_hardness != 0 else 0
             electronegativity = -chemical_potential
         else:
             chemical_potential = 0.0
@@ -267,23 +254,21 @@ class BiodegradabilityAnalyzer:
             electronegativity = 0.0
 
         indices = {
-            'chemical_potential': chemical_potential,
-            'chemical_hardness': chemical_hardness,
-            'chemical_softness': chemical_softness,
-            'electronegativity': electronegativity,
-            'e_homo': e_homo,
-            'e_lumo': e_lumo
+            "chemical_potential": chemical_potential,
+            "chemical_hardness": chemical_hardness,
+            "chemical_softness": chemical_softness,
+            "electronegativity": electronegativity,
+            "e_homo": e_homo,
+            "e_lumo": e_lumo,
         }
 
-        logger.debug(f"Global reactivity indices: μ={chemical_potential:.3f}, "
-                    f"η={chemical_hardness:.3f}")
+        logger.debug(
+            f"Global reactivity indices: μ={chemical_potential:.3f}, η={chemical_hardness:.3f}"
+        )
 
         return indices
 
-    def calculate_biodegradability_score(
-        self,
-        weights: Optional[Dict[str, float]] = None
-    ) -> float:
+    def calculate_biodegradability_score(self, weights: Optional[Dict[str, float]] = None) -> float:
         """
         Calculate a composite biodegradability score based on quantum descriptors.
 
@@ -314,11 +299,11 @@ class BiodegradabilityAnalyzer:
         if weights is None:
             # Default weights based on literature for biodegradability prediction
             weights = {
-                'fukui_nucleophilic': 0.3,
-                'fukui_electrophilic': 0.2,
-                'dual_descriptor': 0.2,
-                'global_softness': 0.15,
-                'max_fukui': 0.15
+                "fukui_nucleophilic": 0.3,
+                "fukui_electrophilic": 0.2,
+                "dual_descriptor": 0.2,
+                "global_softness": 0.15,
+                "max_fukui": 0.15,
             }
 
         logger.debug("Calculating biodegradability score")
@@ -333,21 +318,17 @@ class BiodegradabilityAnalyzer:
         fukui_electrophilic = np.mean(np.abs(f_plus)) if len(f_plus) > 0 else 0
         dual_avg = np.mean(np.abs(dual_desc)) if len(dual_desc) > 0 else 0
         global_softness = (
-            global_indices['chemical_softness']
-            if global_indices['chemical_hardness'] != 0 else 0
+            global_indices["chemical_softness"] if global_indices["chemical_hardness"] != 0 else 0
         )
-        max_fukui = (
-            max(np.max(np.abs(f_plus)), np.max(np.abs(f_minus)))
-            if len(f_plus) > 0 else 0
-        )
+        max_fukui = max(np.max(np.abs(f_plus)), np.max(np.abs(f_minus))) if len(f_plus) > 0 else 0
 
         # Calculate weighted score
         score = (
-            weights['fukui_nucleophilic'] * fukui_nucleophilic +
-            weights['fukui_electrophilic'] * fukui_electrophilic +
-            weights['dual_descriptor'] * dual_avg +
-            weights['global_softness'] * min(1.0, global_softness * 10) +
-            weights['max_fukui'] * min(1.0, max_fukui * 5)
+            weights["fukui_nucleophilic"] * fukui_nucleophilic
+            + weights["fukui_electrophilic"] * fukui_electrophilic
+            + weights["dual_descriptor"] * dual_avg
+            + weights["global_softness"] * min(1.0, global_softness * 10)
+            + weights["max_fukui"] * min(1.0, max_fukui * 5)
         )
 
         # Ensure score is in [0, 1] range

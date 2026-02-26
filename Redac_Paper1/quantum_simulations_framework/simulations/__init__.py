@@ -10,5 +10,5 @@ except ImportError:
     TestingValidationProtocols = None
 
 __all__ = [
-    'TestingValidationProtocols',
+    "TestingValidationProtocols",
 ]

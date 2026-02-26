@@ -2,7 +2,7 @@
 Models module for quantum agrivoltaic simulations.
 
 This module contains model classes for analyzing molecular systems,
-biodegradability, environmental factors, sensitivity analysis, 
+biodegradability, environmental factors, sensitivity analysis,
 LCA, techno-economics, and spectroscopy.
 """
 
@@ -68,16 +68,16 @@ except ImportError:
 
 
 __all__ = [
-    'AgrivoltaicCouplingModel',
-    'BiodegradabilityAnalyzer',
-    'EcoDesignAnalyzer',
-    'EnvironmentalFactors',
-    'LCAAnalyzer',
-    'MultiScaleTransformer',
-    'QuantumDynamicsSimulator',
-    'SensitivityAnalyzer',
-    'SimpleQuantumDynamicsSimulator',
-    'SpectralOptimizer',
-    'Spectroscopy2DES',
-    'TechnoEconomicModel',
+    "AgrivoltaicCouplingModel",
+    "BiodegradabilityAnalyzer",
+    "EcoDesignAnalyzer",
+    "EnvironmentalFactors",
+    "LCAAnalyzer",
+    "MultiScaleTransformer",
+    "QuantumDynamicsSimulator",
+    "SensitivityAnalyzer",
+    "SimpleQuantumDynamicsSimulator",
+    "SpectralOptimizer",
+    "Spectroscopy2DES",
+    "TechnoEconomicModel",
 ]

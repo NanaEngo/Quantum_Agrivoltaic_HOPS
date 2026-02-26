@@ -5,12 +5,12 @@ This module contains fundamental classes and constants for the simulation framew
 """
 
 from .constants import (
-    DEFAULT_TEMPERATURE,
     DEFAULT_MAX_HIERARCHY,
-    DEFAULT_TIME_POINTS,
     DEFAULT_REORGANIZATION_ENERGY,
-    FMO_SITE_ENERGIES_7,
+    DEFAULT_TEMPERATURE,
+    DEFAULT_TIME_POINTS,
     FMO_COUPLINGS,
+    FMO_SITE_ENERGIES_7,
 )
 
 try:
@@ -19,11 +19,11 @@ except ImportError:
     HopsSimulator = None
 
 __all__ = [
-    'HopsSimulator',
-    'DEFAULT_TEMPERATURE',
-    'DEFAULT_MAX_HIERARCHY',
-    'DEFAULT_TIME_POINTS',
-    'DEFAULT_REORGANIZATION_ENERGY',
-    'FMO_SITE_ENERGIES_7',
-    'FMO_COUPLINGS',
+    "HopsSimulator",
+    "DEFAULT_TEMPERATURE",
+    "DEFAULT_MAX_HIERARCHY",
+    "DEFAULT_TIME_POINTS",
+    "DEFAULT_REORGANIZATION_ENERGY",
+    "FMO_SITE_ENERGIES_7",
+    "FMO_COUPLINGS",
 ]

@@ -14,7 +14,7 @@ def setup_logging(
     level: int = logging.INFO,
     log_file: Optional[str] = None,
     log_to_console: bool = True,
-    format_string: Optional[str] = None
+    format_string: Optional[str] = None,
 ) -> logging.Logger:
     """
     Configure logging for the quantum agrivoltaics package.
@@ -42,9 +42,7 @@ def setup_logging(
     >>> logger.info("Simulation started")
     """
     if format_string is None:
-        format_string = (
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        )
+        format_string = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
     # Create formatter
     formatter = logging.Formatter(format_string)
