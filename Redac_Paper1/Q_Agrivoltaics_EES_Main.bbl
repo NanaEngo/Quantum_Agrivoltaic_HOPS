@@ -1,0 +1,395 @@
+\providecommand*{\mcitethebibliography}{\thebibliography}
+\csname @ifundefined\endcsname{endmcitethebibliography}
+{\let\endmcitethebibliography\endthebibliography}{}
+\begin{mcitethebibliography}{47}
+\providecommand*{\natexlab}[1]{#1}
+\providecommand*{\mciteSetBstSublistMode}[1]{}
+\providecommand*{\mciteSetBstMaxWidthForm}[2]{}
+\providecommand*{\mciteBstWouldAddEndPuncttrue}
+  {\def\EndOfBibitem{\unskip.}}
+\providecommand*{\mciteBstWouldAddEndPunctfalse}
+  {\let\EndOfBibitem\relax}
+\providecommand*{\mciteSetBstMidEndSepPunct}[3]{}
+\providecommand*{\mciteSetBstSublistLabelBeginEnd}[3]{}
+\providecommand*{\EndOfBibitem}{}
+\mciteSetBstSublistMode{f}
+\mciteSetBstMaxWidthForm{subitem}
+{(\emph{\alph{mcitesubitemcount}})}
+\mciteSetBstSublistLabelBeginEnd{\mcitemaxwidthsubitemform\space}
+{\relax}{\relax}
+
+\bibitem[Valle \emph{et~al.}(2017)Valle, Simonneau, Sourd, Pechier, Hamard,
+  Frisson, Ryckewaert, and Christophe]{Valle2017}
+B.~Valle, T.~Simonneau, F.~Sourd, P.~Pechier, P.~Hamard, T.~Frisson,
+  M.~Ryckewaert and A.~Christophe, \emph{Applied Energy}, 2017, \textbf{206},
+  1495--1507\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Dupraz \emph{et~al.}(2011)Dupraz, Marrou, Talbot, Dufour, Nogier, and
+  Ferard]{Dupraz2011}
+C.~Dupraz, H.~Marrou, G.~Talbot, L.~Dufour, A.~Nogier and Y.~Ferard,
+  \emph{Renewable Energy}, 2011, \textbf{36}, 2725--2732\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Marrou \emph{et~al.}(2013)Marrou, Wery, Dufour, and
+  Dupraz]{Marrou2013}
+H.~Marrou, J.~Wery, L.~Dufour and C.~Dupraz, \emph{European Journal of
+  Agronomy}, 2013, \textbf{44}, 54--66\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Asa’a \emph{et~al.}(2024)Asa’a, Reher, Rongé, Diels, Poortmans,
+  Radhakrishnan, van~der Heide, Van~de Poel, and Daenen]{Asaa2024}
+S.~Asa’a, T.~Reher, J.~Rongé, J.~Diels, J.~Poortmans, H.~Radhakrishnan,
+  A.~van~der Heide, B.~Van~de Poel and M.~Daenen, \emph{Renewable and
+  Sustainable Energy Reviews}, 2024, \textbf{200}, 114515\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Weselek \emph{et~al.}(2019)Weselek, Ehmann, Zikeli, Lewandowski,
+  Schindele, and Högy]{Weselek2019}
+A.~Weselek, A.~Ehmann, S.~Zikeli, I.~Lewandowski, S.~Schindele and P.~Högy,
+  \emph{Agronomy for Sustainable Development}, 2019, \textbf{39}, 35\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Amaducci \emph{et~al.}(2018)Amaducci, Yin, and Colauzzi]{Amaducci2018}
+S.~Amaducci, X.~Yin and M.~Colauzzi, \emph{Applied Energy}, 2018, \textbf{220},
+  545--561\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Campana \emph{et~al.}(2025)Campana, Macknick, Croci, Elkadeem,
+  Gorjian, Pascaris, Cuppari, Amaducci, Liu, Trommsdorff, Sturchio, Muller,
+  Agostini, Chatzipanagi, Scognamiglio, and Zhang]{Campana2025}
+P.~E. Campana, J.~Macknick, M.~Croci, M.~R. Elkadeem, S.~Gorjian, A.~Pascaris,
+  R.~I. Cuppari, S.~Amaducci, W.~Liu, M.~Trommsdorff, M.~A. Sturchio,
+  O.~Muller, A.~Agostini, A.~Chatzipanagi, A.~Scognamiglio and J.~Zhang,
+  \emph{Nature Reviews Clean Technology}, 2025, \textbf{1}, 801--821\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Kumdokrub and You(2025)]{Kumdokrub2025}
+T.~Kumdokrub and F.~You, \emph{ACS Sustainable Chemistry \& Engineering}, 2025,
+  \textbf{13}, 19440--19455\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Barron-Gafford \emph{et~al.}(2019)Barron-Gafford, Pavao-Zuckerman,
+  Minor, Sutter, Barnett-Moreno, Blackett, Thompson, Dimond, Gerlak, Nabhan,
+  and Macknick]{BaronGafford2019}
+G.~A. Barron-Gafford, M.~A. Pavao-Zuckerman, R.~L. Minor, L.~F. Sutter,
+  I.~Barnett-Moreno, D.~T. Blackett, M.~Thompson, K.~Dimond, A.~K. Gerlak,
+  G.~P. Nabhan and J.~E. Macknick, \emph{Nature Sustainability}, 2019,
+  \textbf{2}, 848--855\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Elamri \emph{et~al.}(2018)Elamri, Cheviron, Lopez, Dejean, and
+  Belaud]{Elamri2018}
+Y.~Elamri, B.~Cheviron, J.-M. Lopez, C.~Dejean and G.~Belaud,
+  \emph{Agricultural Water Management}, 2018, \textbf{208}, 440--453\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Chanes~de Souza \emph{et~al.}(2025)Chanes~de Souza, Nery~de Castro,
+  Azambuja~Possato, B.~Krause, and Hutson]{Souza2025}
+M.~Chanes~de Souza, R.~Nery~de Castro, B.~Azambuja~Possato, M.~B.~Krause and
+  S.~Hutson, \emph{AgriVoltaics Conference Proceedings}, 2025, \textbf{3},
+  1355\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Zainali \emph{et~al.}(2025)Zainali, Lu, Fern{\'{a}}ndez-Solas,
+  Cruz-Escabias, Fern{\'{a}}ndez, Zidane, Honningdalsnes, Nyg{\aa}rd, Leloux,
+  Berwind, Trommsdorff, Amaducci, Gorjian, and Campana]{MaLu2025}
+S.~Zainali, S.~M. Lu, {\'{A}}.~Fern{\'{a}}ndez-Solas, A.~Cruz-Escabias, E.~F.
+  Fern{\'{a}}ndez, T.~E.~K. Zidane, E.~H. Honningdalsnes, M.~M. Nyg{\aa}rd,
+  J.~Leloux, M.~Berwind, M.~Trommsdorff, S.~Amaducci, S.~Gorjian and P.~E.
+  Campana, \emph{Applied Energy}, 2025, \textbf{386}, 125558\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Hassanpour~Adeh \emph{et~al.}(2018)Hassanpour~Adeh, Selker, and
+  Higgins]{Adeh2019}
+E.~Hassanpour~Adeh, J.~S. Selker and C.~W. Higgins, \emph{PloS One}, 2018,
+  \textbf{13}, e0203256\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Kujawa \emph{et~al.}(2025)Kujawa, Hanrieder, Wilbert, Álvaro
+  Fernández~Solas, Rodríguez, Alonso-García, Polo, Carballo, López-Díaz,
+  Cornaro, and Pitz‐Paal]{Kujawa2025}
+A.~Kujawa, N.~Hanrieder, S.~Wilbert, Álvaro Fernández~Solas, S.~G.
+  Rodríguez, M.~C. Alonso-García, J.~Polo, J.~Carballo, G.~López-Díaz,
+  C.~Cornaro and R.~Pitz‐Paal, \emph{Agronomy}, 2025, \textbf{15}, 665\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Engel \emph{et~al.}(2007)Engel, Calhoun, Read, Ahn, Mančal, Cheng,
+  Blankenship, and Fleming]{Engel2007}
+G.~S. Engel, T.~R. Calhoun, E.~L. Read, T.-K. Ahn, T.~Mančal, Y.-C. Cheng,
+  R.~E. Blankenship and G.~R. Fleming, \emph{Nature}, 2007, \textbf{446},
+  782--786\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Panitchayangkoon \emph{et~al.}(2010)Panitchayangkoon, Hayes, Fransted,
+  Caram, Harel, Wen, Blankenship, and Engel]{Panitchayangkoon2010}
+G.~Panitchayangkoon, D.~Hayes, K.~A. Fransted, J.~R. Caram, E.~Harel, J.~Wen,
+  R.~E. Blankenship and G.~S. Engel, \emph{Proceedings of the National Academy
+  of Sciences}, 2010, \textbf{107}, 12766--12770\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Collini \emph{et~al.}(2010)Collini, Wong, Wilk, Curmi, Brumer, and
+  Scholes]{Collini2010}
+E.~Collini, C.~Y. Wong, K.~E. Wilk, P.~M.~G. Curmi, P.~Brumer and G.~D.
+  Scholes, \emph{Nature}, 2010, \textbf{463}, 644--647\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Mohseni \emph{et~al.}(2008)Mohseni, Rebentrost, Lloyd, and
+  Aspuru-Guzik]{Mohseni2008}
+M.~Mohseni, P.~Rebentrost, S.~Lloyd and A.~Aspuru-Guzik, \emph{The Journal of
+  Chemical Physics}, 2008, \textbf{129}, 174106\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Nalbach and Thorwart(2010)]{Tao2020}
+P.~Nalbach and M.~Thorwart, in \emph{Quantum Coherence and Entanglement in
+  Photosynthetic Light-Harvesting Complexes}, Elsevier, 2010, vol. 120, pp.
+  39--75\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Ishizaki and Fleming(2009)]{Ishizaki2009}
+A.~Ishizaki and G.~R. Fleming, \emph{Proceedings of the National Academy of
+  Sciences}, 2009, \textbf{106}, 17255--17260\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Fassioli \emph{et~al.}(2016)Fassioli, Dinshaw, Arpin, and
+  Scholes]{Kelly2016}
+F.~Fassioli, R.~Dinshaw, P.~C. Arpin and G.~D. Scholes, \emph{Journal of The
+  Royal Society Interface}, 2016, \textbf{11}, 14740--14751\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Blankenship \emph{et~al.}(2011)Blankenship, Tiede, Barber, Brudvig,
+  Fleming, Ghirardi, Gunner, Junge, Kramer, Melis, Moore, Moser, Nocera,
+  Parson, Prince, and Sayre]{Blankenship2011}
+R.~E. Blankenship, D.~M. Tiede, J.~Barber, G.~W. Brudvig, G.~Fleming,
+  M.~Ghirardi, M.~R. Gunner, W.~Junge, D.~M. Kramer, A.~Melis, T.~A. Moore,
+  C.~C. Moser, D.~G. Nocera, W.~W. Parson, R.~C. Prince and R.~T. Sayre,
+  \emph{Science}, 2011, \textbf{332}, 805--809\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Scholes \emph{et~al.}(2011)Scholes, Fleming, Olaya-Castro, and van
+  Grondelle]{Scholes2011}
+G.~D. Scholes, G.~R. Fleming, A.~Olaya-Castro and R.~van Grondelle,
+  \emph{Nature Chemistry}, 2011, \textbf{3}, 763--774\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Plenio and Huelga(2008)]{Plenio2008}
+M.~B. Plenio and S.~F. Huelga, \emph{Contemporary Physics}, 2008, \textbf{49},
+  357--373\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Sarovar \emph{et~al.}(2010)Sarovar, Ishizaki, Fleming, and
+  Whaley]{Sarovar2010}
+M.~Sarovar, A.~Ishizaki, G.~R. Fleming and K.~B. Whaley, \emph{Nature Physics},
+  2010, \textbf{6}, 462--467\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Huelga and Plenio(2013)]{Huelga2013}
+S.~F. Huelga and M.~B. Plenio, \emph{Contemporary Physics}, 2013, \textbf{54},
+  181--207\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Rebentrost \emph{et~al.}(2009)Rebentrost, Mohseni, Kassal, Lloyd, and
+  Aspuru-Guzik]{Rebentrost2009}
+P.~Rebentrost, M.~Mohseni, I.~Kassal, S.~Lloyd and A.~Aspuru-Guzik, \emph{New
+  Journal of Physics}, 2009, \textbf{11}, 033003\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Thyrhaug \emph{et~al.}(2016)Thyrhaug, Žídek, Dostál, Bína, and
+  Zigmantas]{Curutchet2016}
+E.~Thyrhaug, K.~Žídek, J.~Dostál, D.~Bína and D.~Zigmantas, \emph{The
+  Journal of Physical Chemistry Letters}, 2016, \textbf{7}, 1653--1660\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Yan \emph{et~al.}(2020)Yan, Liu, Xing, and Shi]{Gelzinis2017}
+Y.~Yan, Y.~Liu, T.~Xing and Q.~Shi, \emph{WIREs Computational Molecular
+  Science}, 2020, \textbf{11}, 25307--25318\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Fenna \emph{et~al.}(1974)Fenna, Matthews, Olson, and Shaw]{Fenna1974}
+R.~Fenna, B.~Matthews, J.~Olson and E.~Shaw, \emph{Journal of Molecular
+  Biology}, 1974, \textbf{84}, 231--240\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Adolphs and Renger(2006)]{Adolphs2006}
+J.~Adolphs and T.~Renger, \emph{Biophysical Journal}, 2006, \textbf{91},
+  2778--2797\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Mohseni \emph{et~al.}(2014)Mohseni, Omar, Engel, and
+  Plenio]{Mohseni2014}
+M.~Mohseni, Y.~Omar, G.~S. Engel and M.~B. Plenio, \emph{Nature Physics}, 2014,
+  \textbf{10}, 663--664\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Hildner \emph{et~al.}(2013)Hildner, Brinks, Nieder, Cogdell, and van
+  Hulst]{Hildner2013}
+R.~Hildner, D.~Brinks, J.~B. Nieder, R.~J. Cogdell and N.~F. van Hulst,
+  \emph{Science}, 2013, \textbf{340}, 1448--1451\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Lunt and Bulovic(2011)]{Lunt2011}
+R.~R. Lunt and V.~Bulovic, \emph{Applied Physics Letters}, 2011, \textbf{98},
+  113305\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Zhang \emph{et~al.}(2020)Zhang, Iqbal, Zhang, Wu, Su, and
+  Zhou]{Tong2016}
+T.~Zhang, S.~Iqbal, X.-Y. Zhang, W.~Wu, D.~Su and H.-L. Zhou, \emph{Solar
+  Energy Materials and Solar Cells}, 2020, \textbf{204}, 110245\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Firdaus \emph{et~al.}(2019)Firdaus, Le~Corre, Khan, Kan, Laquai,
+  Beaujuge, and Anthopoulos]{Firdaus2019}
+Y.~Firdaus, V.~M. Le~Corre, J.~I. Khan, Z.~Kan, F.~Laquai, P.~M. Beaujuge and
+  T.~D. Anthopoulos, \emph{Advanced Science}, 2019, \textbf{6}, 1802028\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Tang \emph{et~al.}(2021)Tang, Wu, Liu, Wang, Wang, Li, Fu, and
+  Xie]{Li2020}
+H.~Tang, J.~Wu, H.~Liu, B.~Wang, H.~Wang, Y.~Li, Y.~Fu and Z.~Xie,
+  \emph{Organic Electronics}, 2021, \textbf{93}, 106140\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Cui \emph{et~al.}(2021)Cui, Xu, Yao, Bi, Hong, Zhang, Zu, Zhang, Qin,
+  Ren, Chen, He, Hao, Wei, and Hou]{Cui2021}
+Y.~Cui, Y.~Xu, H.~Yao, P.~Bi, L.~Hong, J.~Zhang, Y.~Zu, T.~Zhang, J.~Qin,
+  J.~Ren, Z.~Chen, C.~He, X.~Hao, Z.~Wei and J.~Hou, \emph{Advanced Materials},
+  2021, \textbf{33}, 2102420\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Wu \emph{et~al.}(2024)Wu, Yin, Li, and Ji]{Wu2024}
+Z.~Wu, H.~Yin, G.~Li and Z.~Ji, \emph{Organic Electronics}, 2024, \textbf{129},
+  107060\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Suess \emph{et~al.}(2015)Suess, Strunz, and Eisfeld]{Suess2014}
+D.~Suess, W.~T. Strunz and A.~Eisfeld, \emph{Journal of Statistical Physics},
+  2015, \textbf{159}, 1408--1423\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Citty \emph{et~al.}(2024)Citty, Lynd, Gera, Varvelo, and
+  Raccah]{Citty2024a}
+B.~Citty, J.~K. Lynd, T.~Gera, L.~Varvelo and D.~I. G.~B. Raccah, \emph{The
+  Journal of Chemical Physics}, 2024, \textbf{160}, 144105\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Chen \emph{et~al.}(2022)Chen, Bennett, and Eisfeld]{Chen2022}
+L.~Chen, D.~I.~G. Bennett and A.~Eisfeld, \emph{The Journal of Chemical
+  Physics}, 2022, \textbf{156}, 124101\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Varvelo \emph{et~al.}(2021)Varvelo, Lynd, and Bennett]{Varvelo2021a}
+L.~Varvelo, J.~K. Lynd and D.~I.~G. Bennett, \emph{Chemical Science}, 2021,
+  \textbf{12}, 9704--9711\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Moix \emph{et~al.}(2011)Moix, Wu, Huo, Coker, and Cao]{Moix2011}
+J.~Moix, J.~Wu, P.~Huo, D.~Coker and J.~Cao, \emph{The Journal of Physical
+  Chemistry Letters}, 2011, \textbf{2}, 3045--3052\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Vu \emph{et~al.}(2025)Vu, Tien, Kieu, Nguyen, Tong, and Shin]{Vu2025}
+N.-H. Vu, T.~Q. Tien, N.-M. Kieu, T.-P. Nguyen, Q.~C. Tong and S.~Shin,
+  \emph{PLOS One}, 2025, \textbf{20}, e0332865\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Scarano \emph{et~al.}(2023)Scarano, Semeraro, Calisi, Aretano, Rotolo,
+  Lenucci, Santino, Piro, and Caroli]{Scarano2024}
+A.~Scarano, T.~Semeraro, A.~Calisi, R.~Aretano, C.~Rotolo, M.~S. Lenucci,
+  A.~Santino, G.~Piro and M.~D. Caroli, \emph{Applied Sciences}, 2023,
+  \textbf{14}, 3095\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\end{mcitethebibliography}

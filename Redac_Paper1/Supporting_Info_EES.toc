@@ -1,0 +1,65 @@
+\contentsline {section}{\numberline {1}Environmental factor models}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Solar spectral modeling}{3}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Reference spectrum (AM1.5G)}{3}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Geographic variations}{3}{subsubsection.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.3}Seasonal and diurnal variations}{3}{subsubsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.2}Atmospheric effects}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Aerosol optical depth (AOD)}{3}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Water vapor absorption}{4}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.3}Cloud cover and diffuse radiation}{4}{subsubsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.3}Dust and soiling effects}{4}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Particle accumulation model}{4}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Spectral selectivity of soiling}{4}{subsubsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.4}Weather modelling}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Integration with quantum simulations}{4}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Biodegradability assessment}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Fukui function analysis}{5}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Theoretical framework}{5}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Computational details}{5}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Global reactivity descriptors}{5}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Chemical hardness and softness}{5}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Electrophilicity index}{6}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Nucleophilicity index}{6}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Enzymatic degradation pathways}{6}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Hydrolase attack (ester linkages)}{6}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Oxidase attack (aromatic rings)}{6}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Bond dissociation energies}{6}{subsubsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.4}Biodegradability index}{6}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Extended validation data}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}FMO complex Hamiltonian}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Convergence tests (tests 1--4)}{7}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Test 1: HEOM benchmark}{7}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Test 2: Matsubara cutoff convergence}{8}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Test 3: Time step convergence}{8}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Test 4: Hierarchy truncation convergence}{8}{subsubsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.3}Physical consistency tests (tests 5--8)}{8}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Test 5: Trace preservation}{8}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Test 6: Positivity}{8}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Test 7: Energy conservation}{8}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Test 8: Detailed balance}{8}{subsubsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.4}Environmental robustness tests (tests 9--12)}{9}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Test 9: Temperature sensitivity}{9}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Test 10: Static disorder}{9}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Test 11: Bath parameter variations}{9}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Test 12: Markovian limit recovery}{9}{subsubsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.5}Summary of validation results}{9}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Complete FMO parameter sets}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Site energies (Adolphs \& Renger, 2006)}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Electronic couplings}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Spectral density parameters}{10}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Process Tensor-HOPS and spectrally bundled dissipators framework}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Padé decomposition of the bath correlation function}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Spectrally bundled dissipators (SBD) formalism}{11}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Thermal regime validity}{11}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Full chloroplast modeling and hierarchical coarse-graining}{11}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Multi-scale modeling roadmap}{12}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Hierarchical coarse-graining methodology}{12}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Additional figures}{12}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Figure S1: Spectral density components}{12}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Figure S2: Quantum metrics evolution}{12}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Figure S3: Global reactivity indices}{12}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Figure S4: PAR transmission (clean vs dusty)}{12}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Figure S5: Response functions}{12}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Figure S6: Geographic climate maps}{12}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Figure S7: ETR uncertainty distributions}{12}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}Figure S8: Sub-Saharan Africa ETR enhancement}{12}{subsection.7.8}%
