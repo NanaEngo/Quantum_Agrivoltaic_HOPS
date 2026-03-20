@@ -1,0 +1,199 @@
+% Theory and Methods Section - AEM Version
+% Molecular engineering of semi-transparent non-fullerene acceptors for quantum-enhanced agrivoltaics
+
+\section{Theory and methods}\label{sec:Theory}
+
+\subsection{Open quantum system framework}
+
+We treat the photosynthetic unit as an open quantum system coupled to a structured vibrational environment (protein-solvent and intramolecular modes) and a spectrally filtered photon bath. The reduced density matrix $\bm{\rho}(t)$ of the excitonic system evolves according to:
+\begin{equation}\label{eq:master_eq}
+\pdv{\bm{\rho}(t)}{t} = \mathcal{L}(t)\bm{\rho}(t) = -\frac{i}{\hbar}[\mathtt{H}_S, \bm{\rho}(t)] + \mathcal{D}[\bm{\rho}(t)],
+\end{equation}
+where $\mathtt{H}_S$ is the system Hamiltonian and $\mathcal{D}[\bm{\rho}(t)]$ represents system-bath dissipative interactions. For agrivoltaic applications, $\mathcal{D}[\bm{\rho}(t)]$ is engineered through control of the incident spectral density via $T(\omega)$.
+
+The electronic Hamiltonian is:
+\begin{equation}\label{eq:excitonic_hamiltonian}
+\mathtt{H}_{\rm el} = \sum_n \varepsilon_n \dyad{n} + \sum_{n \neq m} J_{nm} \dyad{n}{m},
+\end{equation}
+where $\varepsilon_n$ is the site energy of chromophore $n$ and $J_{nm}$ is the electronic coupling between chromophores $n$ and $m$. The interplay between site energies and couplings determines the exciton delocalization landscape, which is modulated by the spectral properties of the driving light field.
+
+\subsection{System-bath interaction and spectral density engineering}
+
+The total Hamiltonian includes system, bath, and interaction terms:
+\begin{equation}\label{eq:system_bath_hamiltonian}
+\mathtt{H} = \mathtt{H}_S + \mathtt{H}_B + \mathtt{H}_{SB}.
+\end{equation}
+
+We characterize the system-bath coupling through a composite spectral density:
+\begin{equation}\label{eq:spectral_density}
+J_{\rm bath}(\omega) = \frac{2\lambda\gamma\omega}{\omega^2 + \gamma^2} + \sum_k \frac{2\lambda_k\omega_k^2\gamma_k}{(\omega-\omega_k)^2 + \gamma_k^2}.
+\end{equation}
+The first term describes overdamped protein-solvent modes (reorganization energy $\lambda$, cutoff frequency $\gamma$), and the second represents underdamped intramolecular vibrations (reorganization energies $\lambda_k$, frequencies $\omega_k$, damping rates $\gamma_k$).
+
+Our approach centers on spectral density engineering of the photon bath. The effective incident spectral density seen by the plant is:
+\begin{equation}\label{eq:filtered_spectral_density}
+J_{\rm plant}(\omega) = T(\omega) \times J_{\rm solar}(\omega),
+\end{equation}
+where $T(\omega)$ is the OPV transmission function and $J_{\rm solar}(\omega)$ is the solar spectral irradiance (AM1.5G standard, \SI{1000}{\watt\per\meter\squared} integrated). Engineering $T(\omega)$ to align with vibronic resonances extends quantum coherence and opens energy transfer pathways that remain suppressed under broadband illumination.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{Figure_7_Spectral_Analysis.png}
+\caption{\textbf{Spectral density and system-bath interactions.} \textbf{(a)} Composite spectral density showing Drude-Lorentz contribution ($\lambda = \SI{35}{\per\centi\meter}$, $\gamma = \SI{50}{\per\centi\meter}$, blue) and underdamped vibronic modes at \SIlist{150;200;575;1185}{\per\centi\meter} (orange peaks). \textbf{(b)} System-bath correlation function demonstrating non-Markovian memory effects persisting for \SI{>500}{fs}. \textbf{(c)} Overlap between OPV transmission spectrum (green shaded) and FMO excitonic transitions (vertical lines), showing resonant enhancement at \SIlist{750;820}{nm}.}
+\label{fig:spectral_analysis}
+\end{figure}
+
+\subsection{Process Tensor HOPS and Spectrally Bundled Dissipators (PT-HOPS/SBD)}
+
+Simulations use the Process Tensor Hierarchy of Pure States (PT-HOPS) method combined with Spectrally Bundled Dissipators (SBD). This numerically exact framework extends traditional HOPS by incorporating a process tensor formalism that efficiently captures non-Markovian environmental memory without weak-coupling approximations \cite{Suess2014, Citty2024a, Chen2022, Varvelo2021a}. The SBD approach groups environmental modes by spectral frequency, enabling scalable simulations of complex multisite systems.
+
+Unlike Markovian approximations (Lindblad, Redfield) that assume instantaneous environmental relaxation, non-Markovian treatment using PT-HOPS preserves structured bath fluctuations that enhance energy transfer efficiency under engineered spectral conditions \cite{Scholes2011, Huelga2013}.
+
+\subsection{FMO complex model system}
+
+The FMO complex serves as our benchmark system. Each monomer contains seven bacteriochlorophyll-a molecules with site energies $\varepsilon_n$ spanning \SIrange{12000}{13000}{\per\centi\meter} and electronic couplings $J_{nm}$ from \SIrange{5}{300}{\per\centi\meter} \cite{Adolphs2006}. The system exhibits experimentally observed coherence effects \cite{Engel2007} in the intermediate coupling regime where non-Markovian effects are pronounced.
+
+The composite spectral density comprises a Drude-Lorentz contribution ($\lambda = \SI{35}{\per\centi\meter}$, $\gamma = \SI{50}{\per\centi\meter}$) for protein-solvent modes and underdamped vibronic modes at $\omega_k = \SIlist{150;200;575;1185}{\per\centi\meter}$ with Huang-Rhys factors $S_k = \{\numlist{0.05; 0.02; 0.01; 0.005}\}$. These parameters have been validated against experimental absorption spectra and ultrafast spectroscopy data \cite{Adolphs2006, Moix2011}.
+
+\subsection{Multi-objective optimisation framework}
+
+Agrivoltaic design requires simultaneous optimisation of two competing objectives:
+\begin{enumerate}
+\item \textbf{Electrical energy harvesting,}
+\begin{equation}\label{eq:PCE}
+\mathrm{PCE} = \frac{\int_0^\infty [1-T(\omega)] J_{\rm solar}(\omega) \eta_{\rm PV}(\omega) \dd{\omega}}{\int_0^\infty J_{\rm solar}(\omega) \dd{\omega}},
+\end{equation}
+where $\eta_{\rm PV}(\omega)$ is the wavelength-dependent photovoltaic conversion efficiency.
+
+\item \textbf{Biological energy transfer,}
+\begin{equation}\label{eq:ETR}
+\mathrm{ETR} = k_{\rm RC} \int_0^{t_{\rm max}} \Tr[\bm{\rho}_{\rm RC}(t)] \dd{t},
+\end{equation}
+where $\bm{\rho}_{\rm RC}(t)$ is the reduced density matrix projected onto the reaction centre site and $k_{\rm RC}$ is the charge separation rate constant.
+\end{enumerate}
+
+These objectives are inherently conflicting: increasing $T(\omega)$ enhances ETR but reduces PCE. We formulate a constrained multi-objective optimisation:
+\begin{equation}\label{eq:pareto_optimization}
+\max_{\{T(\omega)\}} \qty{ \mathrm{PCE}[T(\omega)], \mathrm{ETR}[T(\omega)] },
+\end{equation}
+subject to:
+\begin{align}
+0 &\leq T(\omega) \leq 1 \quad \forall \omega, \label{eq:constraint1}\\
+\mathrm{PCE} &\geq \mathrm{PCE}_{\rm min} = \SI{15}{\percent}, \label{eq:constraint2}\\
+\mathrm{FWHM} &\in \SIrange{50}{200}{\nano\meter}. \label{eq:constraint3}
+\end{align}
+
+The constraint in \Cref{eq:constraint2} ensures commercially viable OPV efficiency, while \Cref{eq:constraint3} restricts spectral windows to physically realisable bandwidths. We parameterise the transmission function as a sum of Gaussian filters:
+\begin{equation}\label{eq:transmission_function}
+T(\omega) = T_{\rm peak} \sum_i w_i \exp\left[-\frac{(\omega - \omega_{c,i})^2}{2\sigma_i^2}\right],
+\end{equation}
+where $T_{\rm peak}$ is peak transmission, $\omega_{c,i}$ are centre frequencies targeting vibronic resonances, $\sigma_i$ are bandwidths (FWHM$\approx 2.355\sigma_i$), and $w_i$ are normalised weights. Pareto frontier analysis identifies optimal trade-offs where neither objective can be improved without degrading the other.
+
+\subsection{Quantum metrics}
+
+We quantify coherence and transport with standard measures. The $l_1$-norm of coherence,
+\begin{equation}\label{eq:l1_coherence}
+C_{l_1}(\rho) = \sum_{i \neq j} \abs{\rho_{ij}},
+\end{equation}
+quantifies total coherence across excitonic pairs. The coherence lifetime $\tau_c$ is the $1/e$ decay time of off-diagonal density matrix elements, extracted via $\abs{\rho_{ij}(t)} \approx \abs{\rho_{ij}(0)} \exp(-t/\tau_c)$. The inverse participation ratio,
+\begin{equation}\label{eq:IPR}
+\xi_{\rm deloc} = \qty( \sum_n \abs{\psi_n}^4 )^{-1},
+\end{equation}
+quantifies spatial exciton delocalization, with values approaching the number of chromophores indicating strong delocalization. The quantum advantage metric,
+\begin{equation}\label{eq:quantum_advantage}
+\eta_{\rm quantum} = \frac{\mathrm{ETR}_{\rm HOPS}}{\mathrm{ETR}_{\rm Markovian}} - 1,
+\end{equation}
+measures ETR enhancement relative to Markovian (Redfield) models under identical conditions; positive values indicate genuine non-Markovian advantages. Finally, the Quantum Fisher Information,
+\begin{equation}\label{eq:QFI}
+F_Q[\rho, \hat{O}] = \Tr[\rho L_{\hat{O}}^2],
+\end{equation}
+where $L_{\hat{O}}$ is the symmetric logarithmic derivative, measures parameter estimation sensitivity and quantum resource utilisation.
+
+\subsection{Validation framework}
+
+We implement a 12-test validation suite organised in three categories---convergence (4 tests), physical consistency (4 tests), and environmental robustness (4 tests)---to ensure observed quantum advantages are genuine physical effects rather than numerical artefacts. Details of each test, including acceptance thresholds, are provided in Section~S3 of the Supporting Information. The convergence tests include benchmarking against numerically exact HEOM results \cite{Suess2014} ($<\SI{2}{\percent}$ deviation for 3-site systems); physical consistency tests verify trace preservation ($|\Tr(\rho) - 1| < \num{1e-12}$) and detailed balance; robustness tests confirm that quantum advantages persist under temperature variations (\SIlist{\pm 10}{\kelvin}), static disorder ($\sigma = \SI{50}{\per\centi\meter}$), and bath parameter fluctuations (\SIlist{\pm 20}{\percent}).
+
+All simulations use double-precision arithmetic and were performed with our custom Python PT-HOPS/SBD framework \cite{Citty2024a} on an AMD Ryzen 5 5500U processor with 6 cores and 12 threads, \SI{40}{\giga\byte} of RAM, and AMD Radeon Graphics GPU.
+
+Statistical analysis includes error estimation using ensemble averaging over \num{100} independent realizations for robustness tests (static energetic disorder), with \SI{95}{\percent} confidence intervals reported. For geographic simulations, we employed a stratified sampling approach across nine climate zones with five representative sub-Saharan African sites, using \num{1000} bootstrap resampling iterations to estimate confidence intervals. The reproducibility of results has been verified through independent calculations using identical parameters on separate computational runs, showing deviation of $<\SI{0.5}{\percent}$ for all key metrics.
+
+\subsection{AI-Driven materials discovery pipeline}\label{subsec:AI_Methods}
+
+Our materials discovery framework employs equivariant graph neural networks (E(n)-GNN) that preserve rotational and translational symmetries, enabling accurate prediction of quantum dynamical properties without accumulated errors from recursive time-stepping.\cite{Zhang2024_AEM_ML}
+
+\textbf{Molecular representation.} Each donor-acceptor pair is encoded as a heterogeneous graph $G = (V, E)$ where:
+\begin{itemize}
+    \item Nodes $V$ represent atoms with features: element type, hybridization state, partial charge, aromaticity;
+    \item Edges $E$ represent bonds with features: bond type, conjugation, bond length, dihedral angles;
+    \item Global features: molecular weight, HOMO/LUMO levels, dipole moment, reorganization energy.
+\end{itemize}
+
+\textbf{Network architecture.} The E(n)-GNN comprises 6 message-passing layers with 128 hidden channels, attention-based aggregation, and equivariant nonlinearities. Output heads predict:
+\begin{enumerate}
+    \item Excitation energies (MAE $<\SI{5}{\milli\electronvolt}$ vs. TD-DFT benchmark);
+    \item Charge transfer rates (MAE $<\SI{10}{\percent}$ vs. Marcus theory);
+    \item Reorganization energies (MAE $<\SI{15}{\milli\electronvolt}$ vs. DFT);
+    \item Spectral overlap integrals (MAE $<\SI{8}{\percent}$ vs. numerical integration).
+\end{enumerate}
+
+\textbf{Training protocol.} The model was trained on \num{15847} DFT-computed molecular pairs using AdamW optimizer with learning rate scheduling. Data augmentation via random rotations and conformer sampling increased effective training set size to \num{47541} samples. Validation on held-out test set (\SI{20}{\percent}) showed no evidence of overfitting after \num{500} epochs.
+
+\textbf{High-throughput screening workflow.} The discovery pipeline executed a four-stage filtering process:
+
+\textit{Stage 1: Virtual library generation (\num{12450} candidates)}
+\begin{itemize}
+    \item PM6 derivatives: \num{87} variants (side-chain, fluorination, backbone modifications);
+    \item Y6-BO analogues: \num{143} variants (end-group, core, side-chain engineering);
+    \item Combinatorial pairing: \num{12441} donor-acceptor combinations.
+\end{itemize}
+
+\textit{Stage 2: Property prediction (E(n)-GNN inference)}
+\begin{itemize}
+    \item Absorption spectra (\SIrange{300}{1000}{\nano\meter}, \SI{5}{\nano\meter} resolution);
+    \item Energy level alignment (HOMO/LUMO offsets);
+    \item Charge transport descriptors (reorganization energy, transfer integrals);
+    \item Estimated PCE using detailed balance model.
+\end{itemize}
+
+\textit{Stage 3: Multi-criteria filtering (23 candidates remaining)}
+
+Candidates were required to satisfy all constraints:
+\begin{align}
+    \text{PCE}_{\rm est} &> \SI{15}{\percent}, \\
+    \text{Average Transmission}_{\numrange{400}{700}\,\text{\nano\meter}} &> \SI{40}{\percent}, \\
+    \Delta E_{\rm LUMO} &> \SI{0.3}{\electronvolt}, \\
+    \mu_{\rm est} &> \SI{e-4}{\centi\meter\squared\per\volt\per\second}, \\
+    B_{\rm index} &> \num{80}~\text{(biodegradability)}, \\
+    T_{80, \rm est} &> \SI{10000}{\hour}.
+\end{align}
+
+\textit{Stage 4: Quantum dynamics validation (PT-HOPS simulation)}
+
+Final candidates underwent rigorous PT-HOPS simulation to verify:
+\begin{itemize}
+    \item Electron transport rate enhancement \SI{>15}{\percent} vs. Markovian baseline;
+    \item Coherence lifetime extension \SI{>20}{\percent} at physiological temperature;
+    \item Robustness to spectral density variations ($\pm\SI{10}{\percent}$);
+    \item Stability across temperature range (\SIrange{280}{320}{\kelvin}).
+\end{itemize}
+
+\textbf{Multi-objective Pareto optimization.} The final selection employed Pareto frontier analysis to identify optimal trade-offs between competing objectives. The objective vector was defined as:
+\begin{equation}
+\vec{f}(x) = \left[ \text{PCE}(x),~ \text{ETR}_{\rm enhancement}(x),~ B_{\rm index}(x),~ T_{80}(x) \right].
+\end{equation}
+
+Non-dominated sorting genetic algorithm (NSGA-II) identified the Pareto frontier comprising 8 candidates. The final selection maximized the hypervolume indicator while satisfying all minimum thresholds, yielding the PM6-derivative\_23 / Y6-BO-analogue\_87 pair reported in this work.
+
+\textbf{Computational cost and scalability.} The complete screening pipeline required:
+\begin{itemize}
+    \item E(n)-GNN training: \SI{72}{GPU\text{-}\hour} (NVIDIA A100);
+    \item High-throughput inference: \SI{4.5}{GPU\text{-}\hour} (batch processing);
+    \item PT-HOPS validation (\num{23} candidates): \num{1840} CPU-hours;
+    \item Total wall-clock time: \SI{18}{\day} (parallelized execution).
+\end{itemize}
+
+This represents a \num{100}$\times$ speedup compared to exhaustive DFT + HEOM simulation of all candidates, demonstrating the scalability of the AI-accelerated approach for materials discovery.
+
+\subsection{Thermal regime validity}
+
+For simulations at physiological temperatures ($T = \SI{295}{\kelvin}$), the high-temperature approximation is valid ($k_B T \gg \hbar\gamma$), and explicit Matsubara reservoir terms are negligible. The simulation uses the standard Drude-Lorentz spectral density, maintaining computational efficiency while capturing thermal effects accurately. This efficiency enables high-throughput screening of OPV transmission functions and disorder ensembles essential for realistic agrivoltaic design optimisation.
