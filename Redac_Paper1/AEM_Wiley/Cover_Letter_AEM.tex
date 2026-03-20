@@ -1,0 +1,74 @@
+\documentclass[a4paper,11pt]{letter}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{siunitx}
+\usepackage{physics}
+\usepackage{hyperref} % Useful for clickable emails/links
+
+\sisetup{
+  range-phrase = {--}, 
+  range-units = single,
+  separate-uncertainty = true
+}
+
+\DeclareSIUnit{\yr}{yr}
+\DeclareSIUnit{\tonne}{t}
+\DeclareSIUnit{\hectare}{ha}
+\DeclareSIUnit{\kWh}{kWh}
+
+\begin{document}
+
+\begin{letter}{
+Prof. Dr. Matthias Beller \\
+Editor-in-Chief \\
+Advanced Energy Materials \\
+Wiley-VCH GmbH \\
+Rotherstra\ss{}e 21 \\
+10245 Berlin, Germany
+}
+
+\opening{Dear Prof. Dr. Beller,}
+
+We are pleased to submit our manuscript entitled \textbf{``Molecular engineering of semi-transparent non-fullerene acceptors for quantum-enhanced agrivoltaics''} for consideration as a Full Paper in \textit{Advanced Energy Materials}.
+
+This work addresses a critical materials design challenge in semi-transparent organic photovoltaics (ST-OPVs): co-optimizing electrical performance with spectral transmission for dual-use agrivoltaic applications. We demonstrate that molecular engineering of PM6/Y6-BO derivatives can simultaneously achieve a power conversion efficiency (PCE) of \SI{18.8}{\percent} and quantum-enhanced biological compatibility through strategic spectral tuning.
+
+\textbf{Key advances aligning with the scope of \textit{Advanced Energy Materials}:}
+
+\begin{enumerate}
+    \item \textbf{Record performance.} We report a \SI{18.8}{\percent} PCE in a semi-transparent configuration with \SI{42}{\percent} average transmission in the photosynthetically active range---performance competitive with state-of-the-art opaque devices.
+
+    \item \textbf{Novel mechanism.} This is the first demonstration of quantum-coherent spectral engineering in OPVs, extending excitonic coherence lifetimes by \SIrange{20}{50}{\percent} through targeted vibronic resonance excitation. This establishes a new non-Markovian design principle for organic semiconductor materials.
+
+    \item \textbf{AI-driven discovery.} We implemented a high-throughput screening of \num{2847} candidates using equivariant graph neural networks (E(n)-GNN), achieving a \num{100}$\times$ acceleration compared to exhaustive DFT simulations. 
+
+    \item \textbf{Commercial-grade stability.} We demonstrate T$_{80} > \SI{18000}{\hour}$ under continuous 1-sun illumination, with thermal cycling degradation $<\SI{0.17}{\percent}$ per cycle, projecting a \num{20}+ year operational lifetime compatible with industrial roll-to-roll manufacturing.
+
+    \item \textbf{Economic viability.} Techno-economic analysis projects a levelized cost of energy (LCOE) of \SIrange{0.04}{0.06}{USD\per\kWh} and a revenue potential of \SIrange{470}{3000}{USD\per\hectare\per\yr}. 
+\end{enumerate}
+
+This work bridges molecular-level materials design with device-level performance. We believe it is particularly well-suited for \textit{Advanced Energy Materials} given the journal's emphasis on structure-property relationships, stability, and AI-driven materials discovery.
+
+\textbf{We confirm that:}
+\begin{itemize}
+    \item This manuscript is original and not under consideration elsewhere;
+    \item All authors have approved the submission;
+    \item No conflicts of interest exist.
+\end{itemize}
+
+\textbf{Suggested reviewers:}
+Prof. Xiangjian Zhan (Peking University), Prof. Christoph J. Brabec (FAU Erlangen-N\"urnberg), Prof. Al\'an Aspuru-Guzik (University of Toronto), Prof. Gregory D. Scholes (Princeton University), and Dr. Sarah Kurtz (NREL).
+
+Thank you for your time and consideration.
+
+\closing{Sincerely,}
+
+\fromsignature{
+Steve Cabrel Teguia Kouam, Ph.D. \\
+Corresponding Author \\
+Department of Physics, University of Douala \\
+Email: steve.teguia@facsciences-uy1.cm
+}
+
+\end{letter}
+\end{document}
