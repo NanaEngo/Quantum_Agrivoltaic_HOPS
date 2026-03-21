@@ -1,0 +1,98 @@
+% Main Manuscript Figures - AEM Version
+% Molecular engineering of semi-transparent non-fullerene acceptors for quantum-enhanced agrivoltaics
+
+%=============================================================================
+% FIGURE 1: Conceptual Overview (Double Column)
+% Place after Introduction section
+%=============================================================================
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.8\textwidth]{Conceptual_Overview.png}
+\caption{\textbf{Conceptual overview of quantum-enhanced agrivoltaic system.} \textbf{(a)} Schematic illustration of semi-transparent OPV panels integrated above agricultural crops, enabling simultaneous energy generation and photosynthesis. \textbf{(b)} Molecular structures of PM6 donor and Y6-BO acceptor materials with normalized absorption (solid lines) and transmission (shaded regions) spectra. Transmission windows at \SIlist{750;820}{\nano\meter} (dark green shading) coincide with FMO vibronic resonances. \textbf{(c)} Energy level diagram showing HOMO/LUMO alignment at the donor-acceptor interface with $\Delta E_{\mathrm{LUMO}} = \SI{0.75}{\electronvolt}$ and $\Delta E_{\mathrm{HOMO}} = \SI{0.35}{\electronvolt}$, facilitating efficient exciton dissociation and charge extraction.}
+\label{fig:conceptual_overview}
+\end{figure*}
+
+%=============================================================================
+% FIGURE 2: OPV Device Performance (Single Column)
+% Place after OPV Materials section
+%=============================================================================
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.8\columnwidth]{OPV_Performance.png}
+\caption{\textbf{Simulated optoelectronic performance of semi-transparent OPVs.} Based on literature parameters for PM6/Y6-BO systems\cite{Liu2024_AEM_NFA,Wang2023_AEM_Stability}. \textbf{(a)} Current density--voltage ($J$--$V$) characteristics under AM1.5G illumination (\SI{100}{\milli\watt\per\centi\meter\squared}) showing power conversion efficiency of \SI{18.83}{\percent}, $V_{\mathrm{OC}} = \SI{0.88}{\volt}$, $J_{\mathrm{SC}} = \SI{24.6}{\milli\ampere\per\centi\meter\squared}$, and fill factor = \SI{86.5}{\percent}. \textbf{(b)} External quantum efficiency (EQE) spectrum with integrated current matching $J_{\mathrm{SC}}$ within \SI{5}{\percent}. \textbf{(c)} Transmission spectrum showing \SI{42}{\percent} average transmission in photosynthetically active radiation (PAR, \SIrange{400}{700}{\nano\meter}) range with targeted windows at \SIlist{750;820}{\nano\meter}. \textbf{(d)} Projected operational stability based on literature reports, with $T_{80} > \SI{18000}{\hour}$ under continuous illumination at \SI{65}{\degreeCelsius}.}
+\label{fig:opv_performance}
+\end{figure}
+
+%=============================================================================
+% FIGURE 3: Quantum Dynamics Results (Double Column)
+% Place after Quantum Dynamics results
+%=============================================================================
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=.8\textwidth]{Quantum_Dynamics.png}
+\caption{\textbf{Quantum dynamics simulations of FMO complex under spectral filtering.} PT-HOPS/SBD simulations at \SI{295}{\kelvin} with static disorder $\sigma = \SI{50}{\per\centi\meter}$ (\num{100} realizations). \textbf{(a)} $l_1$-norm coherence evolution showing \SIrange{20}{50}{\percent} lifetime extension under dual-band filtering (green) compared to broadband illumination (gray). \textbf{(b)} Exciton population dynamics at reaction center site, demonstrating \SI{25}{\percent} enhancement in electron transport rate (ETR). \textbf{(c)} Inverse participation ratio indicating exciton delocalization across $8.2 \pm 0.7$ chromophores under filtering vs. $4.1 \pm 0.5$ for broadband. \textbf{(d)} Quantum Fisher Information tracking metrological advantage during coherent transport window. Shaded regions represent \SI{95}{\percent} confidence intervals.}
+\label{fig:quantum_dynamics}
+\end{figure*}
+
+%=============================================================================
+% FIGURE 4: Pareto Optimization (Single Column)
+% Place after Optimization results
+%=============================================================================
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.8\columnwidth]{Pareto_Frontier.png}
+\caption{\textbf{Multi-objective Pareto optimization of PCE and ETR enhancement.} Scatter plot shows all \num{2847} screened donor-acceptor combinations from AI-driven discovery pipeline. Solid line indicates Pareto frontier comprising 8 non-dominated solutions. Three representative configurations highlighted: balanced (\SI{18.2}{\percent} PCE, \SI{25}{\percent} ETR enhancement, green star), energy-focused (\SI{22.1}{\percent} PCE, \SI{12}{\percent} ETR enhancement, orange square), and agriculture-focused (\SI{15.4}{\percent} PCE, \SI{33}{\percent} ETR enhancement, blue triangle). Color gradient indicates transmission bandwidth (FWHM). Shaded region denotes infeasible design space (PCE $< \SI{15}{\percent}$).}
+\label{fig:pareto_frontier}
+\end{figure}
+
+%=============================================================================
+% FIGURE 5: AI/ML Pipeline (Single Column)
+% Place after AI/ML results
+%=============================================================================
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.8\columnwidth]{AI_ML_Pipeline.png}
+\caption{\textbf{AI-driven materials discovery pipeline.} \textbf{(a)} Four-stage screening workflow: (1) virtual library generation (\num{12450} candidates), (2) E(n)-GNN property prediction, (3) multi-criteria filtering (23 candidates remaining), (4) PT-HOPS quantum dynamics validation (final selection). \textbf{(b)} E(n)-GNN architecture with 6 message-passing layers, attention aggregation, and 4 output heads. \textbf{(c)} Parity plots showing model performance: excitation energies (MAE $< \SI{5}{meV}$), charge transfer rates (MAE $< \SI{10}{\percent}$), reorganization energies (MAE $< \SI{15}{meV}$). Testing on \num{3962} held-out samples. Complete screening achieved \num{100}$\times$ speedup vs. exhaustive DFT + HEOM.}
+\label{fig:ai_ml_pipeline}
+\end{figure}
+
+%=============================================================================
+% FIGURE 6: Environmental Robustness (Double Column)
+% Place after Geographic results
+%=============================================================================
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=.8\textwidth]{Environmental_Robustness.png}
+\caption{\textbf{Environmental robustness of quantum enhancement.} \textbf{(a)} Temperature dependence showing maximum coherence preservation at \SIrange{285}{300}{\kelvin} (shaded green), coinciding with typical agricultural conditions. \textbf{(b)} Static energetic disorder effects: ensemble average over \num{100} realizations with $\sigma = \SI{50}{\per\centi\meter}$ yields $\langle\eta_{\mathrm{quantum}}\rangle = 0.20 \pm 0.04$. \textbf{(c)} Geographic validation across \num{9} climate zones: temperate (Germany, \SI{50}{\degree}N), subtropical (India, \SI{20}{\degree}N), tropical (Kenya, \SI{0}{\degree}), desert (Arizona, \SI{32}{\degree}N), and \num{5} sub-Saharan African sites (circles). Consistent \SIrange{18}{26}{\percent} enhancement across all climates. \textbf{(d)} Bath parameter fluctuations ($\lambda, \gamma \pm\SI{20}{\percent}$): enhancement persists at \SIrange{18}{26}{\percent}. Error bars represent \SI{95}{\percent} confidence intervals.}
+\label{fig:environmental_robustness}
+\end{figure*}
+
+%=============================================================================
+% FIGURE 7: Spectral Analysis (Single Column, Optional)
+% Place after Theory or Results section
+%=============================================================================
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.8\columnwidth]{Spectral_Analysis.png}
+\caption{\textbf{Spectral density and system-bath interactions.} \textbf{(a)} Composite spectral density showing Drude-Lorentz contribution ($\lambda = \SI{35}{\per\centi\meter}$, $\gamma = \SI{50}{\per\centi\meter}$, blue) and underdamped vibronic modes at \SIlist{150;200;575;1185}{\per\centi\meter} (orange peaks). \textbf{(b)} System-bath correlation function demonstrating non-Markovian memory effects persisting for \SI{>500}{\femto\second}. \textbf{(c)} Overlap between OPV transmission spectrum (green shaded) and FMO excitonic transitions (vertical lines), showing resonant enhancement at \SIlist{750;820}{\nano\meter}.}
+\label{fig:spectral_analysis}
+\end{figure}
+
+%=============================================================================
+% FIGURE 8: Design Guidelines Summary (Single Column, Optional)
+% Place before Conclusion
+%=============================================================================
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.8\columnwidth]{Design_Guidelines.png}
+\caption{\textbf{Summary of design guidelines for quantum-enhanced agrivoltaics.} \textbf{(a)} Key molecular design parameters: spectral transmission windows (\SIlist{750;820}{\nano\meter}), energy level offsets ($\Delta E_{\mathrm{LUMO}} > \SI{0.3}{\electronvolt}$), charge mobility ($\mu > \SI{e-3}{\centi\meter\squared\per\volt\per\second}$). \textbf{(b)} Structure-property relationships linking molecular modifications to device performance. \textbf{(c)} Implementation roadmap from computational design to experimental validation and commercial deployment. Based on simulation results and literature analysis presented in this work.}
+\label{fig:design_guidelines}
+\end{figure}

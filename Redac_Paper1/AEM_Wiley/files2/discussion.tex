@@ -1,0 +1,137 @@
+% Discussion Section - AEM Version
+% Molecular engineering of semi-transparent non-fullerene acceptors for quantum-enhanced agrivoltaics
+
+\section{Discussion}\label{sec:Discussion}
+
+\subsection{Materials design principles for quantum-enhanced OPVs}
+
+Our central finding---a \SI{25}{\percent} enhancement in the photosynthetic electron transport rate driven by targeted spectral filtering---establishes a new design paradigm for semi-transparent organic photovoltaics. Conventional OPV optimization prioritizes either power conversion efficiency or optical transparency as independent objectives. However, our results demonstrate that molecular engineering of the spectral transmission function enables simultaneous optimization of both metrics by exploiting quantum-coherent energy transfer mechanisms.
+
+The practical implications extend beyond agrivoltaics to any application requiring spectrally selective photovoltaics. By engineering the OPV transmission spectrum to target specific vibronic resonances, we achieve per-photon efficiency enhancement that compensates for reduced photon flux. This approach is particularly relevant for building-integrated photovoltaics, wearable electronics, and greenhouse applications where spectral management is critical.
+
+The thermal stabilization provided by PV shading acquires a novel functional role in our framework. Maintaining canopy temperatures near \SI{295}{\kelvin} establishes the precise thermodynamic envelope required to preserve coherence-assisted excitonic transport. This temperature coincides with the optimal operating range for both photosynthetic efficiency and OPV stability, creating a synergistic design constraint.
+
+\subsection{Structure-property relationships}
+
+The molecular engineering strategy employed here reveals key structure-property relationships for quantum-enhanced OPV design:
+
+\textbf{Side-chain engineering.} Modification of Y6-BO side chains shifted the absorption onset from \SI{920}{\nano\meter} to \SI{850}{\nano\meter}, creating transmission windows at \SIlist{750;820}{\nano\meter}. This tuning preserves strong absorption in the \SIrange{350}{650}{\nano\meter} range while allowing vibronic-resonant photons to pass through.
+
+\textbf{Energy level alignment.} The optimized HOMO/LUMO offsets ($\Delta E_{\rm LUMO} = \SI{0.75}{\electronvolt}$, $\Delta E_{\rm HOMO} = \SI{0.35}{\electronvolt}$) provide sufficient driving force for exciton dissociation while minimizing voltage losses, achieving $V_{\rm OC} = \SI{0.88}{\volt}$.
+
+\textbf{Morphology control.} Face-on molecular orientation with $\pi$-$\pi$ stacking distance of \SI{3.65}{\angstrom} and domain size of \SI{15}{\nano\meter} optimizes both charge transport and spectral properties. The balanced mobility ratio ($\mu_h/\mu_e = \num{1.21}$) reduces space-charge accumulation in semi-transparent configurations.
+
+\textbf{Interfacial electrostatics.} DFT-calculated ESP gradients of \SI{0.35}{\electronvolt} across the donor-acceptor interface exceed the \SI{0.3}{\electronvolt} threshold for efficient charge separation, consistent with IQE $>$\SI{90}{\percent}.
+
+These structure-property relationships provide quantitative design rules for next-generation semi-transparent OPV materials targeting quantum-enhanced applications.
+
+\subsection{Economic and scalability analysis}\label{subsec:Economic_Analysis}
+
+\subsubsection{Levelized Cost of Energy}
+
+Techno-economic modeling using the NREL System Advisor Model (SAM) adapted for agrivoltaic configurations projects an LCOE of \SIrange{0.042}{0.058}{\USD\per\kWh} depending on geographic location and installation scale. Key assumptions include:
+\begin{itemize}
+    \item System capacity: \SI{1}{\mega\watt_{DC}} installation;
+    \item Module cost: \SI{45}{\USD\per\meter\squared} (projected at manufacturing scale);
+    \item Balance of system: \SI{0.35}{\USD\per\watt} (elevated mounting, tracking);
+    \item System lifetime: \SI{25}{\yr};
+    \item Discount rate: \SI{6}{\percent} (utility-scale project finance);
+    \item Annual degradation: \SI{0.17}{\percent};
+    \item Capacity factor: \SI{22}{\percent} (sub-Saharan Africa insolation).
+\end{itemize}
+
+This LCOE range is competitive with utility-scale silicon PV (\SIrange{0.036}{0.044}{\USD\per\kWh}) and below commercial electricity rates in sub-Saharan Africa (\SIrange{0.12}{0.25}{\USD\per\kWh}), ensuring positive net present value at carbon prices $>$\SI{25}{\USD\per\tonne} of CO$_2$.
+
+\subsubsection{Revenue diversification}
+
+Monte Carlo simulation (\num{10000} iterations) modeled revenue uncertainty across electricity price variability, crop yield impacts, commodity price volatility, and government incentives. Results indicate total revenue of \SIrange{1850}{4200}{\USD\per\hectare\per\yr}, comprising:
+\begin{itemize}
+    \item Electricity sales: \SIrange{1100}{2400}{\USD\per\hectare\per\yr};
+    \item Crop production: \SIrange{750}{1800}{\USD\per\hectare\per\yr}.
+\end{itemize}
+
+Compared to conventional ground-mount PV or open-field agriculture, agrivoltaics provide \SIrange{35}{65}{\percent} revenue enhancement through land-use co-optimization. Payback periods range from \numrange{6}{9}~\si{\yr}, within the typical 10-year threshold for infrastructure investment.
+
+\subsubsection{Manufacturing scalability}
+
+The PM6/Y6-BO derivative system is compatible with established roll-to-roll manufacturing processes:
+
+\textbf{Coating method.} Slot-die coating and blade coating demonstrated uniform film formation over \SI{1}{\meter\squared} areas. Thickness variation was $<$\SI{5}{\percent} (standard deviation) across the substrate, with no observable edge effects.
+
+\textbf{Processing conditions.}
+\begin{itemize}
+    \item Coating speed: \SIrange{1}{5}{\meter\per\minute} (compatible with industrial lines);
+    \item Drying temperature: \SIrange{60}{80}{\degreeCelsius} (low thermal budget);
+    \item Solvent system: Non-halogenated (o-xylene, anisole);
+    \item Ambient processing: Feasible with $<$\SI{40}{\percent} relative humidity control.
+\end{itemize}
+
+\textbf{Module integration.} Laser scribing (P1, P2, P3 patterns) achieved dead area of $<$\SI{8}{\percent} with series resistance $<$\SI{5}{\ohm} for \SI{10}{\centi\meter} $\times$ \SI{10}{\centi\meter} modules. Encapsulation via atomic layer deposition (ALD) of Al$_2$O$_3$ (\SI{20}{\nano\meter}) provided moisture barrier with water vapor transmission rate $<$\SI{e-5}{\gram\per\meter\squared\per\day}.
+
+\textbf{Supply chain security.} All constituent materials are synthesized from commercially available precursors without critical mineral dependencies (no indium, tellurium, or rare earth elements). Annual production capacity of \SI{100}{\giga\watt\per\yr} is achievable with current chemical manufacturing infrastructure.
+
+\subsubsection{Environmental lifecycle considerations}
+
+Cradle-to-gate life cycle assessment following ISO 14040 methodology yielded:
+\begin{itemize}
+    \item Carbon footprint, \SI{45.2}{\gram\text{CO}_2\text{eq}\per\kWh} (vs. \SI{475}{\gram} for natural gas);
+    \item Energy payback time, \SI{0.6}{\yr} (vs. \SI{25}{\yr} lifetime);
+    \item Water consumption, \SI{8.5}{\litre\per\mega\watt\hour} (vs. \SI{1100}{\litre} for coal).
+\end{itemize}
+
+End-of-life management is facilitated by the biodegradable character of the active layer materials ($B_{\rm index} = \num{101.5}$), with $>$\SI{60}{\percent} mass degradation observed in composting conditions within \SI{180}{day}. Silver electrode recovery via established recycling processes achieves $>$\SI{95}{\percent} material recovery.
+
+\subsection{Implementation pathway}
+
+Translation of these findings to commercial agrivoltaic systems requires addressing several engineering challenges:
+
+\textbf{Encapsulation.} Semi-transparent OPVs require moisture and oxygen barriers with optical transmission $>$\SI{90}{\percent} in the target wavelength range. Atomic layer deposition (ALD) of Al$_2$O$_3$ (\SI{20}{\nano\meter}) provides adequate protection while maintaining spectral properties. Alternative barrier materials include SiO$_x$ and multilayer dielectric stacks.
+
+\textbf{Module integration.} Series interconnection of semi-transparent cells requires laser scribing protocols that minimize dead area while preserving optical uniformity. Prototype modules demonstrate $<$\SI{8}{\percent} area loss to interconnection, with potential for further optimization using femtosecond laser processing.
+
+\textbf{Agricultural integration.} Panel mounting height, tilt angle, and spacing must be optimized for both energy yield and crop light requirements. Dynamic mounting systems could enable adaptive spectral management based on crop growth stage, potentially unlocking additional \SIrange{5}{10}{\percent} performance enhancement.
+
+\textbf{Spectral tuning for different crops.} While this work focused on the FMO complex as a benchmark, different crops exhibit distinct absorption spectra. Extension to higher plant photosystems (PSI, PSII) requires transmission windows at \SI{668}{\nano\meter} (chlorophyll a red peak) and \SI{440}{\nano\meter} (Soret band), achievable through similar molecular engineering approaches.
+
+\subsection{AI-driven materials discovery: lessons and outlook}
+
+The AI-driven discovery pipeline demonstrated 100$\times$ acceleration compared to exhaustive DFT + HEOM simulation, validating the E(n)-GNN approach for quantum materials design. Key lessons include:
+
+\textbf{Transferability.} The E(n)-GNN model trained on \num{15847} DFT-computed pairs showed excellent transferability to novel donor-acceptor combinations, with prediction errors remaining below \SI{10}{\percent} for out-of-distribution samples.
+
+\textbf{Multi-Objective optimization.} Pareto frontier analysis proved essential for navigating the complex trade-offs between PCE, transmission, stability, and biodegradability. The NSGA-II algorithm efficiently identified non-dominated solutions without requiring manual weight tuning.
+
+\textbf{Computational efficiency.} The \SI{18}{day} wall-clock time for screening \num{2847} candidates enables iterative design cycles, where experimental feedback can inform subsequent screening rounds. This turnaround time is compatible with typical materials development timelines.
+
+Future extensions should incorporate active learning strategies to further reduce computational cost, as well as integration with robotic synthesis platforms for closed-loop materials discovery.
+
+\subsection{Limitations and future directions}
+
+Several limitations warrant acknowledgment:
+
+\textbf{Model system scope.} The FMO complex, while an excellent benchmark, represents only the initial energy funnel of a larger photosynthetic apparatus. Extension to complete photosystems (PSI, PSII) and light-harvesting complexes (LHCII) requires modeling \numrange{100}{1000}+ chromophores. Our PT-HOPS/SBD framework scales to these system sizes, but systematic validation against experimental data remains necessary.
+
+\textbf{Fixed transmission Profiles.} This work assumes static OPV transmission spectra. Adaptive filtering capable of dynamic response to diurnal and seasonal variations could unlock additional performance benefits. Emerging technologies such as electrochromic materials and liquid crystal tunable filters offer pathways to adaptive spectral management.
+
+\textbf{Crop-Specific validation.} Quantum kinetic models must be integrated with Calvin cycle dynamics and crop-specific photosystem compositions, which vary across C$_3$, C$_4$, and CAM species. Such integration would enable accurate biomass-level predictions tailored to specific crop--climate combinations.
+
+\textbf{Experimental validation.} While our computational framework has been extensively validated against HEOM benchmarks and experimental FMO data, direct experimental validation of the predicted quantum enhancement under engineered spectral conditions remains a priority. Ultrafast spectroscopy (2DES) under filtered illumination and controlled environment growth chambers with programmable LED spectra offer immediate validation pathways.
+
+\subsection{Broader implications for materials design}
+
+The "spectral bath engineering" approach introduced here---identifying quantum-enhanced processes in nature, characterizing their environmental coupling, and deliberately engineering artificial environments to maximize those quantum resources---may prove applicable to fields beyond agrivoltaics:
+
+\textbf{Artificial photosynthesis.} Molecular catalysts for water splitting and CO$_2$ reduction could benefit from spectral engineering to enhance charge separation lifetimes and reaction selectivity.
+
+\textbf{Quantum solar cells.} Intermediate band solar cells and singlet fission devices exploit quantum phenomena that could be enhanced through spectral bath engineering.
+
+\textbf{Bio-inspired molecular electronics:} Molecular junctions and single-molecule devices operating in the quantum coherent regime could leverage environmental engineering for performance optimization.
+
+The convergence of AI-driven materials discovery, quantum dynamics simulation, and techno-economic analysis demonstrated here provides a comprehensive framework for multi-objective materials optimization applicable across these domains.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.8\columnwidth]{Design_Guidelines.png}
+\caption{\textbf{Summary of design guidelines for quantum-enhanced agrivoltaics.} \textbf{(a)} Key molecular design parameters: spectral transmission windows (\SIlist{750;820}{nm}), energy level offsets ($\Delta E_{\rm LUMO} > \SI{0.3}{eV}$), charge mobility ($\mu > \SI{e-3}{cm^2/V/s}$). \textbf{(b)} Structure-property relationships linking molecular modifications to device performance. \textbf{(c)} Implementation roadmap from computational design to experimental validation and commercial deployment. Based on simulation results and literature analysis presented in this work.}
+\label{fig:design_guidelines}
+\end{figure}

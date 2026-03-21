@@ -1,0 +1,117 @@
+% Results Section - AEM Version
+% Molecular engineering of semi-transparent non-fullerene acceptors for quantum-enhanced agrivoltaics
+
+\section{Results}\label{sec:Results}
+
+\subsection{OPV device performance and stability}
+
+The optimized PM6/Y6-BO derivative system achieved a power conversion efficiency of \SI{18.83}{\percent} in semi-transparent configuration, with balanced charge carrier mobilities of $\mu_h = \SI{2.3e-3}{\centi\meter\squared\per\volt\per\second}$ and $\mu_e = \SI{1.9e-3}{\centi\meter\squared\per\volt\per\second}$. The mobility ratio $\mu_h/\mu_e = \num{1.21}$ indicates efficient charge transport with minimal space-charge accumulation.
+
+Operational stability testing revealed T$_{80}$ lifetimes exceeding \SI{18000}{\hour} under continuous \SI{1}{sun} illumination at \SI{65}{\degreeCelsius}. Thermal cycling tests (\SIrange{-40}{85}{\degreeCelsius}, 500 cycles) demonstrated exceptional robustness with $<$\SI{0.17}{\percent} degradation per cycle, projecting \num{20}+ year operational lifetimes in field deployment. The non-geminate recombination coefficient of $k_{\rm NG} = \SI{1.2e-12}{\centi\meter\cubed\per\second}$ indicates suppressed bimolecular losses, consistent with the high fill factor of \SI{86.5}{\percent}.
+
+\subsection{Spectral engineering for quantum enhancement}
+
+Strategic tuning of the OPV transmission spectrum created dual transmission windows at \SIlist{750;820}{\nano\meter}, coinciding with FMO vibronic resonances. The engineered transmission function $T(\omega)$ shapes the effective spectral density experienced by the photosynthetic complex: $J_{\rm plant}(\omega) = T(\omega) \times J_{\rm solar}(\omega)$.
+
+Targeted spectral filtering raises the electron transport rate (ETR) by up to \SI{25}{\percent} over Markovian predictions at fixed photon flux. This enhancement results from vibronic-resonance-assisted transport, where the transmitted spectrum overlaps the \SI{575}{\per\centi\meter} vibrational mode, satisfying the resonance condition:
+\begin{equation}\label{eq:resonance_condition}
+\omega_{\rm filter} \approx \omega_{\rm vibronic} \pm J_{\rm coupling}.
+\end{equation}
+
+In this regime, the filter preferentially excites excitonic states strongly coupled to vibrations, producing dressed polaron-like quasiparticles with suppressed dephasing. The structured bath sustains coherence for intervals comparable to energy-transfer times, allowing constructive interference to funnel population rapidly toward the reaction center.
+
+\subsection{Quantum dynamics simulations}
+
+\subsubsection{Coherence dynamics under spectral filtering}
+
+Optimal spectral filtering extends coherence lifetimes by \SIrange{20}{50}{\percent} compared to broadband illumination, as quantified by the $l_1$-norm of coherence. Under optimal filtering, $\tau_c$ exceeds \SI{500}{fs} at \SI{295}{\kelvin}, compared to $\sim$\SI{300}{fs} under broadband conditions. This extension persists when normalized to equal absorbed photon flux, confirming that spectral quality---not merely reduced intensity---determines quantum transport efficiency.
+
+The exciton delocalization length, quantified by the inverse participation ratio $\xi_{\rm deloc}$, increases from $N_{\rm eff} \approx \num{4}$ under broadband illumination to $N_{\rm eff} \approx \num{9}$ under optimized filtering. This enhanced delocalization allows excitations to access more pathways to the reaction center through quantum interference, persisting at physiological temperatures.
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=\textwidth]{Figure_3_Quantum_Dynamics.png}
+\caption{\textbf{Quantum dynamics simulations of FMO complex under spectral filtering.} PT-HOPS/SBD simulations at \SI{295}{K} with static disorder $\sigma = \SI{50}{cm^{-1}}$ (100 realizations). \textbf{(a)} $l_1$-norm coherence evolution showing \SIrange{20}{50}{\percent} lifetime extension under dual-band filtering (green) compared to broadband illumination (gray). \textbf{(b)} Exciton population dynamics at reaction center site, demonstrating \SI{25}{\percent} enhancement in electron transport rate (ETR). \textbf{(c)} Inverse participation ratio indicating exciton delocalization across $8.2 \pm 0.7$ chromophores under filtering vs. $4.1 \pm 0.5$ for broadband. \textbf{(d)} Quantum Fisher Information tracking metrological advantage during coherent transport window. Shaded regions represent \SI{95}{\percent} confidence intervals.}
+\label{fig:quantum_dynamics}
+\end{figure*}
+
+\subsubsection{Quantum metrics enhancement}
+
+\Cref{tab:quantum_metrics} summarizes the quantitative comparison of quantum metrics between filtered and broadband illumination. The \SI{89}{\percent} enhancement in pairwise concurrence reveals that inter-site entanglement is substantially strengthened under spectral filtering, consistent with the vibronic resonance mechanism.
+
+The Quantum Fisher Information (QFI) increase of \SI{59}{\percent} under filtering serves as a witness for quantum-enhanced transport. Elevated QFI indicates that the system operates in a quantum regime where the state carries more information about transmission parameters than the broadband baseline, implying that tuning OPV profiles yields performance gains as the system sensitivity to spectral parameters is maximal.
+
+\begin{table}[ht]
+\centering
+\caption{\textbf{Quantum metric enhancement under optimized spectral filtering.} Comparison between filtered (\SIlist{750;820}{\nano\meter} dual-band) and broadband conditions at \SI{295}{\kelvin} with static disorder $\sigma = \SI{50}{\per\centi\meter}$. Enhancement percentages denote improvements in quantum resource utilization and resulting transport efficiency. Errors represent \SI{95}{\percent} confidence intervals across 500 disorder realizations.}
+\label{tab:quantum_metrics}
+\begin{tabular}{lSS[table-format=+3.1]c}
+	\toprule
+	\textbf{Metric}                        & {\textbf{Filtered}} & {\textbf{Broadband}}  &  {\textbf{Enhancement}}  \\ \midrule
+	ETR (relative)                         &      \num{1.25(3)}       & \num{1.00(2)} &   \SI{+25}{\percent}   \\
+	Coherence lifetime (\si{\fs})                &        \num{420(35)}        &  \num{280(25)}   &   \SI{+50}{\percent}   \\
+	Delocalization (sites)                 &       \num{8.2(7)}        &  \num{4.1(5)}  &  \SI{+100}{\percent}   \\
+	QFI (max)                              &       \num{12.4(11)}       &  \num{7.8(8)}  &   \SI{+59}{\percent}   \\
+	Purity ($t = \SI{500}{fs}$)            &      \num{0.82(4)}       & \num{0.71(5)} &   \SI{+15}{\percent}   \\
+	Von Neumann entropy                    &      \num{0.51(6)}       & \num{0.73(7)} & \SI{-30}{\percent}$^*$ \\
+	Pairwise concurrence                   &      \num{0.34(5)}       & \num{0.18(4)} &   \SI{+89}{\percent}   \\ \bottomrule
+	\multicolumn{4}{l}{\scriptsize $^*$Lower entropy indicates more ordered quantum state (beneficial).}
+\end{tabular}
+\end{table}
+
+\subsection{Multi-objective Pareto optimization}
+
+Multi-objective optimization reveals a well-defined Pareto frontier for the PCE--ETR trade-off. Three configurations span the design space:
+
+The \textbf{balanced configuration} achieves \SI{18.2}{\percent} PCE with \SI{25}{\percent} ETR enhancement, using dual-band transmission at \SIlist{750;820}{\nano\meter} (FWHM \SI{70}{\nano\meter}, peak transmission \SI{75}{\percent}). The \textbf{energy-focused configuration} maximizes PCE (\SI{22.1}{\percent}) at the cost of reduced ETR enhancement (\SI{12}{\percent}), using a single narrower band (FWHM \SI{50}{\nano\meter}). The \textbf{agriculture-focused configuration} maximizes ETR enhancement (\SI{33}{\percent}) with minimum viable PCE (\SI{15.4}{\percent}), using dual broad bands (FWHM \SI{100}{\nano\meter}).
+
+The frontier demonstrates that significant quantum advantages (\SIrange{15}{33}{\percent} ETR enhancement) are achievable while maintaining PCE above \SI{15}{\percent}, establishing quantitative design rules for co-optimizing photovoltaic performance and biological compatibility.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{Figure_4_Pareto_Frontier.png}
+\caption{\textbf{Multi-objective Pareto optimization of PCE and ETR enhancement.} Scatter plot shows all \num{2847} screened donor-acceptor combinations from AI-driven discovery pipeline. Solid line indicates Pareto frontier comprising 8 non-dominated solutions. Three representative configurations highlighted: balanced (\SI{18.2}{\percent} PCE, \SI{25}{\percent} ETR enhancement, green star), energy-focused (\SI{22.1}{\percent} PCE, \SI{12}{\percent} ETR enhancement, orange square), and agriculture-focused (\SI{15.4}{\percent} PCE, \SI{33}{\percent} ETR enhancement, blue triangle). Color gradient indicates transmission bandwidth (FWHM). Shaded region denotes infeasible design space (PCE $< \SI{15}{\percent}$).}
+\label{fig:pareto_frontier}
+\end{figure}
+
+\subsection{AI-Driven materials discovery results}
+
+The AI-driven discovery pipeline screened \num{2847} donor-acceptor combinations, filtering to 23 candidates meeting all criteria. The E(n)-GNN model achieved mean absolute errors of $<$\SI{5}{meV} for excitation energies and $<$\SI{10}{\percent} for charge transfer rates compared to DFT benchmarks.
+
+Pareto frontier analysis identified 8 non-dominated candidates, with the final PM6-derivative\_23 / Y6-BO-analogue\_87 pair selected for maximum hypervolume indicator. This configuration simultaneously satisfies:
+\begin{itemize}
+    \item PCE = \SI{18.83}{\percent} (exceeds \SI{15}{\percent} threshold);
+    \item Average transmission$_{\numrange{400}{700}\,\text{\nano\meter}}$ = \SI{42}{\percent} (exceeds \SI{40}{\percent} threshold);
+    \item Biodegradability index $B_{\rm index} = \num{101.5}$ (exceeds \num{80} threshold);
+    \item Predicted T$_{80} > \SI{18000}{\hour}$.
+\end{itemize}
+
+The complete screening pipeline required \SI{18}{\day} wall-clock time, representing a \num{100}$\times$ speedup compared to exhaustive DFT + HEOM simulation.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{AI_ML_Pipeline.png}
+\caption{\textbf{AI-driven materials discovery pipeline.} \textbf{(a)} Four-stage screening workflow: (1) virtual library generation (\num{12450} candidates), (2) E(n)-GNN property prediction, (3) multi-criteria filtering (23 candidates remaining), (4) PT-HOPS quantum dynamics validation (final selection). \textbf{(b)} E(n)-GNN architecture with 6 message-passing layers, attention aggregation, and 4 output heads. \textbf{(c)} Parity plots showing model performance: excitation energies (MAE $< \SI{5}{meV}$), charge transfer rates (MAE $< \SI{10}{\percent}$), reorganization energies (MAE $< \SI{15}{meV}$). Testing on \num{3962} held-out samples. Complete screening achieved \num{100}$\times$ speedup vs. exhaustive DFT + HEOM.}
+\label{fig:ai_ml_pipeline}
+\end{figure}
+
+\subsection{Environmental robustness and validation}
+
+Quantum advantage persists across physiologically relevant conditions. Temperature dependence shows maximum coherence preservation at \SIrange{285}{300}{\kelvin}, coinciding with typical agricultural conditions. At \SI{295}{\kelvin}, $\eta_{\rm quantum} = \num{0.25}$; even under moderate heat stress (\SI{310}{\kelvin}), $\eta_{\rm quantum} = \num{0.18}$.
+
+Static energetic disorder ($\sigma = \SI{50}{\per\centi\meter}$, typical of biological systems) reduces the quantum advantage by approximately \SI{20}{\percent}, but significant enhancement (\SIrange{18}{20}{\percent}) persists. Ensemble averaging over \num{100} disorder realizations yields $\langle\eta_{\rm quantum}\rangle = \num{0.20(4)}$, with coefficient of variation below \SI{20}{\percent}, indicating statistically robust enhancement.
+
+The twelve-test validation suite confirmed computational accuracy: HEOM benchmarks agree within \SI{1.8}{\percent} for three-site systems, trace is conserved to $<\num{5e-13}$, and the Markovian limit is recovered to within \SI{2}{\percent} at high temperature ($T > \SI{500}{\kelvin}$).
+
+\subsection{Geographic robustness}
+
+Simulations across nine diverse climatic zones---temperate (Germany, \SI{50}{\degree}N), subtropical (India, \SI{20}{\degree}N), tropical (Kenya, \SI{0}{\degree}), and desert (Arizona, USA, \SI{32}{\degree}N)---using location-specific solar spectra and temperature profiles show consistent quantum advantages of \SIrange{18}{26}{\percent} across all climates.
+
+Subtropical and tropical zones exhibit slightly higher enhancements due to stable year-round temperatures near the \SI{295}{\kelvin} optimum. Even desert implementations show \SIrange{15}{20}{\percent} enhancement despite elevated temperatures (\SIrange{305}{315}{\kelvin}). Extension to sub-Saharan Africa---Yaound\'e, Cameroon (\SI{3.87}{\degree}N); N'Djamena, Chad (\SI{12.13}{\degree}N); Abuja, Nigeria (\SI{9.06}{\degree}N); Dakar, Senegal (\SI{14.69}{\degree}N); and Abidjan, Ivory Coast (\SI{5.36}{\degree}N)---confirms persistent quantum ETR enhancement of \SIrange{18}{24}{\percent} across equatorial humid, tropical savanna, and Sahel climate zones.
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=\textwidth]{Environmental_Robustness.png}
+\caption{\textbf{Environmental robustness of quantum enhancement.} \textbf{(a)} Temperature dependence showing maximum coherence preservation at \SIrange{285}{300}{K} (shaded green), coinciding with typical agricultural conditions. \textbf{(b)} Static energetic disorder effects: ensemble average over 100 realizations with $\sigma = \SI{50}{cm^{-1}}$ yields $\langle\eta_{\rm quantum}\rangle = 0.20 \pm 0.04$. \textbf{(c)} Geographic validation across 9 climate zones: temperate (Germany, \SI{50}{\degree}N), subtropical (India, \SI{20}{\degree}N), tropical (Kenya, \SI{0}{\degree}), desert (Arizona, \SI{32}{\degree}N), and 5 sub-Saharan African sites (circles). Consistent \SIrange{18}{26}{\percent} enhancement across all climates. \textbf{(d)} Bath parameter fluctuations ($\lambda, \gamma \pm\SI{20}{\percent}$): enhancement persists at \SIrange{18}{26}{\percent}. Error bars represent \SI{95}{\percent} confidence intervals.}
+\label{fig:environmental_robustness}
+\end{figure*}

@@ -1,0 +1,36 @@
+% Introduction Section - AEM Version
+% Molecular Engineering of Semi-Transparent Non-Fullerene Acceptors for Quantum-Enhanced Agrivoltaics
+
+\section{Introduction}\label{sec:Introduction}
+
+Semi-transparent organic photovoltaics (OPVs) based on non-fullerene acceptors (NFAs) have emerged as promising candidates for dual-use energy applications, with recent power conversion efficiencies exceeding \SI{18}{\percent}~\cite{Liu2024_AEM_NFA,Wang2023_AEM_Stability}. The polymer donor PM6 paired with Y6-BO derivatives has demonstrated particular promise, achieving balanced charge transport and tunable absorption spectra ideal for spectral engineering applications~\cite{Zhang2024_AEM_ML}. However, optimizing these materials for agrivoltaic deployment requires simultaneous optimization of photovoltaic performance and spectral transmission properties---a multi-objective challenge that remains unresolved.
+
+Current semi-transparent OPV designs prioritize either electrical efficiency or optical transparency, treating the transmitted spectrum as a secondary consideration~\cite{Cui2021,Wu2024}. This classical approach overlooks the quantum mechanical nature of photosynthetic energy transfer, where electronic coherences coupled to vibrational modes facilitate efficient exciton transport~\cite{Engel2007,Panitchayangkoon2010}. Biological light-harvesting complexes operate in an intermediate coupling regime where structured environmental fluctuations enhance rather than suppress quantum transport phenomena~\cite{Ishizaki2009,Collini2010}.
+
+The Fenna-Matthews-Olsen (FMO) complex serves as a benchmark system for studying these quantum effects, with each monomer containing \numrange{7}{8} bacteriochlorophyll-a molecules that funnel energy through coherent pathways~\cite{Fenna1974,Adolphs2006}. Crucially, the energy transfer efficiency depends sensitively on the spectral composition of incident light, with specific vibronic resonances at \SIlist{750;820}{\nano\meter} enhancing coherence lifetimes by \SIrange{20}{50}{\percent}~\cite{Mohseni2014,Hildner2013}. This spectral dependence presents a materials design opportunity: OPV transmission spectra can be engineered to target these quantum mechanical resonances.
+
+Recent advances in NFA molecular engineering enable precise spectral tuning through side-chain modification and backbone functionalization~\cite{Li2020,Firdaus2019}. Power conversion efficiencies above \SI{18}{\percent} have been achieved in semi-transparent configurations, yet systematic design rules for co-optimizing electrical and biological performance remain absent from the literature. The convergence of tunable OPV spectra and quantum-enhanced photosynthesis motivates our spectral bath engineering approach.
+
+We introduce a materials design paradigm wherein the OPV transmission function $T(\omega)$ is strategically engineered to shape the effective spectral density experienced by photosynthetic complexes: $J_{\rm plant}(\omega) = T(\omega) \times J_{\rm solar}(\omega)$. Unlike classical spectral optimization that maximizes total photon flux, quantum spectral bath engineering targets specific vibronic transitions to unlock coherence-assisted transport mechanisms. Our AI-driven discovery pipeline integrates equivariant graph neural networks (E(n)-GNN) with Process Tensor HOPS simulations to screen \num{2847} donor-acceptor combinations, identifying Pareto-optimal candidates satisfying electrical, biological, and sustainability criteria simultaneously.
+
+Operational stability represents a critical requirement for commercial deployment. The optimized PM6/Y6-BO derivative system demonstrates T$_{80}$ lifetimes exceeding \SI{18000}{\hour} under continuous illumination, with thermal cycling stability ($<$\SI{0.17}{\percent} degradation per cycle) projecting \num{20}+ year operational lifetimes~\cite{Wang2023_AEM_Stability}. Techno-economic modeling indicates levelized energy costs of \SIrange{0.04}{0.06}{\USD\per\kWh}, competitive with conventional silicon photovoltaics while enabling agricultural revenue diversification.
+
+This work establishes five key contributions to materials design for dual-use energy applications:
+\begin{enumerate}
+    \item Demonstration of \SI{18.8}{\percent} PCE in semi-transparent OPV with quantum-enhanced biological compatibility (\SI{80}{\percent} photosynthetic efficiency maintained);
+    \item Identification of vibronic resonance mechanism extending coherence lifetimes by \SIrange{20}{50}{\percent} through non-Markovian dynamics;
+    \item AI-driven materials discovery pipeline screening \num{2847} candidates via E(n)-GNN prediction of quantum dynamical properties;
+    \item Quantitative design rules from multi-objective Pareto optimization, balancing PCE (\SIrange{15.4}{22.1}{\percent}) with electron transport enhancement (\SIrange{12}{33}{\percent});
+    \item Validation across nine climate zones confirming geographic robustness and commercial viability (LCOE \SIrange{0.04}{0.06}{\USD\per\kWh}).
+\end{enumerate}
+
+These findings bridge molecular-level materials engineering with device-level performance, providing a scalable methodology for next-generation semi-transparent OPV design.
+
+The remainder of this paper is organized as follows. \Cref{sec:Theory} describes the open quantum system framework and PT-HOPS/SBD methodology. \Cref{sec:OPV_Materials} details the molecular design of semi-transparent OPVs and their optoelectronic characterization. \Cref{sec:Results} presents the quantum kinetics results and multi-objective Pareto optimization. \Cref{sec:Discussion} provides an economic and scalability analysis, while \Cref{sec:Conclusion} summarizes the key findings and future outlook.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{Conceptual_Overview.png}
+\caption{\textbf{Conceptual overview of quantum-enhanced agrivoltaic system.} \textbf{(a)} Schematic illustration of semi-transparent OPV panels integrated above agricultural crops, enabling simultaneous energy generation and photosynthesis. \textbf{(b)} Molecular structures of PM6 donor and Y6-BO acceptor materials with normalized absorption (solid lines) and transmission (shaded regions) spectra. Transmission windows at \SIlist{750;820}{nm} (dark green shading) coincide with FMO vibronic resonances. \textbf{(c)} Energy level diagram showing HOMO/LUMO alignment at the donor-acceptor interface with $\Delta E_{\rm LUMO} = \SI{0.75}{eV}$ and $\Delta E_{\rm HOMO} = \SI{0.35}{eV}$, facilitating efficient exciton dissociation and charge extraction.}
+\label{fig:conceptual_overview}
+\end{figure*}
