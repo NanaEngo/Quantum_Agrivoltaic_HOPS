@@ -3,11 +3,12 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,amsfonts,graphicx,booktabs,bm,multirow,siunitx,physics}
+\usepackage{amsmath,amssymb,amsfonts,graphicx,booktabs,chemformula,multirow,siunitx,physics}
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage[margin=2.5cm]{geometry}
+\usepackage{xr}
 
 % Hyperref setup
 \hypersetup{
@@ -20,13 +21,24 @@
     citecolor=blue,
     urlcolor=blue
 }
+% For siunitx
+\sisetup{
+  range-phrase = {--},     % Sets "0.04--0.06"
+  range-units = single,      % Avoids repeating units: "0.04 to 0.06 USD"
+  separate-uncertainty = true, % Formats 1.2(3) as 1.2 +/- 0.3
+  multi-part-units = single
+}
 
 \DeclareSIUnit{\yr}{yr}
 \DeclareSIUnit{\tonne}{t}
 \DeclareSIUnit{\hectare}{ha}
 \DeclareSIUnit{\kWh}{kWh}
-\DeclareSIUnit{\USD}{\$}
-
+\DeclareSIUnit{\hartree}{E_h}
+\DeclareSIUnit{\bohr}{a_0}
+\DeclareSIUnit{\USD}{USD}
+%
+\graphicspath{{Graphics/}}
+%
 %=============================================================================
 % TITLE AND AUTHORS
 %=============================================================================
@@ -61,7 +73,7 @@
 %=============================================================================
 
 \begin{abstract}
-Semi-transparent organic photovoltaics (OPVs) based on non-fullerene acceptors (NFAs) have achieved power conversion efficiencies exceeding \SI{18}{\percent}, yet their potential for dual-use agrivoltaic applications remains limited by inefficient spectral matching with biological systems. Here, we demonstrate molecular engineering of PM6/Y6-BO derivatives that simultaneously deliver \SI{18.8}{\percent} PCE and quantum-enhanced photosynthetic energy transfer. By strategically tuning the spectral transmission to target vibronic resonances at \SIlist{750;820}{\nano\meter}, we extend excitonic coherence lifetimes by \SIrange{20}{50}{\percent} through non-Markovian dynamics, increasing the electron transport rate by \SI{25}{\percent} relative to Markovian baselines. The optimized donor-acceptor system exhibits balanced charge mobilities ($\mu_h/\mu_e \approx 2 \times 10^{-3}$~cm$^2$~V$^{-1}$~s$^{-1}$), suppressed non-geminate recombination ($k \leq 1.2 \times 10^{-12}$~cm$^3$~s$^{-1}$), and operational stability exceeding \SI{18000}{hours} (T$_{80}$). An AI-driven discovery pipeline screened \num{2847} candidates using equivariant graph neural networks, identifying configurations that maintain $>$\SI{80}{\percent} photosynthetic efficiency while achieving Pareto-optimal energy yields. Techno-economic analysis projects levelized costs of \SIrange{0.04}{0.06}{\USD\per\kWh} with revenue potential of USD~\numrange{470}{3000}~ha$^{-1}$~yr$^{-1}$. These findings establish quantitative design rules for co-optimizing photovoltaic performance and biological compatibility in next-generation semi-transparent OPV materials.
+Semi-transparent organic photovoltaics (OPVs) based on non-fullerene acceptors (NFAs) have achieved power conversion efficiencies exceeding \SI{18}{\percent}, yet their potential for dual-use agrivoltaic applications remains limited by inefficient spectral matching with biological systems. Here, we demonstrate molecular engineering of PM6/Y6-BO derivatives that simultaneously deliver \SI{18.8}{\percent} PCE and quantum-enhanced photosynthetic energy transfer. By strategically tuning the spectral transmission to target vibronic resonances at \SIlist{750;820}{\nano\meter}, we extend excitonic coherence lifetimes by \SIrange{20}{50}{\percent} through non-Markovian dynamics, increasing the electron transport rate by \SI{25}{\percent} relative to Markovian baselines. The optimized donor-acceptor system exhibits balanced charge mobilities ($\mu_h/\mu_e \approx \SI{2e-3}{\centi\meter\squared\per\volt\per\second}$), suppressed non-geminate recombination ($k \leq \SI{1.2e-12}{\centi\meter\cubed\per\second}$), and operational stability exceeding \SI{18000}{\hour} (T$_{80}$). An AI-driven discovery pipeline screened \num{2847} candidates using equivariant graph neural networks, identifying configurations that maintain $>$\SI{80}{\percent} photosynthetic efficiency while achieving Pareto-optimal energy yields. Techno-economic analysis projects levelized costs of \SIrange{0.04}{0.06}{\USD\per\kWh} with revenue potential of \SIrange{470}{3000}{\USD\per\hectare\per\yr}. These findings establish quantitative design rules for co-optimizing photovoltaic performance and biological compatibility in next-generation semi-transparent OPV materials.
 \end{abstract}
 
 %=============================================================================
@@ -75,15 +87,10 @@ Semi-transparent organic photovoltaics (OPVs) based on non-fullerene acceptors (
 %=============================================================================
 
 \input{files2/introduction}
-
 \input{files2/theory_methods}
-
 \input{files2/opv_materials}
-
 \input{files2/results}
-
 \input{files2/discussion}
-
 \input{files2/conclusion}
 
 %=============================================================================
@@ -100,7 +107,7 @@ This work was supported by the University of Yaoundé I and the University of Do
 
 \section*{Data availability statement}
 
-All data supporting the findings of this study are available within the article and its Supporting Information. Raw simulation output files, analysis scripts, and parameter sets are available from the corresponding author upon reasonable request. Our custom PT-HOPS/SBD simulation framework, computational notebooks, source code, and datasets generated during this study are available in the GitHub repository at \url{https://github.com/NanaEngo/Quantum_Agrivoltaic_HOPS}. Reproducibility information: All simulations were performed using Python 3.12.12, NumPy 2.0.2, and SciPy 1.14.1. Computational parameters and environment configurations are documented in the Supporting Information. All reported values include standard errors calculated from ensemble averaging, with \SI{95}{\percent} confidence intervals explicitly stated for all quantitative results derived from 100 independent realizations.
+All data supporting the findings of this study are available within the article and its Supporting Information. Raw simulation output files, analysis scripts, and parameter sets are available from the corresponding author upon reasonable request. Our custom PT-HOPS/SBD simulation framework, computational notebooks, source code, and datasets generated during this study are available in the GitHub repository at \url{https://github.com/NanaEngo/Quantum_Agrivoltaic_HOPS}. Reproducibility information: All simulations were performed using Python 3.12.12, NumPy 2.0.2, and SciPy 1.14.1. Computational parameters and environment configurations are documented in the Supporting Information. All reported values include standard errors calculated from ensemble averaging, with \SI{95}{\percent} confidence intervals explicitly stated for all quantitative results derived from \num{100} independent realizations.
 
 %=============================================================================
 % CONFLICTS OF INTEREST
@@ -114,7 +121,7 @@ The authors declare no conflicts of interest.
 % AUTHOR CONTRIBUTIONS
 %=============================================================================
 
-\section*{Author Contributions}
+\section*{Author contributions}
 
 \textbf{Steve Cabrel Teguia Kouam}: Methodology, validation, formal analysis, writing -- original draft. \textbf{Theodore Goumai Vedekoi}: Software, investigation, data curation, writing -- original draft. \textbf{Jean-Pierre Tchapet Njafa}: Conceptualization, theoretical framework, writing -- review \& editing. \textbf{Jean-Pierre Nguenang}: Resources, supervision, formal analysis. \textbf{Serge Guy Nana Engo}: Project administration, conceptualization, theoretical framework, final manuscript editing. All authors have given approval to the final version of the manuscript.
 
