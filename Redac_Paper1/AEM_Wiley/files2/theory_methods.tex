@@ -5,11 +5,11 @@
 
 \subsection{Open quantum system framework}
 
-We treat the photosynthetic unit as an open quantum system coupled to a structured vibrational environment (protein-solvent and intramolecular modes) and a spectrally filtered photon bath. The reduced density matrix $\bm{\rho}(t)$ of the excitonic system evolves according to:
+We treat the photosynthetic unit as an open quantum system coupled to a structured vibrational environment (protein-solvent and intramolecular modes) and a spectrally filtered photon bath. The reduced density matrix $\vb{\rho}(t)$ of the excitonic system evolves according to:
 \begin{equation}\label{eq:master_eq}
-\pdv{\bm{\rho}(t)}{t} = \mathcal{L}(t)\bm{\rho}(t) = -\frac{i}{\hbar}[\mathtt{H}_S, \bm{\rho}(t)] + \mathcal{D}[\bm{\rho}(t)],
+\pdv{\vb{\rho}(t)}{t} = \mathcal{L}(t)\vb{\rho}(t) = -\frac{i}{\hbar}[\mathtt{H}_S, \vb{\rho}(t)] + \mathcal{D}[\vb{\rho}(t)],
 \end{equation}
-where $\mathtt{H}_S$ is the system Hamiltonian and $\mathcal{D}[\bm{\rho}(t)]$ represents system-bath dissipative interactions. For agrivoltaic applications, $\mathcal{D}[\bm{\rho}(t)]$ is engineered through control of the incident spectral density via $T(\omega)$.
+where $\mathtt{H}_S$ is the system Hamiltonian and $\mathcal{D}[\vb{\rho}(t)]$ represents system-bath dissipative interactions. For agrivoltaic applications, $\mathcal{D}[\vb{\rho}(t)]$ is engineered through control of the incident spectral density via $T(\omega)$.
 
 The electronic Hamiltonian is:
 \begin{equation}\label{eq:excitonic_hamiltonian}
@@ -38,8 +38,8 @@ where $T(\omega)$ is the OPV transmission function and $J_{\rm solar}(\omega)$ i
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\columnwidth]{Figure_7_Spectral_Analysis.png}
-\caption{\textbf{Spectral density and system-bath interactions.} \textbf{(a)} Composite spectral density showing Drude-Lorentz contribution ($\lambda = \SI{35}{\per\centi\meter}$, $\gamma = \SI{50}{\per\centi\meter}$, blue) and underdamped vibronic modes at \SIlist{150;200;575;1185}{\per\centi\meter} (orange peaks). \textbf{(b)} System-bath correlation function demonstrating non-Markovian memory effects persisting for \SI{>500}{fs}. \textbf{(c)} Overlap between OPV transmission spectrum (green shaded) and FMO excitonic transitions (vertical lines), showing resonant enhancement at \SIlist{750;820}{nm}.}
+\includegraphics[width=.8\columnwidth]{Spectral_Analysis.png}
+\caption{\textbf{Spectral density and system-bath interactions.} \textbf{(a)} Composite spectral density showing Drude-Lorentz contribution ($\lambda = \SI{35}{cm^{-1}}$, $\gamma = \SI{50}{cm^{-1}}$, blue) and underdamped vibronic modes at \SIlist{150;200;575;1185}{cm^{-1}} (orange peaks). \textbf{(b)} System-bath correlation function demonstrating non-Markovian memory effects persisting for \SI{>500}{fs}. \textbf{(c)} Overlap between OPV transmission spectrum (green shaded) and FMO excitonic transitions (vertical lines), showing resonant enhancement at \SIlist{750;820}{nm}.}
 \label{fig:spectral_analysis}
 \end{figure}
 
@@ -67,9 +67,9 @@ where $\eta_{\rm PV}(\omega)$ is the wavelength-dependent photovoltaic conversio
 
 \item \textbf{Biological energy transfer,}
 \begin{equation}\label{eq:ETR}
-\mathrm{ETR} = k_{\rm RC} \int_0^{t_{\rm max}} \Tr[\bm{\rho}_{\rm RC}(t)] \dd{t},
+\mathrm{ETR} = k_{\rm RC} \int_0^{t_{\rm max}} \Tr[\vb{\rho}_{\rm RC}(t)] \dd{t},
 \end{equation}
-where $\bm{\rho}_{\rm RC}(t)$ is the reduced density matrix projected onto the reaction centre site and $k_{\rm RC}$ is the charge separation rate constant.
+where $\vb{\rho}_{\rm RC}(t)$ is the reduced density matrix projected onto the reaction centre site and $k_{\rm RC}$ is the charge separation rate constant.
 \end{enumerate}
 
 These objectives are inherently conflicting: increasing $T(\omega)$ enhances ETR but reduces PCE. We formulate a constrained multi-objective optimisation:
@@ -159,12 +159,12 @@ Our materials discovery framework employs equivariant graph neural networks (E(n
 
 Candidates were required to satisfy all constraints:
 \begin{align}
-    \text{PCE}_{\rm est} &> \SI{15}{\percent}, \\
-    \text{Average Transmission}_{\numrange{400}{700}\,\text{\nano\meter}} &> \SI{40}{\percent}, \\
-    \Delta E_{\rm LUMO} &> \SI{0.3}{\electronvolt}, \\
-    \mu_{\rm est} &> \SI{e-4}{\centi\meter\squared\per\volt\per\second}, \\
-    B_{\rm index} &> \num{80}~\text{(biodegradability)}, \\
-    T_{80, \rm est} &> \SI{10000}{\hour}.
+    \mathrm{PCE}_{\mathrm{est}} &> \SI{15}{\percent}, \label{eq:filter_pce} \\
+    \text{Avg. Trans.}_{\SIrange{400}{700}{\nano\meter}} &> \SI{40}{\percent}, \label{eq:filter_trans} \\
+    \Delta E_{\mathrm{LUMO}} &> \SI{0.3}{\electronvolt}, \label{eq:filter_lumo} \\
+    \mu_{\mathrm{est}} &> \SI{e-4}{\centi\meter\squared\per\volt\per\second}, \label{eq:filter_mu} \\
+    B_{\mathrm{index}} &> \num{80}~\text{(biodegradability)}, \label{eq:filter_bio} \\
+    T_{80, \mathrm{est}} &> \SI{10000}{\hour}. \label{eq:filter_stability}
 \end{align}
 
 \textit{Stage 4: Quantum dynamics validation (PT-HOPS simulation)}
