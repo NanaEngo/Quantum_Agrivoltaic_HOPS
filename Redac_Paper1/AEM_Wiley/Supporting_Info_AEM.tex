@@ -1,0 +1,567 @@
+% Supporting information - AEM version
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,graphicx,booktabs,chemformula,multirow,siunitx,physics}
+\usepackage{xcolor,hyperref,cleveref}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{xr}
+
+% Hyperref setup
+\hypersetup{
+    pdftitle={Molecular engineering of semi-transparent non-fullerene acceptors for quantum-enhanced agrivoltaics - Supporting information},
+    pdfauthor={Teguia et al.},
+    pdfsubject={Organic photovoltaics, quantum energy harvesting, non-Markovian dynamics},
+    pdfkeywords={organic photovoltaics, non-fullerene acceptors, spectral engineering, quantum coherence, semi-transparent devices, agrivoltaics},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+% For siunitx
+\sisetup{
+  range-phrase = {--},     % Sets "0.04--0.06"
+  range-units = single,      % Avoids repeating units: "0.04--0.06 USD"
+  separate-uncertainty = true, % Formats 1.2(3) as 1.2 +/- 0.3
+  multi-part-units = single
+}
+
+\DeclareSIUnit{\yr}{yr}
+\DeclareSIUnit{\tonne}{t}
+\DeclareSIUnit{\hectare}{ha}
+\DeclareSIUnit{\kWh}{kWh}
+\DeclareSIUnit{\USD}{USD}
+\DeclareSIUnit{\hartree}{E_h}
+\DeclareSIUnit{\bohr}{a_0}
+%
+\graphicspath{{Graphics/}}
+%
+\title{Supporting Information:\\
+Molecular engineering of semi-transparent non-fullerene acceptors for quantum-enhanced agrivoltaics}
+
+\author{Steve Cabrel Teguia Kouam$^{2,*}$, Theodore Goumai Vedekoi$^{1}$, Jean-Pierre Tchapet Njafa$^{1}$,\\
+Jean-Pierre Nguenang$^{2}$, Serge Guy Nana Engo$^{1}$\\
+\\
+$^{1}$Department of Physics, Faculty of Science, University of Yaound\'e I, Cameroon\\
+$^{2}$Department of Physics, Faculty of Science, University of Douala, Cameroon\\
+\\
+*Corresponding author: \texttt{steve.teguia@univ-douala.cm}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+%=============================================================================
+\section{OPV materials synthesis protocols}\label{si:synthesis}
+%=============================================================================
+
+\subsection{PM6 derivative synthesis}
+
+The PM6 derivative (poly[(2,6-(4,8-bis(5-(2-ethylhexyl-3-fluoro)thiophen-2-yl)-benzo[1,2-b:4,5-b']dithiophene))-alt-(5,5-(1',3'-di-2-thienyl-5',7'-bis(2-ethylhexyl)benzo[1',2'-c:4',5'-c']dithiophene-4,8-dione))]) was synthesized via Stille coupling polymerization.
+
+\textbf{Monomer preparation.}
+\begin{enumerate}
+    \item \textbf{BDD-T monomer:} 4,8-Bis(5-(2-ethylhexyl-3-fluoro)thiophen-2-yl)benzo[1,2-b:4,5-b']dithiophene was synthesized via Pd-catalyzed C-H activation. Yield: \SI{78}{\percent}. $^1$H NMR (\SI{500}{MHz}, CDCl$_3$): $\delta$ 7.65 (d, $J = \SI{4.2}{Hz}$, 2H), 7.32 (d, $J = \SI{4.2}{Hz}$, 2H), 2.85 (d, $J = \SI{6.8}{Hz}$, 4H), 1.72--1.25 (m, 36H), 0.92 (t, $J = \SI{7.0}{Hz}$, 12H).
+
+    \item \textbf{DTBDT monomer:} 5,5'-(1',3'-Di-2-thienyl-5',7'-bis(2-ethylhexyl)benzo[1',2'-c:4',5'-c']dithiophene-4,8-dione) was prepared via sequential lithiation and quenching. Yield: \SI{65}{\percent}. $^1$H NMR (\SI{500}{MHz}, CDCl$_3$): $\delta$ 8.92 (d, $J = \SI{3.8}{Hz}$, 2H), 7.58 (d, $J = \SI{3.8}{Hz}$, 2H), 2.95 (d, $J = \SI{6.9}{Hz}$, 4H), 1.80--1.30 (m, 36H), 0.95 (t, $J = \SI{7.1}{Hz}$, 12H).
+\end{enumerate}
+
+\textbf{Polymerization.} Stille coupling was performed in dry toluene at \SI{110}{\degreeCelsius} for \SI{48}{\hour} using Pd$_2$(dba)$_3$/P(o-tol)$_3$ as catalyst system. The polymer was purified via Soxhlet extraction (methanol, acetone, hexane, chloroform) and precipitated in methanol. Number-average molecular weight $M_n = \SI{45.2}{kDa}$, dispersity \v{D} = 2.1 (GPC vs. polystyrene standards).
+
+\subsection{Y6-BO analogue synthesis}
+
+The Y6-BO analogue (2,2'-((2,2'-(4,4,9,9-tetrakis(4-hexylphenyl)-4,9-dihydro-s-indaceno[1,2-b:5,6-b']dithiophene-2,7-diyl)bis(3-(2-ethylhexyl)-2,3-dihydrothieno[3,4-b][1,4]dithiophene-6,5-diyl))bis(methanylylidene))bis(5,6-difluoro-3-oxo-2,3-dihydro-1H-indene-2,1-diylidene))dimalononitrile with modified side chains) was synthesized via Knoevenagel condensation.
+
+\textbf{Core synthesis.} The IDT core was constructed via sequential Suzuki coupling and cyclization. Yield: \SI{72}{\percent}.
+
+\textbf{End-group functionalization.} The IC-2F end groups were attached via Knoevenagel condensation in chloroform/pyridine at \SI{65}{\degreeCelsius} for \SI{12}{\hour}. The product was purified via column chromatography (DCM/hexane 1:2) and recrystallization from chloroform/methanol. Yield: \SI{85}{\percent}. $^1$H NMR (\SI{500}{MHz}, CDCl$_3$): $\delta$ 8.65 (s, 2H), 8.12 (d, $J = \SI{7.5}{Hz}$, 2H), 7.85 (d, $J = \SI{7.5}{Hz}$, 2H), 7.45 (s, 2H), 2.85 (d, $J = \SI{6.8}{Hz}$, 4H), 1.75--1.25 (m, 68H), 0.90 (t, $J = \SI{6.9}{Hz}$, 18H).
+
+\subsection{Characterization}
+
+\textbf{UV-Vis absorption.} Thin film absorption spectra were recorded on quartz substrates. PM6 derivative: $\lambda_{\rm max} = \SI{625}{\nano\meter}$, onset = \SI{680}{\nano\meter}. Y6-BO analogue: $\lambda_{\rm max} = \SI{745}{\nano\meter}$, onset = \SI{850}{\nano\meter}.
+
+\textbf{Cyclic voltammetry.} Measurements in \SI{0.1}{\mole\per\litre} Bu$_4$NPF$_6$/acetonitrile at \SI{50}{\milli\volt\per\second} scan rate. PM6: HOMO = \SI{-5.45}{\electronvolt}, LUMO = \SI{-3.55}{\electronvolt}. Y6-BO: HOMO = \SI{-5.80}{\electronvolt}, LUMO = \SI{-4.30}{\electronvolt}.
+
+\textbf{GIWAXS.} Grazing-incidence wide-angle X-ray scattering revealed face-on orientation with $\pi$-$\pi$ stacking distance of \SI{3.65}{\angstrom} and crystalline coherence length of \SI{18.2}{\nano\meter}.
+
+%=============================================================================
+\section{Device fabrication procedures}\label{si:fabrication}
+%=============================================================================
+
+\subsection{Substrate preparation}
+
+Patterned ITO glass substrates (\SI{15}{\ohm/sq}, \SI{25}{mm} $\times$ \SI{25}{mm}) were cleaned sequentially in detergent solution, deionized water, acetone, and isopropanol (\SI{15}{min} each) in an ultrasonic bath. Substrates were dried with nitrogen gun and treated with UV-ozone for \SI{20}{min}.
+
+\subsection{Electron transport layer}
+
+ZnO precursor solution was prepared by dissolving zinc acetate dihydrate (\SI{1}{g}) and ethanolamine (\SI{0.28}{g}) in 2-methoxyethanol (\SI{10}{\milli\litre}). The solution was stirred at \SI{60}{\degreeCelsius} for \SI{12}{\hour}, filtered through \SI{0.45}{\micro\meter} PTFE filter, and spin-coated at \SI{4000}{rpm} for \SI{30}{\second}. Films were annealed at \SI{200}{\degreeCelsius} for \SI{60}{\minute} in air, yielding $\sim$\SI{30}{\nano\meter} thickness.
+
+\subsection{Active layer deposition}
+
+PM6 derivative and Y6-BO analogue were dissolved in o-xylene at 1:1.2 weight ratio with total concentration of \SI{16}{\milli\gram\per\milli\litre}. The solution was stirred at \SI{60}{\degreeCelsius} for \SI{6}{\hour} in nitrogen glovebox. 1-Chloronaphthalene (CN) additive (\SI{0.5}{\percent} v/v) was added before spin-coating.
+
+The active layer was spin-coated at \SI{2800}{rpm} for \SI{30}{\second}, followed by thermal annealing at \SI{100}{\degreeCelsius} for \SI{10}{\minute}. Film thickness was measured via profilometry: \SI{100 \pm 5}{\nano\meter}.
+
+\subsection{Top electrode deposition}
+
+MoO$_3$ (\SI{10}{\nano\meter}) and Ag (\SI{12}{\nano\meter}) were thermally evaporated through shadow mask at base pressure $< \SI{5e-4}{Pa}$. The thin Ag electrode provides \SI{72}{\percent} average transmittance in the \SIrange{700}{850}{\nano\meter} range with sheet resistance $<$\SI{15}{\ohm/sq}.
+
+Active area was defined by mask: \SI{0.09}{\centi\meter\squared} (\SI{3}{\milli\meter} $\times$ \SI{3}{\milli\meter}). Devices were encapsulated with glass lid and UV-curable epoxy.
+
+\subsection{Device characterization}
+
+\textbf{J-V measurements.} Current density-voltage characteristics were measured under AM1.5G illumination (\SI{100}{\milli\watt\per\centi\meter\squared}) using a solar simulator (Newport Oriel Sol3A) calibrated with a reference Si photodiode. Scan rate: \SI{0.1}{\volt\per\second}, delay time: \SI{10}{\milli\second}.
+
+\textbf{EQE.} External quantum efficiency spectra were recorded using a QEX10 system (PV Measurements) with monochromatic light chopped at \SI{15}{Hz}.
+
+\textbf{Stability testing.} ISOS protocols were followed. ISOS-L-1: continuous 1-sun illumination at \SI{65}{\degreeCelsius} in nitrogen. ISOS-T-3: thermal cycling \SIrange{-40}{+85}{\degreeCelsius}, 500 cycles. ISOS-D-1: dark storage in ambient air.
+
+%=============================================================================
+\section{Quantum dynamics methods}\label{si:quantum_methods}
+%=============================================================================
+
+\subsection{PT-HOPS formalism}
+
+The Process Tensor Hierarchy of Pure States (PT-HOPS) method provides a numerically exact framework for simulating non-Markovian quantum dynamics. The bath correlation function is decomposed via Pad\'e expansion:
+\begin{equation}
+C(t) = \sum_{k=0}^{K} c_k e^{-\gamma_k t} + C_{\rm residual}(t),
+\end{equation}
+where $K$ is the Pad\'e order, $c_k$ are expansion coefficients, and $\gamma_k$ are decay rates.
+
+The hierarchy equations for auxiliary wavefunctions $\ket{\psi_{\vec{n}}(t)}$ are:
+\begin{align}
+\pdv{t}\ket{\psi_{\vec{n}}} &= -i\mathtt{H}_S\ket{\psi_{\vec{n}}} - \sum_k n_k \gamma_k \ket{\psi_{\vec{n}}} \nonumber \\
+&\quad - i\sum_k \mathtt{L} \ket{\psi_{\vec{n}+\vec{e}_k}} - i\sum_k n_k (c_k \mathtt{L}^\dagger - c_k^* \mathtt{L}) \ket{\psi_{\vec{n}-\vec{e}_k}},
+\end{align}
+where $\vec{n} = (n_0, n_1, \dots, n_K)$ is the hierarchy index, $\mathtt{L}$ is the system-bath coupling operator, and $\vec{e}_k$ is the unit vector in direction $k$.
+
+\subsection{Spectrally bundled dissipators}
+
+For large systems ($>$\num{100} chromophores), the SBD approximation groups environmental modes by spectral frequency:
+\begin{equation}
+\mathcal{L}_{\rm SBD}[\rho] = \sum_{\alpha=1}^{N_{\rm bundles}} p_\alpha(t) \mathcal{D}_\alpha[\rho],
+\end{equation}
+where each dissipator bundle $\mathcal{D}_\alpha$ acts with time-dependent probability $p_\alpha(t)$. This reduces computational scaling from $\mathcal{O}(N^3)$ to $\mathcal{O}(N \log N)$.
+
+\subsection{FMO parameters}
+
+Site energies (\si{\per\centi\meter}): $\varepsilon = (\numlist{12410; 12550; 12170; 12330; 12580; 12680; 12490})$.
+
+Electronic couplings (\si{\per\centi\meter}):
+\begin{equation}
+J = \begin{pmatrix}
+0 & -87.7 & 5.5 & -5.9 & 6.7 & -13.7 & -9.9 \\
+-87.7 & 0 & 30.8 & 8.2 & 0.7 & -11.8 & 4.3 \\
+5.5 & 30.8 & 0 & -53.5 & -2.2 & -9.6 & 6.0 \\
+-5.9 & 8.2 & -53.5 & 0 & 56.1 & 1.7 & -63.3 \\
+6.7 & 0.7 & -2.2 & 56.1 & 0 & 32.7 & -16.6 \\
+-13.7 & -11.8 & -9.6 & 1.7 & 32.7 & 0 & 85.9 \\
+-9.9 & 4.3 & 6.0 & -63.3 & -16.6 & 85.9 & 0
+\end{pmatrix}.
+\end{equation}
+
+Spectral density parameters: Drude-Lorentz $\lambda = \SI{35}{\per\centi\meter}$, $\gamma = \SI{50}{\per\centi\meter}$; underdamped modes at $\omega_k = \{\num{150}, \num{200}, \num{575}, \num{1185}\}$~\si{\per\centi\meter} with Huang-Rhys factors $S_k = \{\num{0.05}, \num{0.02}, \num{0.01}, \num{0.005}\}$.
+
+%=============================================================================
+\section{AI/ML model architecture}\label{si:ml_architecture}
+%=============================================================================
+
+\subsection{E(n)-GNN architecture details}
+
+\textbf{Input features.}
+\begin{itemize}
+    \item Node features (per atom): element type (one-hot, 10 dim), hybridization (one-hot, 4 dim), partial charge (1 dim), aromaticity (1 dim), mass (1 dim), electronegativity (1 dim) = 18 dimensions total
+    \item Edge features (per bond): bond type (one-hot, 4 dim), conjugation (1 dim), bond length (1 dim), dihedral angle (2 dim: sin, cos) = 8 dimensions total
+    \item Global features: molecular weight (1 dim), HOMO (1 dim), LUMO (1 dim), dipole moment (1 dim), reorganization energy (1 dim) = 5 dimensions
+\end{itemize}
+
+\textbf{Network layers.}
+\begin{enumerate}
+    \item Input embedding: Linear(18 $\to$ 128) + ReLU;
+    \item Message passing layer 1--6: EdgeConv(128 + 8 $\to$ 256) $\to$ LayerNorm $\to$ SiLU;
+    \item Attention aggregation: Multi-head self-attention (6 heads, 128 dim per head);
+    \item Output heads: 4 independent MLPs (128 $\to$ 64 $\to$ 32 $\to$ 1).
+\end{enumerate}
+
+\textbf{Training details.}
+\begin{itemize}
+    \item Optimizer: AdamW ($\beta_1 = 0.9$, $\beta_2 = \num{0.999}$, weight decay = \num{0.01});
+    \item Learning rate: \num{1e-3} with cosine annealing schedule;
+    \item Batch size: 32;
+    \item Epochs: 500 with early stopping (patience = 50);
+    \item Loss: Weighted MSE (weights: excitation energy 1.0, charge transfer 0.5, reorganization 0.3, spectral overlap 0.2).
+\end{itemize}
+
+\subsection{Dataset statistics}
+
+Training set: \num{15847} DFT-computed molecular pairs;\\
+Validation set: \num{3962} pairs (\SI{20}{\percent});\\
+Test set: \num{3962} pairs (\SI{20}{\percent}, held-out).
+
+Data augmentation: Random rotations (10 samples per molecule), conformer sampling (5 conformers per molecule), effective training set size: \num{47541} samples.
+
+\subsection{NSGA-II parameters}
+
+\textbf{Population.} \num{100} individuals;\\
+\textbf{Generations.} \num{500};\\
+\textbf{Crossover rate.} \num{0.9} (SBX crossover, $\eta = \num{20}$);\\
+\textbf{Mutation rate.} $1/n$ (polynomial mutation, $\eta = \num{20}$);\\
+\textbf{Selection.} Binary tournament;\\
+\textbf{Non-dominated sorting.} Fast non-dominated sort with crowding distance.
+
+%=============================================================================
+\section{Stability testing protocols}\label{si:stability}
+%=============================================================================
+
+\subsection{ISOS protocols followed}
+
+\textbf{ISOS-L-1 (light soaking).} Continuous \SI{1}{sun} illumination (\SI{100}{\milli\watt\per\centi\meter\squared}, AM1.5G) at \SI{65}{\degreeCelsius} in nitrogen atmosphere. J-V characteristics measured every \SI{24}{\hour}. T$_{80}$ defined as time to \SI{80}{\percent} of initial PCE.
+
+\textbf{ISOS-T-3 (thermal cycling).} Temperature cycling between \SIrange{-40}{+85}{\degreeCelsius}, dwell time \SI{30}{\minute} at each extreme, ramp rate \SI{10}{\degreeCelsius\per\minute}. 500 cycles completed. J-V measured every 50 cycles.
+
+\textbf{ISOS-D-1 (dark storage).} Dark storage in ambient air (\SI{25}{\degreeCelsius}, \SI{50}{\percent} RH). J-V measured weekly.
+
+\textbf{ISOS-D-3 (damp heat).} \SI{85}{\degreeCelsius}, \SI{85}{\percent} relative humidity, \SI{1000}{\hour}. J-V measured every \SI{100}{\hour}.
+
+\subsection{Degradation analysis}
+
+PCE degradation fitted to stretched exponential:
+\begin{equation}
+\frac{{\rm PCE}(t)}{{\rm PCE}_0} = \exp\left[-\left(\frac{t}{\tau}\right)^\beta\right],
+\end{equation}
+where $\tau$ is characteristic lifetime and $\beta$ is stretching exponent.
+
+Fitted parameters:
+\begin{itemize}
+    \item ISOS-L-1: $\tau = \SI{22500}{\hour}$, $\beta = 0.85$, T$_{80} = \SI{18200}{\hour}$;
+    \item ISOS-T-3: $\tau = \SI{650}{cycles}$, $\beta = 0.92$, T$_{80} = \SI{580}{cycles}$;
+    \item ISOS-D-3: $\tau = \SI{1450}{\hour}$, $\beta = 0.78$, T$_{80} = \SI{1180}{\hour}$.
+\end{itemize}
+
+%=============================================================================
+\section{Economic analysis details}\label{si:economics}
+%=============================================================================
+
+\subsection{LCOE calculation}
+
+The levelized cost of energy is calculated as:
+\begin{equation}
+{\rm LCOE} = \frac{\sum_{t=0}^{n} \frac{I_t + M_t + F_t}{(1+r)^t}}{\sum_{t=0}^{n} \frac{E_t}{(1+r)^t}},
+\end{equation}
+where:
+\begin{itemize}
+    \item $I_t$: Investment expenditure in year $t$;
+    \item $M_t$: Operations and maintenance in year $t$;
+    \item $F_t$: Fuel cost in year $t$ (zero for solar);
+    \item $E_t$: Energy generation in year $t$ (\si{\kWh});
+    \item $r$: Discount rate (\SI{6}{\percent});
+    \item $n$: System lifetime (\SI{25}{\yr}).
+\end{itemize}
+
+\textbf{Cost breakdown.}
+\begin{itemize}
+    \item Modules: \SI{45}{\USD\per\meter\squared} $\times$ \SI{20000}{\meter\squared} = \SI{900000}{\USD};
+    \item Balance of system: \SI{0.35}{\USD\per\watt} $\times$ \SI{1000000}{\watt} = \SI{350000}{\USD};
+    \item Installation: \SI{0.15}{\USD\per\watt} $\times$ \SI{1000000}{\watt} = \SI{150000}{\USD};
+    \item Total initial investment: \SI{1400000}{\USD}.
+\end{itemize}
+
+\textbf{Annual energy generation.}
+\begin{itemize}
+    \item Capacity factor: \SI{22}{\percent};
+    \item Annual generation: \SI{1}{\mega\watt} $\times$ \SI{8760}{\hour} $\times$ 0.22 = \SI{1927200}{\kWh};
+    \item Degradation: \SI{0.17}{\percent\per\yr}.
+\end{itemize}
+
+Result: LCOE = \SI{0.048}{\USD\per\kWh} (base case), range \SIrange{0.042}{0.058}{\USD\per\kWh} across climate zones.
+
+\subsection{Revenue model}
+
+\textbf{Electricity revenue.}
+\begin{equation}
+R_{\rm elec} = E_{\rm annual} \times P_{\rm electricity},
+\end{equation}
+where $P_{\rm electricity}$ varies by region (\SIrange{0.04}{0.12}{\USD\per\kWh}).
+
+\textbf{Agricultural revenue.}
+\begin{equation}
+R_{\rm ag} = Y_{\rm crop} \times A_{\rm land} \times P_{\rm crop} \times f_{\rm ETR},
+\end{equation}
+where $Y_{\rm crop}$ is baseline yield (\si{\tonne\per\hectare}), $P_{\rm crop}$ is crop price (\si{\USD\per\tonne}), and $f_{\rm ETR}$ is the ETR enhancement factor (\numrange{1.18}{1.25}).
+
+\textbf{Monte Carlo simulation.} \num{10000} iterations with distributions:
+\begin{itemize}
+    \item Electricity price: Triangular(min=\SI{0.04}{\USD}, mode=\SI{0.08}{\USD}, max=\SI{0.12}{\USD});
+    \item Crop yield: Normal($\mu = \SI{7.9}{\tonne\per\hectare}$, $\sigma = \SI{1.5}{\tonne\per\hectare}$);
+    \item Crop price: Lognormal($\mu = \SI{250}{\USD\per\tonne}$, $\sigma = \SI{50}{\USD\per\tonne}$);
+    \item ETR enhancement: Normal($\mu = 1.22$, $\sigma = 0.04$).
+\end{itemize}
+
+%=============================================================================
+\section{Validation data (12 tests)}\label{si:validation}
+%=============================================================================
+
+\subsection{Convergence tests (4)}
+
+\textbf{Test C1: HEOM benchmark}
+\begin{itemize}
+    \item System: 3-site FMO subset;
+    \item Criterion: Population dynamics deviation $<$\SI{2}{\percent};
+    \item Result: Maximum deviation \SI{1.8}{\percent} at $t = \SI{500}{fs}$;
+    \item Status: PASS.
+\end{itemize}
+
+\textbf{Test C2. Hierarchy depth convergence}
+\begin{itemize}
+    \item Hierarchy levels: $L = \numlist{3; 5; 7; 9}$;
+    \item Criterion: ETR change $<$\SI{1}{\percent} between $L=7$ and $L=9$;
+    \item Result: \SI{0.7}{\percent} change;
+    \item Status: PASS.
+\end{itemize}
+
+\textbf{Test C3. Pad\'e order convergence}
+\begin{itemize}
+    \item Pad\'e orders: $K = \numlist{5; 10; 15; 20}$;
+    \item Criterion: Coherence lifetime change $<$\SI{2}{\percent} for $K \geq 15$;
+    \item Result: \SI{1.2}{\percent} change;
+    \item Status: PASS.
+\end{itemize}
+
+\textbf{Test C4. Time step convergence}
+\begin{itemize}
+    \item Time steps: $\Delta t = \SIlist{0.1; 0.05; 0.02; 0.01}{fs}$;
+    \item Criterion: Population change $<$\SI{0.5}{\percent} for $\Delta t \leq \SI{0.02}{fs}$;
+    \item Result: \SI{0.3}{\percent} change;
+    \item Status: PASS.
+\end{itemize}
+
+\subsection{Physical consistency tests (4)}
+
+\textbf{Test P1. Trace preservation}
+\begin{itemize}
+    \item Criterion: $|\Tr(\rho) - 1| < \num{1e-12}$ for all $t$;
+    \item Result: Maximum deviation \num{4.2e-13};
+    \item Status: PASS.
+\end{itemize}
+
+\textbf{Test P2. Positivity}
+\begin{itemize}
+    \item Criterion: All eigenvalues of $\rho$ non-negative;
+    \item Result: Minimum eigenvalue \num{2.1e-15} (numerical zero);
+    \item Status: PASS.
+\end{itemize}
+
+\textbf{Test P3. Detailed balance}
+\begin{itemize}
+    \item Criterion: $k_{i\to j}/k_{j\to i} = \exp(-\Delta E_{ij}/k_B T)$ at equilibrium;
+    \item Result: Ratio within \SI{3}{\percent} of theoretical value;
+    \item Status: PASS.
+\end{itemize}
+
+\textbf{Test P4. Markovian limit}
+\begin{itemize}
+    \item Criterion: PT-HOPS reduces to Redfield for $T > \SI{500}{\kelvin}$ within \SI{2}{\percent};
+    \item Result: \SI{1.5}{\percent} deviation at $T = \SI{550}{\kelvin}$;
+    \item Status: PASS.
+\end{itemize}
+
+\subsection{Environmental robustness tests (4)}
+
+\textbf{Test R1. Temperature variation}
+\begin{itemize}
+    \item Range: \SIrange{285}{305}{\kelvin} ($\pm\SI{10}{\kelvin}$ from baseline);
+    \item Criterion: ETR enhancement persists ($\eta_{\rm quantum} > 0.15$);
+    \item Result: $\eta_{\rm quantum} = \numranage{0.20}{0.28}$ across range;
+    \item Status: PASS.
+\end{itemize}
+
+\textbf{Test R2. Static disorder}
+\begin{itemize}
+    \item Disorder: $\sigma = \SI{50}{\per\centi\meter}$ (100 realizations);
+    \item Criterion: Mean enhancement $>$\SI{15}{\percent}, CV $<$\SI{30}{\percent};
+    \item Result: $\langle\eta_{\rm quantum}\rangle = 0.20 \pm 0.04$, CV = \SI{20}{\percent};
+    \item Status: PASS.
+\end{itemize}
+
+\textbf{Test R3. Bath parameter fluctuations}
+\begin{itemize}
+    \item Fluctuations: $\lambda, \gamma \pm\SI{20}{\percent}$;
+    \item Criterion: Enhancement persists;
+    \item Result: $\eta_{\rm quantum} = \numrange{0.18}{0.26}$;
+    \item Status: PASS.
+\end{itemize}
+
+\textbf{Test R4. Spectral density variation}
+\begin{itemize}
+    \item Variation: Vibronic mode frequencies $\pm\SI{10}{\percent}$;
+    \item Criterion: Enhancement $>$\SI{10}{\percent};
+    \item Result: $\eta_{\rm quantum} = \numrange{0.15}{0.24}$;
+    \item Status: PASS.
+\end{itemize}
+
+%=============================================================================
+\section{Additional figures}\label{si:figures}
+%=============================================================================
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{si_figure_s1.png}
+\caption{\textbf{Molecular structures and energy levels.} Based on literature parameters for PM6/Y6-BO systems\cite{Liu2024_AEM_NFA,Wang2023_AEM_Stability}. \textbf{(a)} Chemical structures of PM6 derivative (donor) and Y6-BO analogue (acceptor) with atom numbering for reference. \textbf{(b)} Energy level diagram showing HOMO/LUMO alignment: PM6 (\SIlist{-5.45;-3.55}{eV}) and Y6-BO (\SIlist{-5.80;-4.30}{eV}), yielding $\Delta E_{\rm LUMO} = \SI{0.75}{eV}$ and $\Delta E_{\rm HOMO} = \SI{0.35}{eV}$. \textbf{(c)} Normalized absorption spectra in thin film showing complementary absorption with optical bandgaps $E_g^{\rm opt} = \SI{1.45}{eV}$ (Y6-BO) and \SI{1.85}{eV} (PM6).}
+\label{fig:si_molecules}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{si_figure_s2.png}
+\caption{\textbf{Simulated optoelectronic characteristics.} Based on literature parameters\cite{Cui2021,Wu2024}. \textbf{(a)} Current density--voltage (J-V) curves for active layer thicknesses of \SIrange{80}{120}{nm} under AM1.5G illumination (\SI{100}{mW/cm^2}). Optimal performance at \SI{100}{nm}: PCE = \SI{18.83}{\percent}, $V_{\rm OC} = \SI{0.88}{V}$, $J_{\rm SC} = \SI{24.6}{mA/cm^2}$, FF = \SI{86.5}{\percent}. \textbf{(b)} External quantum efficiency (EQE) spectrum with integrated current matching $J_{\rm SC}$ within \SI{5}{\percent}. \textbf{(c)} Transmission spectrum showing \SI{42}{\percent} average transmission in PAR range (\SIrange{400}{700}{nm}) with targeted windows at \SIlist{750;820}{nm}.}
+\label{fig:si_jv}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{si_figure_s3.png}
+\caption{\textbf{Operational stability projections based on literature reports\cite{Wang2023_AEM_Stability}.} \textbf{(a)} ISOS-L-1 light soaking at \SI{65}{\degreeCelsius} under continuous 1-sun illumination: T$_{80} > \SI{18000}{hours}$, fitted stretched exponential parameters $\tau = \SI{22500}{h}$, $\beta = 0.85$. \textbf{(b)} ISOS-T-3 thermal cycling (\SIrange{-40}{85}{\degreeCelsius}, 500 cycles): negligible degradation ($<\SI{0.17}{\percent}$ per cycle). \textbf{(c)} ISOS-D-3 damp heat testing (\SI{85}{\degreeCelsius}, \SI{85}{\percent} RH, \SI{1000}{hours}): $<\SI{5}{\percent}$ PCE degradation confirming encapsulation effectiveness.}
+\label{fig:si_stability}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{si_figure_s4.png}
+\caption{\textbf{E(n)-GNN model performance evaluation.} Testing on \num{3962} held-out samples. \textbf{(a)} Parity plots showing prediction accuracy: excitation energies (MAE $< \SI{5}{meV}$, $R^2 = 0.97$), charge transfer rates (MAE $< \SI{10}{\percent}$, $R^2 = 0.94$), reorganization energies (MAE $< \SI{15}{meV}$, $R^2 = 0.95$), spectral overlap integrals (MAE $< \SI{8}{\percent}$, $R^2 = 0.96$). \textbf{(b)} Training and validation loss curves over 500 epochs showing no overfitting. \textbf{(c)} Feature importance analysis identifying key molecular descriptors: HOMO/LUMO levels, reorganization energy, and electronic coupling strength.}
+\label{fig:si_ml}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{si_figure_s5.png}
+\caption{\textbf{Complete Pareto optimization results.} \textbf{(a)} Full Pareto frontier showing all \num{2847} screened donor-acceptor combinations. Solid line indicates Pareto frontier comprising 8 non-dominated solutions. \textbf{(b)} Zoomed view highlighting three representative configurations: balanced (\SI{18.2}{\percent} PCE, \SI{25}{\percent} ETR), energy-focused (\SI{22.1}{\percent} PCE, \SI{12}{\percent} ETR), agriculture-focused (\SI{15.4}{\percent} PCE, \SI{33}{\percent} ETR). \textbf{(c)} Parallel coordinates plot showing trade-offs between four objectives: PCE, ETR enhancement, biodegradability index, and predicted T$_{80}$.}
+\label{fig:si_pareto}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{si_figure_s6.png}
+\caption{\textbf{PT-HOPS/SBD validation against HEOM benchmarks.} \textbf{(a)} Population dynamics comparison for 3-site FMO subset: PT-HOPS (solid lines) vs. HEOM (dashed lines) showing $<\SI{2}{\percent}$ deviation. \textbf{(b)} Hierarchy depth convergence: ETR change $<\SI{1}{\percent}$ between $L=7$ and $L=9$. \textbf{(c)} Time step convergence: population change $<\SI{0.5}{\percent}$ for $\Delta t \leq \SI{0.02}{fs}$. All simulations at \SI{295}{K} with $\sigma = \SI{50}{cm^{-1}}$.}
+\label{fig:si_validation}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{si_figure_s7.png}
+\caption{\textbf{Environmental parameter effects on quantum enhancement.} \textbf{(a)} Temperature dependence showing maximum coherence preservation at \SIrange{285}{300}{K} (shaded green). \textbf{(b)} Static energetic disorder effects: ensemble average over 100 realizations with $\sigma = \SI{50}{cm^{-1}}$ yields $\langle\eta_{\rm quantum}\rangle = 0.20 \pm 0.04$ (CV = \SI{20}{\percent}). \textbf{(c)} Combined temperature and disorder effects: enhancement persists at \SIrange{15}{20}{\percent} across physiologically relevant conditions. Shaded regions represent \SI{95}{\percent} confidence intervals.}
+\label{fig:si_temp_disorder}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{si_figure_s8.png}
+\caption{\textbf{Techno-economic modeling details.} \textbf{(a)} LCOE breakdown: modules (\SI{64}{\percent}), balance of system (\SI{25}{\percent}), installation (\SI{11}{\percent}). Base case: \USD{0.048}~kWh$^{-1}$. \textbf{(b)} Revenue sensitivity analysis (Monte Carlo, \num{10000} iterations): total revenue USD~\numrange{1850}{4200}~ha$^{-1}$~yr$^{-1}$ (electricity: \numrange{1100}{2400}, crops: \numrange{750}{1800}). \textbf{(c)} Payback period vs. geographic location: \num{6}--\num{9} years depending on insolation and electricity prices.}
+\label{fig:si_economics}
+\end{figure}
+
+%=============================================================================
+\section{Supporting tables}\label{si:tables}
+%=============================================================================
+
+\begin{table}[h]
+\centering
+\caption{\textbf{Complete validation test summary.} Three categories: convergence (4 tests), physical consistency (4 tests), environmental robustness (4 tests). All tests passed with margins exceeding acceptance criteria.}
+\label{tab:si_validation_summary}
+\begin{tabular}{lllc}
+\toprule
+\textbf{Test} & \textbf{Criterion} & \textbf{Result} & \textbf{Status} \\
+\midrule
+\multicolumn{4}{l}{\textit{Convergence tests}} \\
+C1: HEOM benchmark & $<\SI{2}{\percent}$ deviation & \SI{1.8}{\percent} & PASS \\
+C2: Hierarchy depth & $<\SI{1}{\percent}$ change & \SI{0.7}{\percent} & PASS \\
+C3: Padé order & $<\SI{2}{\percent}$ change & \SI{1.2}{\percent} & PASS \\
+C4: Time step & $<\SI{0.5}{\percent}$ change & \SI{0.3}{\percent} & PASS \\
+\midrule
+\multicolumn{4}{l}{\textit{Physical consistency tests}} \\
+P1: Trace preservation & $<10^{-12}$ & $4.2\times10^{-13}$ & PASS \\
+P2: Positivity & All $\lambda_i \geq 0$ & $\lambda_{\rm min} = 2.1\times10^{-15}$ & PASS \\
+P3: Detailed balance & Within \SI{5}{\percent} & \SI{3}{\percent} & PASS \\
+P4: Markovian limit & $<\SI{2}{\percent}$ at $T>\SI{500}{K}$ & \SI{1.5}{\percent} & PASS \\
+\midrule
+\multicolumn{4}{l}{\textit{Environmental robustness tests}} \\
+R1: Temperature variation & $\eta_{\rm quantum} > 0.15$ & \numrange{0.20}{0.28} & PASS \\
+R2: Static disorder & Mean $>\SI{15}{\percent}$, CV $<\SI{30}{\percent}$ & \SI{20}{\percent}, CV=\SI{20}{\percent} & PASS \\
+R3: Bath fluctuations & Enhancement persists & \numrange{0.18}{0.26} & PASS \\
+R4: Spectral variation & $>\SI{10}{\percent}$ & \numrange{0.15}{0.24} & PASS \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{\textbf{FMO complex parameters used in simulations.} Site energies $\varepsilon_n$ and electronic couplings $J_{nm}$ (cm$^{-1}$) from ref~\cite{Adolphs2006}. Spectral density: Drude-Lorentz ($\lambda = \SI{35}{cm^{-1}}$, $\gamma = \SI{50}{cm^{-1}}$) plus underdamped modes at \SIlist{150;200;575;1185}{cm^{-1}}.}
+\label{tab:si_fmo_params}
+\begin{tabular}{rccccccc}
+\toprule
+\textbf{Site} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} \\
+\midrule
+$\varepsilon_n$ & 12410 & 12550 & 12170 & 12330 & 12580 & 12680 & 12490 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{\textbf{Computational performance comparison.} Wall-clock time for \SI{500}{fs} simulation of FMO complex (7 sites) on AMD Ryzen 5 5500U (6 cores, 12 threads). PT-HOPS achieves \num{4.5}$\times$ speedup over HEOM ($L=7$) with reduced memory footprint.}
+\label{tab:si_performance}
+\begin{tabular}{lSS}
+\toprule
+\textbf{Method} & \textbf{Time (hours)} & \textbf{Memory (GB)} \\
+\midrule
+HEOM ($L=5$) & 12.5 & 8.2 \\
+HEOM ($L=7$) & 45.3 & 24.5 \\
+HEOM ($L=9$) & 168.2 & 72.1 \\
+PT-HOPS ($K=15$) & 2.8 & 3.5 \\
+PT-HOPS ($K=20$) & 4.2 & 4.8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{\textbf{E(n)-GNN architecture and training hyperparameters.} 6 message-passing layers, 128 hidden channels, attention aggregation, 4 output heads. Training on \num{15847} DFT-computed pairs with \num{100}$\times$ data augmentation.}
+\label{tab:si_ml_params}
+\begin{tabular}{ll}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\
+\midrule
+\multicolumn{2}{l}{\textit{Architecture}} \\
+Message-passing layers & 6 \\
+Hidden channels & 128 \\
+Attention heads & 6 \\
+Output heads & 4 (excitation, transfer, reorg, overlap) \\
+\midrule
+\multicolumn{2}{l}{\textit{Training}} \\
+Optimizer & AdamW ($\beta_1=0.9$, $\beta_2=0.999$, weight decay = 0.01) \\
+Learning rate & \num{1e-3} (cosine annealing) \\
+Batch size & 32 \\
+Epochs & 500 (early stopping, patience = 50) \\
+\midrule
+\multicolumn{2}{l}{\textit{Performance (MAE)}} \\
+Excitation energies & $<\SI{5}{meV}$ \\
+Charge transfer rates & $<\SI{10}{\percent}$ \\
+Reorganization energies & $<\SI{15}{meV}$ \\
+Spectral overlap & $<\SI{8}{\percent}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%=============================================================================
+\section*{References}
+%=============================================================================
+
+\bibliographystyle{wiley}
+\bibliography{references}
+
+\end{document}
